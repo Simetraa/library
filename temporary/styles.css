@@ -1,0 +1,172 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Arial", sans-serif;
+    background-color: #FEFAE0;
+}
+.page-header {
+    display: flex;
+    padding: 8px;
+    background-color: #4b3f72;
+    justify-content: space-between;
+    align-items: center;
+    color:white;
+    font-variant: small-caps;
+    padding: 0 25px;
+    margin-bottom: 8px;
+}
+.header-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.header-buttons button {
+    background-color: #1f2041;
+    border-radius: 5px;
+    padding: 10px 10px;  
+    border:0px;
+    height: 35px;
+    color:white;
+    cursor: pointer;
+}
+
+#login-button {
+    background-color: #1f2041;
+}
+#login-button:hover {
+    background-color: #15162d;
+}
+
+#signup-button {
+    background-color: #4b3f72;
+}
+#signup-button:hover {
+    background-color: #3f3561;
+}
+
+.header-buttons button:hover {
+    /* find an actual hover colour here */
+    background-color: #4b3f72; 
+}
+
+.page-header h1 {
+    color: white
+}
+
+.page-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+img {
+    object-fit: cover;
+}
+.book {
+    width: 60px;
+}
+
+.login-container {
+    text-align: center;
+    background-color: #4b3f72;
+    margin: auto;
+    margin-top: 100px;
+    width: 400px;
+    padding: 25px;
+    border-radius: 6px;
+}
+
+.login-container form{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 25px;
+}
+.login-container form input{
+    border-radius: 6px;
+    padding: 5px;
+    width: 80%;
+}
+.login-container form button{
+    padding: 5px;
+    width: 25%;
+    border-radius: 5px;
+    border:0px;
+    color:white;
+    cursor: pointer;
+}
+
+.login-container h2 {
+    color: white;
+    font-size: 30px;
+}
+
+.dashboard-container{
+    padding: 20px;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 40% 40%;
+    gap: 20px;
+    overflow: hidden;
+}
+
+.recent-purchases{
+    height: 300px;
+    background-color: #1f2041;
+    border-radius: 6px;
+}
+.revenue{
+    height: 200px;
+    background-color: #4b3f72;
+    border-radius: 6px;
+}
+.pie-chart{
+    height: 300px;
+    background-color: #1f2041;
+    border-radius: 6px;
+}
+.line-graph{
+    height: 400px;
+    background-color: #4b3f72;
+    border-radius: 6px;
+}
+
+.flex-horizontal {
+    display: flex;
+    flex-direction: row;
+}
+
+.filters {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #4b3f72;
+    color: white;
+}
+
+nav {
+    display: flex;
+        align-items: center;
+    flex-direction: row;
+}
+
+.gap-8 {
+    gap: 8px;
+}
+
+.gap-16 {
+    gap: 16px;
+}
+
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+
+#login-page-email-field {
+    
+}
