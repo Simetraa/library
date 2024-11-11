@@ -1,12 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Book;
 
 Route::get('/welcome', function () {
     return view('welcome');
 });
 Route::get('/', function () {        //make page
-    return view('catalogue');
+//    dd(Book::find(1));
+    return view('catalogue', ["books" => Book::all()]);
 });
 Route::get('/login', function () {
     return view('login');
@@ -21,5 +23,6 @@ Route::get('/account', function () {        //make page
     return view('account');
 });
 Route::get('/book', function () {        //make page
+    $books = Book::all();
     return view('book');
 });
