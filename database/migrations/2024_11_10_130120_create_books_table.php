@@ -16,6 +16,8 @@ return new class extends Migration {
             $table->string('author');
             $table->string('cover_url');
             $table->text('description');
+            $table->integer('price');
+            $table->integer('quantity');
             $table->timestamps();
         });
     }
