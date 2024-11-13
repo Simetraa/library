@@ -22,7 +22,6 @@ Route::get('/dashboard', function () {
 Route::get('/account', function () {        //make page
     return view('account');
 });
-Route::get('/book', function () {        //make page
-    $books = Book::all();
-    return view('book');
+Route::get('/book/{id}', function (string $id) {
+    return view("book", ["book" => Book::find($id)]);
 });
