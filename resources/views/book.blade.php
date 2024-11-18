@@ -10,15 +10,31 @@
 
 <body>
 <x-header></x-header>
-<div>
-    <img src="{{ $book["cover_url"] }}" alt="book cover">
+    <div class="book-page">
+        <div class="book-cover">
 
-    <p>{{ $book["title"] }}</p>
-    <p>{{ $book["author"] }}</p>
-    <p>{{ $book["description"] }}</p>
-    <p>Price: {{ $book->getPrice() }}</p>
-    <p>Quantity: {{ $book["quantity"] }}</p>
-</div>
+                <img src="{{ $book["cover_url"] }}" alt="book cover">
+            </div>
+
+        <div class="book-info-container">
+            <div class="book-info">
+                <p>{{ $book["title"] }}</p>
+            </div>
+            <div class="book-info">
+                <p>{{ $book["author"] }}</p>
+            </div>
+            <div class="book-info">
+                <p>{{ $book["description"] }}</p>
+            </div>
+            <div class="book-info">
+                <p>Price: {{ $book->getPrice() }}</p>
+            </div>
+            <div class="book-info">
+                <p>Quantity: {{ $book["quantity"] }}</p>
+            </div>
+        </div>
+
+    </div>
 </body>
 
 </html>
