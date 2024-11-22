@@ -1,5 +1,5 @@
 @props(["book"])
-<a class="item-link" href="book/{{ $book["id"] }}">
+<a class="item-link" href="books/{{ $book["id"] }}">
     <div class="item-card">
         <img src="{{ $book["cover_url"] }}" alt="book cover">
         <h3>{{ $book["title"] }}</h3>

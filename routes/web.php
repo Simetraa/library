@@ -22,10 +22,50 @@ Route::get('/dashboard', function () {
 Route::get('/account', function () {        //make page
     return view('account');
 });
-Route::get('/book/{id}', function (string $id) {
-    return view("book", ["book" => Book::find($id)]);
+
+Route::get('/inventory', function () {
+    return view('inventory', ["books" => Book::all()]);
+});
+
+Route::get('/books/create', function () {
+
+    return view("books.create");
+});
+
+        //books
+Route::get('/books/{id}', function (string $id) {
+    return view("books.show", ["book" => Book::find($id)]);
 });
 
 Route::get('/inventory', function () {
     return view('inventory', ["books" => Book::all()]);
 });
+
+Route::patch('/books/{id}', function ($id) {
+//    request()->validate([
+//        'title' => ['required', 'min:3'],
+//        'author' => ['required'],
+//        'cover' => ['image'],
+//        'description' => ['required'],
+//        'price' => ['required', 'numeric'],
+//        'quantity' => ['required', 'numeric']
+//    ]);
+
+    // authorize (On hold...)
+
+    $book = Book::findOrFail($id);
+
+    $book->update([
+        'title' => request('title'),
+        'author' => request('author'),
+        'cover_url' => request('cover_url'),
+        'description' => request('description'),
+        'price' => request('price'),
+        'quantity' => request('quantity')
+    ]);
+
+    return redirect('/books/' . $book->id);
+});
+
+
+

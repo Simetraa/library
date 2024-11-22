@@ -17,6 +17,8 @@ class Book extends Model
     /** @use HasFactory<\Database\Factories\BookFactory> */
     use HasFactory;
 
+    protected $guarded = [];
+
     function getPrice(): string {
         $price = $this->attributes['price'];
         return "£" . number_format($price, 2, ".", '');

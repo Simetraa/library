@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url(https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined);
+
+
 /*THIS IS WHAT WE ARE WORING ON*/
 body {
     margin: 0;
@@ -76,6 +79,25 @@ body {
 .item-card p{
     font-size: 13px;
 }
+table {
+    border-collapse: collapse;
+    border: 1px solid;
+}
+tbody tr:nth-child(odd) {
+    background-color: rgb(183, 177, 232);
+}
+
+
+
+tbody tr:nth-child(even) {
+    background-color: rgb(146, 143, 198);
+}
+
+tbody tr:hover {
+    background-color: rgb(84, 74, 170);
+}
+
+
 .catalogue-container{
     display: flex;
     flex-wrap: wrap;
@@ -322,21 +344,36 @@ img {
     overflow: hidden;
 }
 
+.paragraph-truncate {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+
+.text-right {
+    text-align: right;
+}
+
+td {
+    padding: 4px;
+}
+
 .inventory-panes {
     display: flex;
     flex-direction: row;
     gap: 8px
 }
 
-.inventory-book-pane {
+table {
     overflow-y: scroll;
 }
 
-.inventory-panes > div {
-    padding: 20px;
-    border: solid;
-    height: 60vh
-}
+/*.inventory-panes > div {*/
+/*    padding: 20px;*/
+/*    border: solid;*/
+/*    height: 60vh*/
+/*}*/
 
 
 .recent-purchases{

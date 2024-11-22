@@ -4,6 +4,7 @@
         <nav class="gap-32">
             <a href="/">Catalogue</a>
             <a href="/account">Account</a>
+            <a href="/inventory">Inventory</a>
         </nav>
     </div>
     <div class="header-buttons">
