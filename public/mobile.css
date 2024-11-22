@@ -1,0 +1,72 @@
+.search-results input{
+    /*margin: auto;*/
+    margin: 0;
+    max-width: 305px;
+    width: 70vw;
+}
+
+.page-header {
+    padding: 15px;
+    height: 40px;
+}
+
+.gap-32 {
+    margin: auto;
+}
+
+#login-button {
+    /*padding: 3px;*/
+    font-size: 8pt;
+    width: 60px;
+    height: 30px;
+}
+
+#signup-button {
+    padding: 3px;
+    font-size: 8pt;
+    width: 60px;
+    height: 30px;
+}
+
+.page-header h1 {
+    font-size: 16pt;
+    margin-left: 5px;
+}
+
+@media (max-width: 720px) {
+    .filters-container {
+        display:none;
+    }
+}
+
+
+.search-options {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 8px 0 8px 0;
+}
+#dropdown{
+    max-width: 168px;
+    width: 39vw;
+}
+
+.search-results {
+    max-width: 345px;
+    margin: 0 30px;
+    align-content: space-between;
+}
+
+.item-card {
+    width: 100%;
+    max-width: fit-content;
+}
+
+.catalogue-container{
+    margin-top: 8px;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+}
+
+
