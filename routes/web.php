@@ -25,3 +25,7 @@ Route::get('/account', function () {        //make page
 Route::get('/book/{id}', function (string $id) {
     return view("book", ["book" => Book::find($id)]);
 });
+
+Route::get('/inventory', function () {
+    return view('inventory', ["books" => Book::all()]);
+});
