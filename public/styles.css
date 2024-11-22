@@ -362,8 +362,17 @@ td {
 .inventory-panes {
     display: flex;
     flex-direction: row;
-    gap: 8px
+    gap: 8px;
+    background-color: #f4f1fd;
 }
+#edit_button{
+    text-decoration: none;
+    color: #18181b;
+}
+#edit_button:hover{
+    color: #8486bd;
+}
+
 
 table {
     overflow-y: scroll;

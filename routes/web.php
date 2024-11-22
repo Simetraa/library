@@ -37,8 +37,10 @@ Route::get('/books/{id}', function (string $id) {
     return view("books.show", ["book" => Book::find($id)]);
 });
 
-Route::get('/inventory', function () {
-    return view('inventory', ["books" => Book::all()]);
+Route::get('/books/{id}/edit', function ($id){
+    $book = Book::find($id);
+
+    return view("books.edit", ["book" => $book]);
 });
 
 Route::patch('/books/{id}', function ($id) {
