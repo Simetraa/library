@@ -356,6 +356,23 @@ img {
     overflow: hidden;
 }
 
+.inventory-panes {
+    display: flex;
+    flex-direction: row;
+    gap: 8px
+}
+
+.inventory-book-pane {
+    overflow-y: scroll;
+}
+
+.inventory-panes > div {
+    padding: 20px;
+    border: solid;
+    height: 60vh
+}
+
+
 .recent-purchases{
     height: 300px;
     background-color: #ffffffc4;
