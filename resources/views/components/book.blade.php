@@ -1,11 +1,13 @@
 @props(["book"])
 <a class="item-link" href="book/{{ $book["id"] }}">
     <div class="item-card">
+        <div>
+            <img
+                src="{{ $book["cover_url"] }}" alt="book cover">
+            <h3>{{ $book["title"] }}</h3>
+            <h4>{{ $book["author"] }}</h4>
+        </div>
 
-        <img
-            src="{{ $book["cover_url"] }}" alt="book cover">
-        <h3>{{ $book["title"] }}</h3>
-        <h4>{{ $book["author"] }}</h4>
 
         <div class="flex-horizontal-spaced">
         @if($book["quantity"] == 0)
