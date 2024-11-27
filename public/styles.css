@@ -30,7 +30,6 @@ body {
     flex-direction: row;
     justify-content: center;
 }
-
 .page-header {
     display: flex;
     background-color: #4b3f72;
@@ -201,6 +200,19 @@ tbody tr:hover {
 #login-button:hover {
     background-color: #3f3561;
 }
+#edit-button {
+    background-color: #5b5db1;
+    padding: 15px 30px 15px 30px;
+    width: 100%;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    margin-top: 40px;
+    cursor: pointer;
+}
+#edit-button:hover {
+    background-color: #3f3561;
+}
 
 #sign-up-page-button {
     background-color: #5b5db1;
@@ -228,6 +240,37 @@ tbody tr:hover {
 }
 #signup-button:hover {
     background-color: #dcd9e3;
+}
+
+.edit-book-container{
+    color: #5b5db1;
+    /*text-align: left;*/
+    background-color: #f4f1fd;
+    /*margin: auto;*/
+    /*margin-top: 100px;*/
+    margin: 30px;
+    width: 25%;
+    padding: 25px;
+    border-radius: 6px;
+    /*align-items: center;*/
+    /*min-height: 550px;*/
+    box-shadow: 4px 4px 2px 2px rgb(0 0 0 / 10%);
+}
+
+.edit-book-container h1{
+    text-align: center;
+    margin-bottom: 35px;
+}
+.edit-book-input-field{
+    display: flex;
+    justify-content: space-between;
+    margin:  10px;
+    align-items: center;
+}
+
+.edit-book-input-field input {
+    width: 60%;
+    padding: 5px;
 }
 
 .header-buttons button:hover {
