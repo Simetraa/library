@@ -11,7 +11,7 @@
 <body>
 <x-header></x-header>
 <h1>Create book</h1>
-<form method="POST" action="/books/create" autocomplete="off">
+<form method="POST" action="/books" autocomplete="off">
     @csrf
 
     <label for="title">Title</label>
