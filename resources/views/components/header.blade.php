@@ -8,7 +8,9 @@
         </nav>
     </div>
     <div class="header-buttons">
-        <button id="login-button">Log In</button>
-        <button id="signup-button">Sign Up</button>
+        @guest
+            <button id="login-button">Log In</button>
+            <button id="signup-button">Sign Up</button>
+        @endguest
     </div>
 </div>

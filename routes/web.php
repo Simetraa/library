@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\RegisteredUserController;
+use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Book;
 
@@ -21,12 +23,17 @@ Route::controller(BookController::class)->group(function () {
 ////    dd(Book::find(1));
 //    return view('catalogue', ["books" => Book::all()]);
 //});
-Route::get('/login', function () {
-    return view('login');
-});
-Route::get('/register', function () {       //change later
-    return view('register');
-});
+
+Route::get('/register', [RegisteredUserController::class, 'create']);
+Route::post('/register', [RegisteredUserController::class, 'store']);
+
+Route::get('/login', [SessionController::class, 'create']);
+Route::post('/login', [SessionController::class, 'store']);
+
+//Route::get('/login', function () {
+//    return view('login');
+//});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 });

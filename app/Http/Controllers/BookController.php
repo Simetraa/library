@@ -56,6 +56,6 @@ class BookController extends Controller
             'price' => request('price'),
             'quantity' => request('quantity')
         ]);
-        return redirect('/books/' . $book->id);
+        return redirect('/inventory');
     }
 }
