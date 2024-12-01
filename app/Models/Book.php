@@ -19,6 +19,11 @@ class Book extends Model
 
     protected $guarded = [];
 
+
+    protected $casts = [
+        'subjects' => 'array',
+    ];
+
     function getPrice(): string {
         $price = $this->attributes['price'];
         return "£" . number_format($price, 2, ".", '');
