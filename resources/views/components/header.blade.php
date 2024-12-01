@@ -9,8 +9,17 @@
     </div>
     <div class="header-buttons">
         @guest
-            <button id="login-button">Log In</button>
-            <button id="signup-button">Sign Up</button>
+            <a href="/login">Log In</a>
+            <a href="/register">Sign Up</a>
         @endguest
+
+        @auth
+            <a href="/account">{{ Auth()->user()["email"] }}</a>
+            <form method="POST" action="/logout">
+                @csrf
+
+                <button>Log out</button>
+            </form>
+        @endauth
     </div>
 </div>

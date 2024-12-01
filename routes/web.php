@@ -19,77 +19,17 @@ Route::controller(BookController::class)->group(function () {
     Route::delete('/books/{book}', 'destroy');
 });
 
-//Route::get('/', function () {        //make page
-////    dd(Book::find(1));
-//    return view('catalogue', ["books" => Book::all()]);
-//});
-
 Route::get('/register', [RegisteredUserController::class, 'create']);
 Route::post('/register', [RegisteredUserController::class, 'store']);
 
 Route::get('/login', [SessionController::class, 'create']);
 Route::post('/login', [SessionController::class, 'store']);
+Route::post('/logout', [SessionController::class, 'destroy']);
 
-//Route::get('/login', function () {
-//    return view('login');
-//});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
-Route::get('/account', function () {        //make page
+Route::get('/account', function () {
     return view('account');
 });
-
-//Route::get('/inventory', function () {
-//    return view('inventory', ["books" => Book::all()]);
-//});
-
-//Route::get('/books/create', function () {
-//
-//    return view("books.create");
-//});
-
-        //books
-//Route::get('/books/{book}', function (Book $book) {
-//    return view("books.show", ["book" => $book]);
-//});
-
-//Route::get('/books/{book}/edit', function (Book $book) {
-//    return view("books.edit", ["book" => $book]);
-//});
-
-//Route::delete('/books/{book}', function (Book $book) {
-//    $book->delete();
-//
-//    return redirect("/books");
-//}
-//);
-
-//Route::patch('/books/{book}', function (Book $book) {
-//    request()->validate([
-//        'title' => ['required', 'min:3'],
-//        'author' => ['required'],
-//        'cover' => ['image'],
-//        'description' => ['required'],
-//        'price' => ['required', 'numeric'],
-//        'quantity' => ['required', 'numeric']
-//    ]);
-
-    // authorize (On hold...)
-
-
-//    $book->update([
-//        'title' => request('title'),
-//        'author' => request('author'),
-//        'cover_url' => request('cover_url'),
-//        'description' => request('description'),
-//        'price' => request('price'),
-//        'quantity' => request('quantity')
-//    ]);
-
-//    return redirect('/books/' . $book->id);
-//});
-
-
-

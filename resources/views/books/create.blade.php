@@ -13,7 +13,6 @@
 <h1>Create book</h1>
 <form method="POST" action="/books" autocomplete="off">
     @csrf
-
     <label for="title">Title</label>
     <input type="text" name="title"><br>
 
@@ -24,7 +23,6 @@
 
     <label for="cover_url">Cover</label>
     <input type="text" name="cover_url"><br>
-
 
     <label for="description">Description</label>
     <input type="text" name="description"><br>
