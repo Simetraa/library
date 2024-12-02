@@ -1,4 +1,4 @@
-@props(["label", "name"])
+@props(["label", "name", "topSellingItemsPeriod"])
 
 <form action="/dashboard">
     <label for="{{ $name }}">{{ $label }}</label>
@@ -6,11 +6,10 @@
         @php
             use Carbon\Carbon;
             use Carbon\CarbonPeriod;
-            use Carbon\Unit;
 
             function makePeriodString(CarbonPeriod $period): string
             {
-                return $period->getStartDate()->format("Ymd") . "-" . $period->getEndDate()->format("Ymd");
+                return $period->getStartDate()->format("Y-m-d") . "-" . $period->getEndDate()->format("Y-m-d");
             }
 
             $yesterday = Carbon::yesterday();
@@ -18,14 +17,16 @@
             $lastMonth = Carbon::now()->subMonth();
             $lastYear = Carbon::now()->subYear();
 
-            $now = CarbonPeriod::between(now(), now());
-            $yesterday = CarbonPeriod::between(now(), now());
-            $thisWeek = CarbonPeriod::between(now()->startOf(Unit::Week), now()->endOfWeek()); // no startOfWeek() method
-            $thisMonth = CarbonPeriod::between(now()->startOfMonth(), now()->endOfMonth());
-            $thisYear = CarbonPeriod::between(now()->startOfYear(), now()->endOfMonth());
-            $prevWeek = CarbonPeriod::between($lastWeek->startOf(Unit::Week), $lastWeek->endOfWeek());
-            $prevMonth = CarbonPeriod::between($lastMonth->startOfMonth(), $lastMonth->endOfMonth());
-            $prevYear = CarbonPeriod::between($lastYear->startOfYear(), $lastYear->endOfYear());
+            $now = CarbonPeriod::create(now(), now());
+            $yesterday = CarbonPeriod::create($yesterday, $yesterday);
+            $thisWeek = CarbonPeriod::create(now()->startOfWeek(), now()->endOfWeek());
+            $thisMonth = CarbonPeriod::create(now()->startOfMonth(), now()->endOfMonth());
+            $thisYear = CarbonPeriod::create(now()->startOfYear(), now()->endOfYear());
+            // we need to create a clone of the last period to avoid modifying the original object
+            $prevWeek = CarbonPeriod::create($lastWeek->copy()->startOfWeek(), $lastWeek->copy()->endOfWeek());
+            $prevMonth = CarbonPeriod::create($lastMonth->copy()->startOfMonth(), $lastMonth->copy()->endOfMonth());
+            $prevYear = CarbonPeriod::create($lastYear->copy()->startOfYear(), $lastYear->copy()->endOfYear());
+
 
             $todayString = makePeriodString($now);
             $yesterdayString = makePeriodString($yesterday);
@@ -35,15 +36,23 @@
             $prevWeekString = makePeriodString($prevWeek);
             $prevMonthString = makePeriodString($prevMonth);
             $prevYearString = makePeriodString($prevYear);
+
+            $topSellingItemsPeriod = $topSellingItemsPeriod ?? $todayString;
+
+            $selectValues = [
+                ["Today", $todayString],
+                ["Yesterday", $yesterdayString],
+                ["This Week", $thisWeekString],
+                ["This Month", $thisMonthString],
+                ["This Year", $thisYearString],
+                ["Previous Week", $prevWeekString],
+                ["Previous Month", $prevMonthString],
+                ["Previous Year", $prevYearString]
+                ]
         @endphp
 
-        <option value="{{ $todayString }}">Today</option>
-        <option value="{{ $yesterdayString }}">Yesterday</option>
-        <option value="{{ $thisWeekString }}">This Week</option>
-        <option value="{{ $thisMonthString }}">This Month</option>
-        <option value="{{ $thisYearString }}">This Year</option>
-        <option value="{{ $prevWeekString }}">Previous Week</option>
-        <option value="{{ $prevMonthString }}">Previous Month</option>
-        <option value="{{ $prevYearString }}">Previous Year</option>
+        @foreach($selectValues as $value)
+            <option value="{{ $value[1] }}" {{ $value[1] == $topSellingItemsPeriod ? "selected" : "" }}>{{ $value[0] }}</option>
+        @endforeach
     </select>
 </form>

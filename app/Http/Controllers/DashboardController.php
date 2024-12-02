@@ -10,9 +10,10 @@ class DashboardController extends Controller
     public function index(Request $request)
     {
         $topSellingItems = Book::all()->take(5);
-        $lowStockItems = Book::all()->take(5);
-        $topSellingItemsTimeRange  = $request->get('topSellingItemsTimeRange ');
+        $topSellingItemsPeriod = $request->get("topSellingItemsPeriod");
 
-        return view('dashboard', ["topSellingItems" => $topSellingItems], ['topSellingItemsTimeRange' => $topSellingItemsTimeRange]);
+        return view('dashboard', ["topSellingItems" => $topSellingItems, "topSellingItemsPeriod" => $topSellingItemsPeriod]);
     }
+
+
 }
