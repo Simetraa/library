@@ -10,7 +10,7 @@
 
             function makePeriodString(CarbonPeriod $period): string
             {
-                return $period->getStartDate()->format("Y-m-d") . "," . $period->getEndDate()->format("Y-m-d");
+                return $period->getStartDate()->format("Ymd") . "-" . $period->getEndDate()->format("Ymd");
             }
 
             $yesterday = Carbon::yesterday();
