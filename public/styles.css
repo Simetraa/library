@@ -499,7 +499,7 @@ table {
     background-color: #4b3f72;
     color: white;
     border-radius: 6px;
-    max-height: 500px;
+    max-height: fit-content;
     max-width: 300px;
     min-width: 150px;
     margin-left: 80px;
