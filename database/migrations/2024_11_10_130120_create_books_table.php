@@ -17,6 +17,7 @@ return new class extends Migration {
             $table->string('cover_url');
             $table->text('description');
             $table->integer('price');
+            $table->jsonb("subjects");
             $table->integer('quantity');
             $table->timestamps();
         });

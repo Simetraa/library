@@ -10,18 +10,10 @@
 </head>
 
 <body class = "non-gradient-body">
+{{--<p>{{ dd($genreNames) }}</p>--}}
     <x-header></x-header>
     <div class="container-centre">
-        <div class="filters-container">
-            <h3>Genres:</h3>
-            <span><input id="genre1" type="checkbox">
-            <label for="genre1">Fantasy</label></span>
-            <span><input id="genre2" type="checkbox">
-            <label for="genre2">History</label></span>
-            <span><input id="genre3" type="checkbox">
-            <label for="genre3">Sci-Fi</label></span>
-
-        </div>
+        <x-categories :subjects="$subjects" :filters="$filters"></x-categories>
 
         <div class = "search-results">
             <div class="search-sort-by">

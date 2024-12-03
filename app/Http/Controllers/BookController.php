@@ -3,12 +3,45 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
-    public function catalogue(){
-        return view('catalogue', ["books" => Book::all()]);
+    public function catalogue(Request $request){
+        $genresFiltered  = $request->get('genre');
+////        dd($request);
+//        if(isset($genresFiltered)){
+//            dd($genresFiltered);
+//        }
+
+        $genresFiltered = $request->get("genre") ?? [];
+        $genreNames = [];
+
+        $subjectList = app(CategoryController::class)->getCategories();
+
+        foreach ($genresFiltered as $genre){
+            [$subjectIdx, $categoryIdx] = explode(",", $genre);
+
+            $subjectIdx -= 1; // subtract 1 to account for loop() offset
+            if($categoryIdx == 1) {
+                $genreName = array_keys($subjectList)[$subjectIdx];
+            } else {
+                $key = $subjectList[array_keys($subjectList)[$subjectIdx]];
+
+                $categoryIdx -= 2; // subtract 2 to account for header & loop() offset
+                $genreName = $key[$categoryIdx];
+            }
+
+            array_push($genreNames, $genreName);
+        }
+
+        return view('catalogue', [
+            "books" => Book::all(),
+            "subjects" => app(CategoryController::class)->getCategories(),
+            "filters" => $genresFiltered,
+            "genreNames" => $genreNames
+        ]);
     }
     public function inventory(){
         return view('inventory', ["books" => Book::all()]);
@@ -22,6 +55,8 @@ class BookController extends Controller
         'price' => ['required', 'numeric'],
         'quantity' => ['required', 'numeric']
         ]);
+
+
 
         Book::create([
             'title' => request("title"),
@@ -47,7 +82,8 @@ class BookController extends Controller
 
         return redirect("/books");
     }
-    public function update(Book $book, Request $request){
+    public function update(Book $book, Request $request)
+    {
         $book->update([
             'title' => request('title'),
             'author' => request('author'),
