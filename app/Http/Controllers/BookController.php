@@ -5,16 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BookController extends Controller
 {
     public function catalogue(Request $request){
-        $genresFiltered  = $request->get('genre');
-////        dd($request);
-//        if(isset($genresFiltered)){
-//            dd($genresFiltered);
-//        }
-
         $genresFiltered = $request->get("genre") ?? [];
         $genreNames = [];
 
@@ -36,8 +31,15 @@ class BookController extends Controller
             array_push($genreNames, $genreName);
         }
 
+        $books = [];
+
+        foreach($genreNames as $genreName) {
+            $books = array_merge($books, DB::table('books')->where('subjects', 'like', '%"'.$genreName.'"%')->distinct()->get()->toArray());
+        }
+        dd($books);
+
         return view('catalogue', [
-            "books" => Book::all(),
+            "books" => $books,
             "subjects" => app(CategoryController::class)->getCategories(),
             "filters" => $genresFiltered,
             "genreNames" => $genreNames
@@ -62,6 +64,7 @@ class BookController extends Controller
             'title' => request("title"),
             'author' => request("author"),
             'cover_url' => request("cover_url"),
+            'subject' =>[],
             'description' => request("description"),
             'price' => request("price"),
             'quantity' => request("quantity")
@@ -72,6 +75,7 @@ class BookController extends Controller
         return view("books.create");
     }
     public function show(Book $book){
+
         return view("books.show", ["book" => $book]);
     }
     public function edit(Book $book){
