@@ -20,6 +20,7 @@ class BookFactory extends Factory
             'title' => fake()->sentence(),
             'author' => fake()->name(),
             'cover_url' => "https://m.media-amazon.com/images/I/81-VVvqF2UL._AC_UF894,1000_QL80_.jpg",
+            'subjects' => fake()->words(5),
             'description' => fake()->paragraph(),
             'price' => fake()->numberBetween(5, 20),
             'quantity' => fake()->numberBetween(0, 10),
