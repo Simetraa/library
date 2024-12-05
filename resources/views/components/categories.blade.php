@@ -5,8 +5,13 @@
 @endphp
 
 
-<div class="filters-container">
-    <h3>Genres:</h3>
+<div id = "filters" class="filters-container">
+    <div class="filter-container-header">
+        <h3>Genres:</h3>
+        <button onclick="hideshowfilters()" class = "filter-close">&#10006</button>
+
+    </div>
+
 <form action="/">
     @foreach($subjects as $subjectName => $subject)
     <div>

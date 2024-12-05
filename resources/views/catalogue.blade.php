@@ -15,11 +15,9 @@
     <div class="container-centre">
         <x-categories :subjects="$subjects" :filters="$filters"></x-categories>
 
-        <div class = "search-results">
+        <div id = 'search' class = "search-results">
             <div class="search-sort-by">
                 <input type="text" placeholder="Search the catalogue">
-{{--            <span><button onclick="" class = "list-button">List</button>--}}
-                {{--            <button onclick="" class = "grid-button">Grid</button></span>--}}
                 <div class = "search-options">
                     <select name="Sort by" id="dropdown">
                         <option value="relevance">Relevance</option>
@@ -30,15 +28,7 @@
                         <option value="date-latest">Date: Latest</option>
                         <option value="date-oldest">Date: Oldest</option>
                     </select>
-
-{{--                    <div class="filter-dropdown">--}}
-{{--                        <select name="filter" id="dropdown">--}}
-{{--                            <option value="fantasy">Fantasy</option>--}}
-{{--                            <option value="history">History</option>--}}
-{{--                            <option value="scifi">Sci-Fi</option>--}}
-{{--                        </select>--}}
-{{--                    </div>--}}
-                    <button class="genres-button">Genres</button>
+                    <button onclick="hideshowfilters()" class = "genres-button">Genres</button>
                 </div>
             </div>
         </div>
@@ -49,6 +39,25 @@
                 @endforeach
             </div>
     </div>
+<script>
+    var filterbox = document.getElementById('filters');
+    var pagecontent = document.getElementById('search');
+    var display = 0;
+
+    function hideshowfilters() {
+        if (display == 1) {
+            filterbox.style.display = 'block';
+            pagecontent.style.display = 'none';
+            display = 0;
+        }
+        else {
+            filterbox.style.display = 'none';
+            pagecontent.style.display = 'block';
+            display = 1;
+        }
+    }
+
+</script>
 </body>
 
 </html>
