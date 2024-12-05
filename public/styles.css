@@ -65,6 +65,7 @@ body {
     border-radius: 10px;
     padding: 15px;
     max-width: 200px;
+    min-width: 200px;
     height: 400px;
     box-shadow: 4px 4px 2px 2px rgb(0 0 0 / 10%);
     display: flex;
@@ -92,8 +93,6 @@ tbody tr:nth-child(odd) {
     background-color: rgb(183, 177, 232);
 }
 
-
-
 tbody tr:nth-child(even) {
     background-color: rgb(146, 143, 198);
 }
@@ -101,8 +100,6 @@ tbody tr:nth-child(even) {
 tbody tr:hover {
     background-color: rgb(84, 74, 170);
 }
-
-
 
 .item-card h3 {
     overflow: hidden;
@@ -143,6 +140,7 @@ tbody tr:hover {
     display: flex;
     justify-content: flex-start;
 }
+
 
 /*.grid-button {*/
 /*    height: 40px;*/
@@ -536,6 +534,11 @@ nav a {
 
 @media (min-width: 720px) {
     .filter-dropdown {
+        display:none;
+    }
+}
+@media (min-width: 720px) {
+    .genres-button {
         display:none;
     }
 }

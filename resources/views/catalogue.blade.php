@@ -30,22 +30,24 @@
                         <option value="date-latest">Date: Latest</option>
                         <option value="date-oldest">Date: Oldest</option>
                     </select>
-                </div>
-                <div class="filter-dropdown">
-                    <select name="filter" id="dropdown">
-                        <option value="fantasy">Fantasy</option>
-                        <option value="history">History</option>
-                        <option value="scifi">Sci-Fi</option>
-                    </select>
+
+{{--                    <div class="filter-dropdown">--}}
+{{--                        <select name="filter" id="dropdown">--}}
+{{--                            <option value="fantasy">Fantasy</option>--}}
+{{--                            <option value="history">History</option>--}}
+{{--                            <option value="scifi">Sci-Fi</option>--}}
+{{--                        </select>--}}
+{{--                    </div>--}}
+                    <button class="genres-button">Genres</button>
                 </div>
             </div>
+        </div>
             <div class="catalogue-container">
 
                 @foreach($books as $book)
                     <x-book :book="$book"></x-book>
                 @endforeach
             </div>
-        </div>
     </div>
 </body>
 
