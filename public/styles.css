@@ -527,9 +527,9 @@ table {
     color: white;
     border-radius: 6px;
     max-height: fit-content;
-    max-width: 300px;
-    min-width: 150px;
-    margin-left: 80px;
+    max-width: 200px;
+    min-width: 200px;
+    margin-left: 40px;
     margin-top: 10px;
 }
 
@@ -555,7 +555,6 @@ nav {
     gap: 16px;
 }
 
-
 nav a {
     color: #4b3f72;
     text-decoration: none;
@@ -564,8 +563,9 @@ nav a {
 .display-filters {
     display: flex;
 }
-
-
+.display-catalogue {
+    display: flex;
+}
 
 @media (min-width: 720px) {
     .genres-button {

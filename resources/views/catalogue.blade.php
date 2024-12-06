@@ -19,50 +19,53 @@
     <x-header></x-header>
     <div class="container-centre">
 
-
-        <div id = 'search' class = "search-results">
-            <div class="search-sort-by">
-                <input type="text" placeholder="Search the catalogue">
-                <div class = "search-options">
-                    <select name="Sort by" id="dropdown">
-                        <option value="relevance">Relevance</option>
-                        <option value="price-low-high">Price: Low - High</option>
-                        <option value="price-low-high">Price: High - Low</option>
-                        <option value="title-alphabetical-az">Alphabetical: A - Z</option>
-                        <option value="title-alphabetical-za">Alphabetical: Z - A</option>
-                        <option value="date-latest">Date: Latest</option>
-                        <option value="date-oldest">Date: Oldest</option>
-                    </select>
-                    <button onclick="hideshowfilters()" class = "genres-button" id = "genres-button">Genres</button>
+        <div>
+            <div id = 'search' class = "search-results">
+                <div class="search-sort-by">
+                    <input type="text" placeholder="Search the catalogue">
+                    <div class = "search-options">
+                        <select name="Sort by" id="dropdown">
+                            <option value="relevance">Relevance</option>
+                            <option value="price-low-high">Price: Low - High</option>
+                            <option value="price-low-high">Price: High - Low</option>
+                            <option value="title-alphabetical-az">Alphabetical: A - Z</option>
+                            <option value="title-alphabetical-za">Alphabetical: Z - A</option>
+                            <option value="date-latest">Date: Latest</option>
+                            <option value="date-oldest">Date: Oldest</option>
+                        </select>
+                        <button onclick="hideshowfilters()" class = "genres-button" id = "genres-button">Genres</button>
+                    </div>
                 </div>
             </div>
-        </div>
 
-            <div class="catalogue-container">
+            <div class="catalogue-container" id = 'book-list'>
 
                 @foreach($books as $book)
                     <x-book :book="$book"></x-book>
                 @endforeach
             </div>
+        </div>
+
         <x-categories :subjects="$subjects" :filters="$filters"></x-categories>
     </div>
 <script>
-    var filterbox = document.getElementById('filters');
-    var search = document.getElementById('search');
-    var display = 0;
+    // var filterbox = document.getElementById('filters');
+    // var search = document.getElementById('search');
+    // var display = 0;
 
     function hideshowfilters() {
-        if (display == 0) {
-            filterbox.style.display = 'block';
-            search.style.display = 'none';
-            display = 1;
-        }
-        else {
-            filterbox.style.display = 'none';
-            search.style.display = 'block';
-            display = 0;
-        }
-
+        // if (display == 0) {
+        //     filterbox.style.display = 'block';
+        //     search.style.display = 'none';
+        //     display = 1;
+        // } else {
+        //     filterbox.style.display = 'none';
+        //     search.style.display = 'block';
+        //     display = 0;
+        // }
+        document.getElementById('filters').classList.toggle('display-filters');
+        document.getElementById('book-list').classList.toggle('display-catalogue');
+    }
 
     // document.getElementById('genres-button').addEventListener('click', function (){
     //     var pagecontent = document.getElementById('search');
