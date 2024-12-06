@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catalogue</title>
-    <link rel = "stylesheet" href="{{ asset('styles.css') }}?ts=<?=time()?>"/>
+    <link rel="stylesheet" href="{{ asset('styles.css') }}?ts=<?=time()?>"/>
     <link rel="stylesheet" href="{{ asset('mobile.css') }}?ts=<?=time()?>" media ="only screen and (max-width: 720px)"/>
 {{--    <script src="{{ assert('styles.css') }}"></script>--}}
     <script src="{{ asset('preserve_scroll.js') }}"></script>
@@ -14,16 +14,16 @@
 
 </head>
 
-<body class = "non-gradient-body">
+<body class="non-gradient-body">
 {{--<p>{{ dd($genreNames) }}</p>--}}
     <x-header></x-header>
     <div class="container-centre">
 
         <div>
-            <div id = 'search' class = "search-results">
+            <div id='search' class="search-results">
                 <div class="search-sort-by">
                     <input type="text" placeholder="Search the catalogue">
-                    <div class = "search-options">
+                    <div class="search-options">
                         <x-dropdown id="dropdown" action="/" name="sort-by"
                                     :dropdown-values="
 [
@@ -37,12 +37,12 @@
 ]"></x-dropdown>
 
 
-                        <button onclick="hideshowfilters()" class = "genres-button" id = "genres-button">Genres</button>
+                        <button onclick="hideshowfilters()" class="genres-button" id="genres-button">Genres</button>
                     </div>
                 </div>
             </div>
 
-            <div class="catalogue-container" id = 'book-list'>
+            <div class="catalogue-container" id='book-list'>
 
                 @foreach($books as $book)
                     <x-book :book="$book"></x-book>
