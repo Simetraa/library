@@ -105,7 +105,7 @@ class CategoryController extends Controller
                 "Thriller",
                 "Young Adult",
             ],
-            "Science & Mathmatics" => [
+            "Science & Mathematics" => [
                 "Biology",
                 "Chemistry",
                 "Mathematics",
