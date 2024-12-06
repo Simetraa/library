@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 class BookController extends Controller
 {
     public function catalogue(Request $request){
+
         $genresFiltered = $request->get("genre") ?? [];
         $genreNames = [];
 
@@ -38,9 +39,28 @@ class BookController extends Controller
             $books = $books->union(DB::table('books')->where('subjects', 'like', '%"'.$genreName.'"%')->get());
         }
 
-
-        //dd(DB::table('books')->where('subjects', 'like', '%"'."Kittens".'"%')->get());
         $books = Book::hydrate($books->toArray());
+
+        $sortBy = $request->get("sort-by");
+
+
+        switch($sortBy) {
+            case "relevance":
+                $books = $books; // TODO: Implement relevance based on popularity
+            case "price-low-high":
+                $books = $books->sortBy("price");
+            case "price-high-high":
+                $books = $books->sortByDesc("price");
+            case "title-alphabetical-az":
+                $books = $books->sortBy("title");
+            case "title-alphabetical-za":
+                $books = $books->sortByDesc("title");
+            case "date-latest":
+                $books = $books->sortByDesc("publication_date");
+            case "date-oldest":
+                $books = $books->sortBy("publication_date");
+        }
+
 
         if($genresFiltered == []) {
             $books = Book::all();
@@ -50,6 +70,7 @@ class BookController extends Controller
             "books" => $books,
             "subjects" => app(CategoryController::class)->getCategories(),
             "filters" => $genresFiltered,
+            "sort-by" => $sortBy,
             "genreNames" => $genreNames
         ]);
     }

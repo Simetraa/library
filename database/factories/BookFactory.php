@@ -32,6 +32,7 @@ class BookFactory extends Factory
             'cover_url' => "https://m.media-amazon.com/images/I/81-VVvqF2UL._AC_UF894,1000_QL80_.jpg",
             'subjects' => $fakeCategories,
             'description' => fake()->paragraph(),
+            'publication_date' => fake()->date(),
             'price' => fake()->numberBetween(5, 20),
             'quantity' => fake()->numberBetween(0, 10),
             //
