@@ -14,7 +14,7 @@
 
 <form action="/">
     @foreach($subjects as $subjectName => $subject)
-    <div>
+        <div>
         @foreach($subject as $category)
             @if($loop->first)
                 <input onchange="this.form.submit()" name="genre[]" value="{{ $loop->parent->iteration . "," . $loop->iteration }}" {{ in_array($loop->parent->iteration . "," . $loop->iteration, $filters) ? "checked" : ""}} type="checkbox">
