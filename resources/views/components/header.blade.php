@@ -1,16 +1,16 @@
 <div class="page-header">
     <div class="flex-horizontal gap-16">
-        <h1>Atlas Books</h1>
+        <h1><a href="/">Atlas Books</a></h1>
         <nav class="gap-32">
-            <a href="/">Catalogue</a>
             <a href="/account">Account</a>
             <a href="/inventory">Inventory</a>
         </nav>
     </div>
+
     <div class="header-buttons">
         @guest
-            <a href="/login">Log In</a>
-            <a href="/register">Sign Up</a>
+            <a href="/login" id = login-button>Log In</a>
+            <a href="/register" id = signup-button>Sign Up</a>
         @endguest
 
         @auth

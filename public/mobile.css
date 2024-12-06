@@ -94,4 +94,27 @@
     justify-content: center;
 }
 
+.filters-container {
+    width: 100vw;
+    margin: 20px 0 0 0 ;
+    padding: 0 30px 30px 30px;
+
+}
+
+.filter-close {
+    background: none;
+    color: white;
+    /*font-weight: bold;*/
+    font-size: 1.5pc;
+    width: 30px;
+    height: 30px;
+    box-shadow: none;
+    border: none;
+    margin: 15px;
+}
+
+.filter-container-header {
+    display: flex;
+    justify-content: space-between;
+}
 

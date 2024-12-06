@@ -39,6 +39,12 @@ body {
     padding: 0 25px;
     margin-bottom: 8px;
 }
+h1 a {
+    text-decoration: none;
+}
+a{
+    color: #4b3f72;
+}
 
 .gradient-body .page-header, .non-gradient-body .page-header{
     background-color: #f4f1fd;
@@ -194,12 +200,35 @@ tbody tr:hover {
 #login-button {
     background-color: #5b5db1;
     padding: 10px;
+    margin-top: 10px;
+    border: 0;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
     width: 70px;
+    text-decoration: none;
+    text-align: center;
 }
 #login-button:hover {
     background-color: #3f3561;
 }
-#edit-button {
+#signup-button {
+    background: none;
+    padding: 10px;
+    margin-top: 10px;
+    border: 0;
+    border-radius: 5px;
+    color: #5b5db1;
+    cursor: pointer;
+    width: 70px;
+    text-decoration: none;
+    text-align: center;
+}
+#signup-button:hover {
+    background-color: lightgray;
+}
+
+.edit-create-button {
     background-color: #5b5db1;
     padding: 15px 30px 15px 30px;
     width: 100%;
@@ -209,7 +238,7 @@ tbody tr:hover {
     margin-top: 40px;
     cursor: pointer;
 }
-#edit-button:hover {
+.edit-create-button:hover {
     background-color: #3f3561;
 }
 
@@ -247,7 +276,7 @@ tbody tr:hover {
     border: 1px solid black;
 }
 
-.edit-book-container{
+.book-container{
     color: #5b5db1;
     /*text-align: left;*/
     background-color: #f4f1fd;
@@ -262,18 +291,18 @@ tbody tr:hover {
     box-shadow: 4px 4px 2px 2px rgb(0 0 0 / 10%);
 }
 
-.edit-book-container h1{
+.book-container h1{
     text-align: center;
     margin-bottom: 35px;
 }
-.edit-book-input-field{
+.book-input-field{
     display: flex;
     justify-content: space-between;
     margin:  10px;
     align-items: center;
 }
 
-.edit-book-input-field input {
+.book-input-field input {
     width: 60%;
     padding: 5px;
 }
@@ -532,13 +561,19 @@ nav a {
     text-decoration: none;
 }
 
-@media (min-width: 720px) {
+@media (max-width: 720px) {
     .filter-dropdown {
-        display:none;
+        display:block;
     }
 }
 @media (min-width: 720px) {
     .genres-button {
+        display:none;
+    }
+    .filter-close {
+        display: none;
+    }
+    .filter-dropdown {
         display:none;
     }
 }
