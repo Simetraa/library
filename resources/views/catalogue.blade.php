@@ -24,15 +24,19 @@
                 <div class="search-sort-by">
                     <input type="text" placeholder="Search the catalogue">
                     <div class = "search-options">
-                        <select name="Sort by" id="dropdown">
-                            <option value="relevance">Relevance</option>
-                            <option value="price-low-high">Price: Low - High</option>
-                            <option value="price-low-high">Price: High - Low</option>
-                            <option value="title-alphabetical-az">Alphabetical: A - Z</option>
-                            <option value="title-alphabetical-za">Alphabetical: Z - A</option>
-                            <option value="date-latest">Date: Latest</option>
-                            <option value="date-oldest">Date: Oldest</option>
-                        </select>
+                        <x-dropdown id="dropdown" action="/" name="sort-by"
+                                    :dropdown-values="
+[
+    ['Relevance', 'relevance'],
+    ['Price: Low - High', 'price-low-high'],
+    ['Price: High - Low', 'price-high-low'],
+    ['Alphabetical: A-Z', 'title-alphabetical-az'],
+    ['Alphabetical: Z-A', 'title-alphabetical-za'],
+    ['Date: Latest', 'date-latest'],
+    ['Date: Oldest', 'date-oldest']
+]"></x-dropdown>
+
+
                         <button onclick="hideshowfilters()" class = "genres-button" id = "genres-button">Genres</button>
                     </div>
                 </div>
