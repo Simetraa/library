@@ -7,6 +7,11 @@
     <title>Catalogue</title>
     <link rel = "stylesheet" href="{{ asset('styles.css') }}?ts=<?=time()?>"/>
     <link rel="stylesheet" href="{{ asset('mobile.css') }}?ts=<?=time()?>" media ="only screen and (max-width: 720px)"/>
+{{--    <script src="{{ assert('styles.css') }}"></script>--}}
+    <script src="{{ asset('preserve_scroll.js') }}"></script>
+    <script src="{{ asset('filters.js')}}" defer></script>
+
+
 </head>
 
 <body class = "non-gradient-body">
@@ -41,19 +46,19 @@
     </div>
 <script>
     var filterbox = document.getElementById('filters');
-    var pagecontent = document.getElementById('search');
+    var search = document.getElementById('search');
     var display = 0;
 
     function hideshowfilters() {
-        if (display == 1) {
+        if (display == 0) {
             filterbox.style.display = 'block';
-            pagecontent.style.display = 'none';
-            display = 0;
+            search.style.display = 'none';
+            display = 1;
         }
         else {
             filterbox.style.display = 'none';
-            pagecontent.style.display = 'block';
-            display = 1;
+            search.style.display = 'block';
+            display = 0;
         }
     }
 
