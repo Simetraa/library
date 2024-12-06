@@ -14,7 +14,7 @@ subjectDivs.forEach(subjectDiv => {
     })
 })
 
-let inputElements = document.querySelector(".genre-filter-form input");
+let inputElements = document.querySelectorAll(".genre-filter-form input");
 inputElements.forEach(input => {
     input.addEventListener("change", function() {
         this.form.submit();
