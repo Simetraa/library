@@ -18,7 +18,7 @@
 {{--<p>{{ dd($genreNames) }}</p>--}}
     <x-header></x-header>
     <div class="container-centre">
-        <x-categories :subjects="$subjects" :filters="$filters"></x-categories>
+
 
         <div id = 'search' class = "search-results">
             <div class="search-sort-by">
@@ -33,16 +33,18 @@
                         <option value="date-latest">Date: Latest</option>
                         <option value="date-oldest">Date: Oldest</option>
                     </select>
-                    <button onclick="hideshowfilters()" class = "genres-button">Genres</button>
+                    <button onclick="hideshowfilters()" class = "genres-button" id = "genres-button">Genres</button>
                 </div>
             </div>
         </div>
+
             <div class="catalogue-container">
 
                 @foreach($books as $book)
                     <x-book :book="$book"></x-book>
                 @endforeach
             </div>
+        <x-categories :subjects="$subjects" :filters="$filters"></x-categories>
     </div>
 <script>
     var filterbox = document.getElementById('filters');
@@ -60,7 +62,20 @@
             search.style.display = 'block';
             display = 0;
         }
-    }
+
+
+    // document.getElementById('genres-button').addEventListener('click', function (){
+    //     var pagecontent = document.getElementById('search');
+    //     var filters = document.getElementById('filters');
+    //     if (filters.style.display === 'none') {
+    //         filters.style.display = 'block'
+    //         pagecontent.style.display = 'none';
+    //     }
+    //     else {
+    //         filters.style.display = 'none'
+    //         pagecontent.style.display = 'none';
+    //     }
+    // });
 
 </script>
 </body>

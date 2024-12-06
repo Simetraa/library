@@ -11,6 +11,7 @@
         <button onclick="hideshowfilters()" class = "filter-close">&#10006</button>
     </div>
 
+
     <form class="genre-filter-form" action="/">
         @foreach($subjects as $subjectName => $subject)
             <div>
