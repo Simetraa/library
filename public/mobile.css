@@ -83,8 +83,9 @@
 }
 
 .item-card {
-    width: 100%;
-    max-width: fit-content;
+    max-width: 80vw;
+    min-width: 80vw;
+
 }
 
 .catalogue-container{
@@ -92,13 +93,17 @@
     margin: 0;
     padding: 0;
     justify-content: center;
+    display: flex;
+    width: 100%;
 }
 
 .filters-container {
-    width: 100vw;
+    align-self: center;
+    width: 85vw;
     margin: auto;
     margin-top: 15px;
     padding: 0 30px 30px 30px;
+    display: none;
 }
 
 /*.filter-close {*/
@@ -121,6 +126,9 @@
 }
 
 .display-filters {
+    display: flex;
+}
+.display-catalogue {
     display: none;
 }
 
