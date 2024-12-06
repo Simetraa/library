@@ -27,7 +27,7 @@ body {
 
 .container-centre {
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
     justify-content: center;
 }
 .page-header {
@@ -561,21 +561,19 @@ nav a {
     text-decoration: none;
 }
 
-@media (max-width: 720px) {
-    .filter-dropdown {
-        display:block;
-    }
+.display-filters {
+    display: flex;
 }
+
+
+
 @media (min-width: 720px) {
     .genres-button {
         display:none;
     }
-    .filter-close {
-        display: none;
-    }
-    .filter-dropdown {
-        display:none;
-    }
+    /*#filters {*/
+    /*    display:flex;*/
+    /*}*/
 }
 
 

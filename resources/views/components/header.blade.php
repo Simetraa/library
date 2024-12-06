@@ -2,7 +2,6 @@
     <div class="flex-horizontal gap-16">
         <h1><a href="/">Atlas Books</a></h1>
         <nav class="gap-32">
-            <a href="/account">Account</a>
             <a href="/inventory">Inventory</a>
         </nav>
     </div>
