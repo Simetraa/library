@@ -31,12 +31,20 @@ class BookController extends Controller
             array_push($genreNames, $genreName);
         }
 
-        $books = [];
+        $books = collect();
 
         foreach($genreNames as $genreName) {
-            $books = array_merge($books, DB::table('books')->where('subjects', 'like', '%"'.$genreName.'"%')->distinct()->get()->toArray());
+//            $books = $books->union(Book::wh('genre', "like", "%$genreName%"));
+            $books = $books->union(DB::table('books')->where('subjects', 'like', '%"'.$genreName.'"%')->get());
         }
-//        dd($books);
+
+
+        //dd(DB::table('books')->where('subjects', 'like', '%"'."Kittens".'"%')->get());
+        $books = Book::hydrate($books->toArray());
+
+        if($genresFiltered == []) {
+            $books = Book::all();
+        }
 
         return view('catalogue', [
             "books" => $books,

@@ -7,6 +7,11 @@
     <title>Catalogue</title>
     <link rel = "stylesheet" href="{{ asset('styles.css') }}?ts=<?=time()?>"/>
     <link rel="stylesheet" href="{{ asset('mobile.css') }}?ts=<?=time()?>" media ="only screen and (max-width: 720px)"/>
+{{--    <script src="{{ assert('styles.css') }}"></script>--}}
+    <script src="{{ asset('preserve_scroll.js') }}"></script>
+    <script src="{{ asset('filters.js')}}" defer></script>
+
+
 </head>
 
 <body class = "non-gradient-body">
@@ -43,20 +48,21 @@
     </div>
 <script>
     var filterbox = document.getElementById('filters');
+    var search = document.getElementById('search');
     var display = 0;
 
     function hideshowfilters() {
-        // if (display == 0) {
-        //     filterbox.classList.toggle('display-filters');
-        //     display = 1;
-        // }
-        // else {
-        //     filterbox.style.display = 'none';
-        //     display = 0;
-        // }
+        if (display == 0) {
+            filterbox.style.display = 'block';
+            search.style.display = 'none';
+            display = 1;
+        }
+        else {
+            filterbox.style.display = 'none';
+            search.style.display = 'block';
+            display = 0;
+        }
 
-        filterbox.classList.toggle('display-filters');
-    }
 
     // document.getElementById('genres-button').addEventListener('click', function (){
     //     var pagecontent = document.getElementById('search');
