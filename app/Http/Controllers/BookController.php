@@ -36,7 +36,7 @@ class BookController extends Controller
         foreach($genreNames as $genreName) {
             $books = array_merge($books, DB::table('books')->where('subjects', 'like', '%"'.$genreName.'"%')->distinct()->get()->toArray());
         }
-        dd($books);
+//        dd($books);
 
         return view('catalogue', [
             "books" => $books,
