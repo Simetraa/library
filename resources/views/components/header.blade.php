@@ -11,7 +11,6 @@
             <a href="/login" id = login-button>Log In</a>
             <a href="/register" id = signup-button>Sign Up</a>
         @endguest
-
         @auth
             <a href="/account">{{ Auth()->user()["email"] }}</a>
             <form method="POST" action="/logout">

@@ -6,13 +6,9 @@
 
 
 <div id = "filters" class="filters-container">
-    <div class="filter-container-header">
-        <h3>Genres:</h3>
-{{--        <button onclick="hideshowfilters()" class = "filter-close">&#10006</button>--}}
-    </div>
+    <h3>Genres:</h3>
 
-
-    <form class="genre-filter-form" action="/">
+    <div class="genre-filters">
         @foreach($subjects as $subjectName => $subject)
             <div>
                 @foreach($subject as $category)
@@ -27,5 +23,5 @@
               @endforeach
             </div>
         @endforeach
-    </form>
+    </div>
 </div>

@@ -6,6 +6,7 @@ use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use function Laravel\Prompts\search;
 
 class BookController extends Controller
 {
@@ -29,48 +30,75 @@ class BookController extends Controller
                 $genreName = $key[$categoryIdx];
             }
 
-            array_push($genreNames, $genreName);
+            $genreNames[] = $genreName;
         }
 
         $books = collect();
 
         foreach($genreNames as $genreName) {
-//            $books = $books->union(Book::wh('genre', "like", "%$genreName%"));
             $books = $books->union(DB::table('books')->where('subjects', 'like', '%"'.$genreName.'"%')->get());
         }
 
-        $books = Book::hydrate($books->toArray());
+        if($genresFiltered == []) { // if no filters are checked, include all books
+            $books = Book::all();
+        }
+
+        $search = $request->get('search');
+
+        $authorSearch = $books->filter(function ($item) use ($search) {
+            return false !== stripos($item->author, $search);
+        });
+
+        $titleSearch = $books->filter(function ($item) use ($search) {
+            return false !== stripos($item->title, $search);
+        });
+
+        // TODO: We have duplication when filtering for Design
+
+        $books = $authorSearch->merge($titleSearch);
 
         $sortBy = $request->get("sort-by");
 
+        $books = $books->unique(); // MAKE SURE THIS WORKS.
 
         switch($sortBy) {
             case "relevance":
-                $books = $books; // TODO: Implement relevance based on popularity
+                break; // TODO: Implement relevance based on popularity
             case "price-low-high":
                 $books = $books->sortBy("price");
-            case "price-high-high":
+                break;
+            case "price-high-low":
                 $books = $books->sortByDesc("price");
-            case "title-alphabetical-az":
+                break;
+            case "title-az":
                 $books = $books->sortBy("title");
-            case "title-alphabetical-za":
+                break;
+            case "title-za":
                 $books = $books->sortByDesc("title");
+                break;
+            case "author-az":
+                $books = $books->sortBy("author");
+                break;
+            case "author-za":
+                $books = $books->sortByDesc("author");
+                break;
             case "date-latest":
                 $books = $books->sortByDesc("publication_date");
+                break;
             case "date-oldest":
                 $books = $books->sortBy("publication_date");
         }
 
 
-        if($genresFiltered == []) {
-            $books = Book::all();
-        }
+        $books = Book::hydrate($books->toArray());
+
 
         return view('catalogue', [
             "books" => $books,
             "subjects" => app(CategoryController::class)->getCategories(),
             "filters" => $genresFiltered,
             "sort-by" => $sortBy,
+            "search" => $search,
             "genreNames" => $genreNames
         ]);
     }

@@ -1,9 +1,9 @@
-@props(["name", "dropdownValues"])
+@props(["name", "options", "value"])
 
-<form {{ $attributes }}>
-    <select name="{{ $name }}" onchange='this.form.submit()'>
-        @foreach($dropdownValues as $value)
-            <option value="{{ $value[1] }}" {{ $value[1] == request()->get($name) ? "selected" : "" }}>{{ $value[0] }}</option>
-        @endforeach
-    </select>
-</form>
+{{-- we should work out how to access name from attributes instead. --}}
+<select {{ $attributes }} name="{{ $name }}">
+    @foreach($options as $option)
+        <option value="{{ $option[1] }}" {{ $option[1] == $value ? "selected" : "" }}>{{ $option[0] }}</option>
+    @endforeach
+</select>
+

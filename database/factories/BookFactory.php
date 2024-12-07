@@ -29,7 +29,7 @@ class BookFactory extends Factory
         return [
             'title' => fake()->sentence(),
             'author' => fake()->name(),
-            'cover_url' => "https://m.media-amazon.com/images/I/81-VVvqF2UL._AC_UF894,1000_QL80_.jpg",
+            'cover_url' => "/test_images/cover.jpg",
             'subjects' => $fakeCategories,
             'description' => fake()->paragraph(),
             'publication_date' => fake()->date(),

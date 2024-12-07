@@ -15,27 +15,32 @@
 </head>
 
 <body class="non-gradient-body">
-{{--<p>{{ dd($genreNames) }}</p>--}}
     <x-header></x-header>
-    <div class="container-centre">
-
+    <form class="container-centre" action="/">
         <div>
             <div id='search' class="search-results">
                 <div class="search-sort-by">
-                    <input type="text" placeholder="Search the catalogue">
+                    <input type="text" name="search" placeholder="Search the catalogue" value="{{ $search ?? "" }}">
+                    <button class="" id="">Search</button>
+                    <p>{{$books->count()}} results</p>
+
                     <div class="search-options">
-                        <x-dropdown id="dropdown" action="/" name="sort-by"
-                                    :dropdown-values="
+
+                        <x-dropdown id="dropdown"
+                                    name="sort-by"
+                                    :value="request()->get('sort-by')"
+                                    :options="
 [
     ['Relevance', 'relevance'],
     ['Price: Low - High', 'price-low-high'],
     ['Price: High - Low', 'price-high-low'],
-    ['Alphabetical: A-Z', 'title-alphabetical-az'],
-    ['Alphabetical: Z-A', 'title-alphabetical-za'],
+    ['Author: A-Z', 'author-az'],
+    ['Author: Z-A', 'author-za'],
+    ['Title: A-Z', 'title-az'],
+    ['Title: Z-A', 'title-za'],
     ['Date: Latest', 'date-latest'],
     ['Date: Oldest', 'date-oldest']
 ]"></x-dropdown>
-
 
                         <button onclick="hideshowfilters()" class="genres-button" id="genres-button">Genres</button>
                     </div>
@@ -43,15 +48,13 @@
             </div>
 
             <div class="catalogue-container" id='book-list'>
-
                 @foreach($books as $book)
                     <x-book :book="$book"></x-book>
                 @endforeach
             </div>
         </div>
-
         <x-categories :subjects="$subjects" :filters="$filters"></x-categories>
-    </div>
+    </form>
 <script>
     // var filterbox = document.getElementById('filters');
     // var search = document.getElementById('search');

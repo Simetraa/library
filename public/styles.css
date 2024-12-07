@@ -172,7 +172,7 @@ tbody tr:hover {
 /*    cursor: pointer;*/
 /*}*/
 
-#dropdown > select {
+#dropdown {
     background: #ffffffc4;
     box-shadow: 4px 4px 2px 2px rgb(0 0 0 / 10%);
     border-radius: 10px;
