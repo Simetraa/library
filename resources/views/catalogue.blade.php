@@ -7,11 +7,8 @@
     <title>Catalogue</title>
     <link rel="stylesheet" href="{{ asset('styles.css') }}?ts=<?=time()?>"/>
     <link rel="stylesheet" href="{{ asset('mobile.css') }}?ts=<?=time()?>" media ="only screen and (max-width: 720px)"/>
-{{--    <script src="{{ assert('styles.css') }}"></script>--}}
     <script src="{{ asset('preserve_scroll.js') }}"></script>
     <script src="{{ asset('filters.js')}}" defer></script>
-
-
 </head>
 
 <body class="non-gradient-body">
@@ -42,7 +39,7 @@
     ['Date: Oldest', 'date-oldest']
 ]"></x-dropdown>
 
-                        <button onclick="hideshowfilters()" class="genres-button" id="genres-button">Genres</button>
+                        <button onclick="hideshowfilters()" type="button" class="genres-button" id="genres-button">Genres</button>
                     </div>
                 </div>
             </div>
