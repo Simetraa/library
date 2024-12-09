@@ -13,13 +13,13 @@
 
 <body class="non-gradient-body">
     <x-header></x-header>
-    <form class="container-centre" action="/">
+    <form class="container-row-reverse" action="/">
         <div>
             <div id='search' class="search-results">
                 <div class="search-sort-by">
+
                     <input type="text" name="search" placeholder="Search the catalogue" value="{{ $search ?? "" }}">
-                    <button class="" id="">Search</button>
-                    <p>{{$books->count()}} results</p>
+                    <button class="search-button" id="">Search</button>
 
                     <div class="search-options">
 
@@ -43,6 +43,8 @@
                     </div>
                 </div>
             </div>
+
+            <p>{{$books->count()}} results</p>
 
             <div class="catalogue-container" id='book-list'>
                 @foreach($books as $book)
