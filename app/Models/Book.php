@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class News
@@ -31,9 +32,11 @@ class Book extends Model
         return $this->belongsToMany(Branch::class);
     }
 
-//    public function quantity(): int {
-//        return $this->branch()->count($this);
-//    }
+    public function getQuantityAttribute() {
+        // count the number of this book book in all branches
+        return DB::table('book_branch')->where('book_id', $this->id)->count();
+
+    }
 
     function getPrice(): string {
         $price = $this->attributes['price'];
