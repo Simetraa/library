@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Branch;
+use App\Models\Reservation;
+use App\Models\ReservationBook;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -33,5 +35,15 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'email' => 'test@example.com',
         ]);
+//
+        Reservation::create([
+            'user_id' => 1,
+            'branch_id' => 1,
+            'reservation_date' => fake()->date(),
+            'book_id' => 1,
+            'quantity' => 1,
+            'status' => 'pending',
+        ]);
+        
     }
 }

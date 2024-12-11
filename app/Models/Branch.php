@@ -15,4 +15,9 @@ class Branch extends Model
     {
         return $this->belongsToMany(Book::class);
     }
+
+    public function reservations(): HasMany
+    {
+        return $this->hasMany(Reservation::class);
+    }
 }

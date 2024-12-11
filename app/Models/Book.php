@@ -35,7 +35,10 @@ class Book extends Model
     public function getQuantityAttribute() {
         // count the number of this book book in all branches
         return DB::table('book_branch')->where('book_id', $this->id)->count();
+    }
 
+    public function reservation(): BelongsToMany {
+        return $this->belongsToMany(Reservation::class);
     }
 
     function getPrice(): string {
