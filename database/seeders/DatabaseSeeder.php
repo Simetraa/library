@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Branch;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -14,9 +15,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-//         User::factory(10)->create();
 
-        Book::factory(100)->create();
+//        Branch::factory(5)
+//            ->hasAttached(
+//                Book::factory()->count(5),
+//                ['quantity' => fake()->randomNumber(3)]
+//            )
+//            ->create();
+
+        Branch::factory()
+            ->count(5)
+            ->hasAttached(Book::factory()->count(3), function() {
+                return ['quantity' => fake()->randomNumber(3)];
+            })
+            ->create();
 
         User::factory()->create([
             'email' => 'test@example.com',

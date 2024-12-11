@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
 /**
  * Class News
  * @property int $id
@@ -23,6 +26,14 @@ class Book extends Model
     protected $casts = [
         'subjects' => 'array',
     ];
+
+    public function branch(): BelongsToMany {
+        return $this->belongsToMany(Branch::class);
+    }
+
+//    public function quantity(): int {
+//        return $this->branch()->count($this);
+//    }
 
     function getPrice(): string {
         $price = $this->attributes['price'];
