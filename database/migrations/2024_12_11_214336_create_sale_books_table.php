@@ -1,8 +1,7 @@
 <?php
 
 use App\Models\Book;
-use App\Models\Branch;
-use App\Models\User;
+use App\Models\Sale;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,14 +13,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('reservations', function (Blueprint $table) {
+        Schema::create('sale_books', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(User::class);
-            $table->foreignIdFor(Branch::class);
+            $table->foreignIdFor(Sale::class);
             $table->foreignIdFor(Book::class);
             $table->integer('quantity');
-            $table->enum('status', ['pending', 'ready', 'collected']);
-            $table->timestamps();
+            $table->decimal('price', 9, 3);
+            $table->enum('status', ['completed', 'returned']);  // TODO: improve status
         });
     }
 
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('reservations');
+        Schema::dropIfExists('sale_books');
     }
 };

@@ -39,11 +39,10 @@ class DatabaseSeeder extends Seeder
         Reservation::create([
             'user_id' => 1,
             'branch_id' => 1,
-            'reservation_date' => fake()->date(),
             'book_id' => 1,
             'quantity' => 1,
             'status' => 'pending',
         ]);
-        
+
     }
 }

@@ -32,3 +32,8 @@ Route::get("/dashboard", [DashBoardController::class, 'index']);
 Route::get('/account', function () {
     return view('account');
 });
+
+Route::controller(ReservationController::class)->group(function(){
+    Route::post('/reservations', 'store');
+//    Route::get('/reservations', 'index');
+});

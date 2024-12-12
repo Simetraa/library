@@ -20,4 +20,13 @@ class Branch extends Model
     {
         return $this->hasMany(Reservation::class);
     }
+
+    public static function getBranches(){
+        $branches = Branch::all();
+        $list = [];
+        foreach ($branches as $branch){
+            array_push($list, [$branch->name, $branch->id]);
+        }
+        return $list;
+    }
 }
