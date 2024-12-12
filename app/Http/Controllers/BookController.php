@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use function Laravel\Prompts\search;
 
@@ -29,11 +30,14 @@ class BookController extends Controller
                 $categoryIdx -= 2; // subtract 2 to account for header & loop() offset
                 $genreName = $key[$categoryIdx];
             }
-
             $genreNames[] = $genreName;
         }
 
         $books = collect();
+
+
+
+
 
         foreach($genreNames as $genreName) {
             $books = $books->union(DB::table('books')->where('subjects', 'like', '%"'.$genreName.'"%')->get());

@@ -34,8 +34,6 @@ class BookFactory extends Factory
             'description' => fake()->paragraph(),
             'publication_date' => fake()->date(),
             'price' => fake()->numberBetween(5, 20),
-            'quantity' => fake()->numberBetween(0, 10),
-            //
         ];
     }
 }

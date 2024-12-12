@@ -37,6 +37,26 @@
 
         </div>
 
+        @php
+            use App\Models\Branch;
+
+            $branches = Branch::getBranches();
+            $defaultValue = Branch::first()->id; // Auth::user()->branch->id ??
+        @endphp
+
+        <form action="/reservations" method="POST">
+            @csrf
+            <fieldset>
+                <legend>Reserve book</legend>
+                <input type="hidden" name="book_id" value="{{ $book->id }}">
+                    <label for="quantity">Quantity</label>
+                    <input name="quantity" value="1" type="number">
+
+                    <x-dropdown name="branch_id" :options="$branches" :value="$defaultValue"></x-dropdown>
+                    <button>Reserve</button>
+            </fieldset>
+        </form>
+
     </div>
 </body>
 

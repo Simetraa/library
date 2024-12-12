@@ -3,6 +3,7 @@
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RegisteredUserController;
+use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Book;
@@ -31,4 +32,11 @@ Route::get("/dashboard", [DashBoardController::class, 'index']);
 
 Route::get('/account', function () {
     return view('account');
+});
+
+
+
+Route::controller(ReservationController::class)->group(function(){
+    Route::post('/reservations', 'store');
+//    Route::get('/reservations', 'index');
 });
