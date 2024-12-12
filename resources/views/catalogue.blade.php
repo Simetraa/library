@@ -17,9 +17,11 @@
         <div>
             <div id='search' class="search-results">
                 <div class="search-sort-by">
+                    <div class="search-options">
+                        <input type="text" name="search" placeholder="Search the catalogue" value="{{ $search ?? "" }}">
+                        <button class="search-button" id="">Search</button>
+                    </div>
 
-                    <input type="text" name="search" placeholder="Search the catalogue" value="{{ $search ?? "" }}">
-                    <button class="search-button" id="">Search</button>
 
                     <div class="search-options">
 
@@ -44,7 +46,7 @@
                 </div>
             </div>
 
-            <p>{{$books->count()}} results</p>
+            <p class = "search-count">{{$books->count()}} results</p>
 
             <div class="catalogue-container" id='book-list'>
                 @foreach($books as $book)
