@@ -39,9 +39,10 @@
                     </div>
                 </div>
 
-                <h3>Reserve this book</h3>
+
 
                 <div class="book-info" id = "reserve-container">
+                    <h3>Reserve this book</h3>
                     @php
                         use App\Models\Branch;
 
