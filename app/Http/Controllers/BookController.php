@@ -145,7 +145,7 @@ class BookController extends Controller
     public function destroy(Book $book){
         $book->delete();
 
-        return redirect("/books");
+        return redirect("/inventory");
     }
     public function update(Book $book, Request $request)
     {

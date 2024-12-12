@@ -21,9 +21,6 @@ Route::controller(BookController::class)->group(function () {
     Route::delete('/books/{book}', 'destroy');
 });
 
-Route::get('/register', [RegisteredUserController::class, 'create']);
-Route::post('/register', [RegisteredUserController::class, 'store']);
-
 Route::get('/login', [SessionController::class, 'create']);
 Route::post('/login', [SessionController::class, 'store']);
 Route::post('/logout', [SessionController::class, 'destroy']);
@@ -34,7 +31,12 @@ Route::get('/account', function () {
     return view('account');
 });
 
-
+Route::controller(RegisteredUserController::class)->group(function(){
+//    Route::get('/account', 'account');
+    Route::get('/register', 'create');
+    Route::post('/register', 'store');
+    Route::delete('/register', 'destroy')->name("account.destroy");
+});
 
 Route::controller(ReservationController::class)->group(function(){
     Route::post('/reservations', 'store');

@@ -13,5 +13,14 @@
             <span class="material-symbols-outlined">edit</span>
         </a>
     </td>
+    <td>
+        <form method="POST" action="/books/{{$book["id"]}}">
+            @csrf
+            @method('DELETE')
+            <button type="submit" id="delete_button">
+                <span class="material-symbols-outlined">delete</span>
+            </button>
+        </form>
+    </td>
 {{--    <td><button id="visibility_button">visibility</button></td>--}}
 </tr>
