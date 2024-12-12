@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -39,5 +40,10 @@ class User extends Authenticatable
 
     public function reservations(): HasMany {
         return $this->hasMany(Reservation::class);
+    }
+
+    // Get preferred branch
+    public function branch(): HasOne {
+        return $this->hasOne(Branch::class);
     }
 }
