@@ -484,11 +484,11 @@ td {
     gap: 8px;
     background-color: #f4f1fd;
 }
-#edit_button{
+#edit_button, #delete_button{
     text-decoration: none;
     color: #18181b;
 }
-#edit_button:hover{
+#edit_button:hover, #delete_button:hover{
     color: #8486bd;
 }
 

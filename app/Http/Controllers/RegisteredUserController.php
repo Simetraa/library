@@ -25,4 +25,10 @@ class RegisteredUserController extends Controller
 
         return redirect("/");
     }
+    public function destroy(){
+        Auth::user()->delete();
+
+        return redirect("/");
+    }
+
 }
