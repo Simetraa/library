@@ -41,7 +41,7 @@
     ['Date: Oldest', 'date-oldest']
 ]"></x-dropdown>
 
-                        <button onclick="hideshowfilters()" type="button" class="genres-button" id="genres-button">Genres</button>
+                        <button onclick="toggleFilters()" type="button" class="genres-button" id="genres-button">Genres</button>
                     </div>
                 </div>
             </div>
@@ -57,37 +57,10 @@
         <x-categories :subjects="$subjects" :filters="$filters"></x-categories>
     </form>
 <script>
-    // var filterbox = document.getElementById('filters');
-    // var search = document.getElementById('search');
-    // var display = 0;
-
-    function hideshowfilters() {
-        // if (display == 0) {
-        //     filterbox.style.display = 'block';
-        //     search.style.display = 'none';
-        //     display = 1;
-        // } else {
-        //     filterbox.style.display = 'none';
-        //     search.style.display = 'block';
-        //     display = 0;
-        // }
+    function toggleFilters() {
         document.getElementById('filters').classList.toggle('display-filters');
         document.getElementById('book-list').classList.toggle('display-catalogue');
     }
-
-    // document.getElementById('genres-button').addEventListener('click', function (){
-    //     var pagecontent = document.getElementById('search');
-    //     var filters = document.getElementById('filters');
-    //     if (filters.style.display === 'none') {
-    //         filters.style.display = 'block'
-    //         pagecontent.style.display = 'none';
-    //     }
-    //     else {
-    //         filters.style.display = 'none'
-    //         pagecontent.style.display = 'none';
-    //     }
-    // });
-
 </script>
 </body>
 
