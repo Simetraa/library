@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\SessionController;
@@ -21,18 +22,17 @@ Route::controller(BookController::class)->group(function () {
     Route::delete('/books/{book}', 'destroy');
 });
 
-Route::get('/login', [SessionController::class, 'create']);
+Route::get('/login', [SessionController::class, 'create'])->name("login");
 Route::post('/login', [SessionController::class, 'store']);
 Route::post('/logout', [SessionController::class, 'destroy']);
 
 Route::get("/dashboard", [DashBoardController::class, 'index']);
 
-Route::get('/account', function () {
-    return view('account');
-});
+Route::put('/account/password', [PasswordController::class, 'update']);
 
 Route::controller(RegisteredUserController::class)->group(function(){
-//    Route::get('/account', 'account');
+    Route::patch('/account', 'update');
+    Route::get('/account', 'show')->middleware("auth");
     Route::get('/register', 'create');
     Route::post('/register', 'store');
     Route::delete('/register', 'destroy')->name("account.destroy");
@@ -40,5 +40,5 @@ Route::controller(RegisteredUserController::class)->group(function(){
 
 Route::controller(ReservationController::class)->group(function(){
     Route::post('/reservations', 'store');
-//    Route::get('/reservations', 'index');
 });
+

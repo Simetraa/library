@@ -39,44 +39,38 @@
                     </div>
                 </div>
 
+                @php
+                    use App\Models\Branch;
 
-
+                    $branches = Branch::getBranches();
+//                    $defaultValue = Branch::first()->id ?? Auth::user()->branch->id;
+                    $defaultValue = Auth::user()->branch->id ?? Branch::first()->id;
+                @endphp
+                @auth
                 <div class="book-info" id = "reserve-container">
                     <h3>Reserve this book</h3>
-                    @php
-                        use App\Models\Branch;
-
-                        $branches = Branch::getBranches();
-                        $defaultValue = Branch::first()->id; // Auth::user()->branch->id ??
-                    @endphp
-
                     <form action="/reservations" method="POST">
                         @csrf
                         <div id="reserve-container-inputs">
-                            <div >
-
+                            <div>
                                 <input type="hidden" name="book_id" value="{{ $book->id }}">
                                 <label for="quantity">Quantity:</label>
                                 <input name="quantity" value="1" type="number" min="1" class="text-input-field">
                             </div>
                             <div>
                                 <label for="location">Collect at:</label>
-                                <x-dropdown  name="branch_id" :options="$branches" :value="$defaultValue" id="reserve-dropdown"></x-dropdown>
-
+                                <x-dropdown  name="branch_id"
+                                             :options="$branches"
+                                             :value="$defaultValue"
+                                             id="reserve-dropdown">
+                                </x-dropdown>
                             </div>
                             <button>Reserve</button>
                         </div>
                     </form>
                 </div>
+                @endauth
             </div>
-
         </div>
-
-
-
-
-
-
 </body>
-
 </html>

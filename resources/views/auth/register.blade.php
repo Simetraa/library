@@ -13,10 +13,12 @@
         <h2>Register</h2>
         <form method="POST" action="/register">
             @csrf
-
-            <input type="email" name="email" class="form-input" placeholder="Email" required>
+            <input type="email" name="email" class="form-input" placeholder="Email" value="{{old('email')}}" required>
             <input type="password" name="password" class="form-input" placeholder="Password" required>
             <input type="password" name="password_confirmation" class="form-input" placeholder="Re-enter password" required>
+            @error('password')
+                <p class="form-error">Passwords do not match</p>
+            @enderror
             <button class="form-button">Register</button>
         </form>
         <form>

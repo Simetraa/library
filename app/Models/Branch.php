@@ -11,6 +11,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Branch extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
     public function books(): BelongsToMany
     {
         return $this->belongsToMany(Book::class);

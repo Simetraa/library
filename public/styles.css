@@ -25,6 +25,11 @@ body {
     height: 100vh;
 }
 
+.form-error{
+    margin: 0;
+    color: #d41212;
+}
+
 .container-centre {
     display: flex;
     justify-content: center;

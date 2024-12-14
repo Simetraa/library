@@ -52,6 +52,10 @@
                 @foreach($books as $book)
                     <x-book :book="$book"></x-book>
                 @endforeach
+
+                @empty($books)
+                    <p>No books found. Try removing some filters.</p>
+                @endempty
             </div>
         </div>
         <x-categories :subjects="$subjects" :filters="$filters"></x-categories>
