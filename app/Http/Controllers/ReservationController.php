@@ -29,7 +29,17 @@ class ReservationController extends Controller
     }
 
     public function index(){
-        $reservations = Reservation::all();
-        return $reservations;
+        return view("reservations");
+    }
+
+    // delete
+    public function destroy(Request $request, Reservation $reservation){
+        // check if the user is the owner of the reservation
+        if($reservation->user_id !== Auth::id()){
+            abort(403);
+        }
+
+        $reservation->delete();
+        return back();
     }
 }

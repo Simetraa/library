@@ -40,5 +40,7 @@ Route::controller(RegisteredUserController::class)->group(function(){
 
 Route::controller(ReservationController::class)->group(function(){
     Route::post('/reservations', 'store');
+    Route::get('/account/reservations', 'index');
+    Route::delete('/reservations/{reservation}', 'destroy');
 });
 

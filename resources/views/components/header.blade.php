@@ -3,6 +3,7 @@
         <h1><a href="/">Atlas Books</a></h1>
         <nav class="gap-32">
             <a href="/inventory">Inventory</a>
+            <a href="/account/reservations">Reservations</a>
         </nav>
     </div>
 
@@ -12,10 +13,9 @@
             <a href="/register" id = signup-button>Sign Up</a>
         @endguest
         @auth
-            <a href="/account">{{ Auth()->user()["email"] }}</a>
+            <a href="/account">{{ Auth()->user()->email }}</a>
             <form method="POST" action="/logout">
                 @csrf
-
                 <button>Log out</button>
             </form>
         @endauth
