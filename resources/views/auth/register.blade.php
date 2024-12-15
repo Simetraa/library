@@ -25,7 +25,7 @@
                 $branches = Branch::getBranches();
             @endphp
             <label for="branch">Select a branch: </label>
-            <x-dropdown name="branch_id" :options="$branches" :value="$currentBranch"></x-dropdown><br>
+            <x-dropdown name="branch_id" :options="$branches" :value="$currentBranch"></x-dropdown>
             @error('branch_id')
             {{ $message }}
             @enderror
