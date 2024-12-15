@@ -40,7 +40,7 @@ Route::controller(RegisteredUserController::class)->group(function(){
 });
 
 Route::controller(SaleController::class)->group(function(){
-    Route::get('/account/purchases', 'index');
+    Route::get('/account/purchases', 'index')->middleware("auth");
 });
 
 Route::controller(ReservationController::class)->group(function(){
