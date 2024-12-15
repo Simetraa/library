@@ -28,7 +28,7 @@ Route::post('/logout', [SessionController::class, 'destroy']);
 
 Route::get("/dashboard", [DashBoardController::class, 'index']);
 
-Route::put('/account/password', [PasswordController::class, 'update']);
+Route::put('/account/password', [PasswordController::class, 'update'])->middleware("auth");
 
 Route::controller(RegisteredUserController::class)->group(function(){
     Route::patch('/account', 'update');
@@ -40,7 +40,7 @@ Route::controller(RegisteredUserController::class)->group(function(){
 
 Route::controller(ReservationController::class)->group(function(){
     Route::post('/reservations', 'store');
-    Route::get('/account/reservations', 'index');
+    Route::get('/account/reservations', 'index')->middleware("auth");
     Route::delete('/reservations/{reservation}', 'destroy');
 });
 

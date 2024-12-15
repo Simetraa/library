@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class SaleBooks extends Model
+class Purchase extends Model
 {
     //
 }

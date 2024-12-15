@@ -27,7 +27,7 @@ class Branch extends Model
         $branches = Branch::all();
         $list = [];
         foreach ($branches as $branch){
-            array_push($list, [$branch->name, $branch->id]);
+            $list[] = [$branch->name, $branch->id];
         }
         return $list;
     }
