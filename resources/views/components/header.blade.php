@@ -4,6 +4,7 @@
         <nav class="gap-32">
             <a href="/inventory">Inventory</a>
             <a href="/account/reservations">Reservations</a>
+            <a href="/account/purchases">Purchase History</a>
         </nav>
     </div>
 

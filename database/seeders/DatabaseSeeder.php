@@ -2,9 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\BookSale;
 use App\Models\Branch;
 use App\Models\Reservation;
 use App\Models\ReservationBook;
+use App\Models\Sale;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -44,5 +46,17 @@ class DatabaseSeeder extends Seeder
             'status' => 'pending',
         ]);
 
+        Sale::create([
+            'user_id' => 1,
+            'branch_id' => 1,
+        ]);
+
+        BookSale::create([
+            'sale_id' => 1,
+            'book_id' => 1,
+            'quantity' => 1,
+            'price' => 10.00,
+            'returned' => false,
+        ]);
     }
 }

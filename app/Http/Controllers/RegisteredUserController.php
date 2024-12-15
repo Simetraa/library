@@ -37,7 +37,9 @@ class RegisteredUserController extends Controller
     public function store(){
         $validatedAttributes = request()->validate(
             ["email" => ["required", "email", "max:255", "unique:users"],
-            "password" => ["required", Password::min(5), "confirmed"]]
+            "password" => ["required", Password::min(5), "confirmed"],
+            "branch_id" => ["exists:App\Models\Branch,id"]
+            ]
         );
 
         $user = User::create($validatedAttributes);

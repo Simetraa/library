@@ -1,3 +1,4 @@
+@php use App\Models\Branch; @endphp
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,6 +20,16 @@
             @error('password')
                 <p class="form-error">Passwords do not match</p>
             @enderror
+            @php
+                $currentBranch = Branch::first()->id;
+                $branches = Branch::getBranches();
+            @endphp
+            <label for="branch">Select a branch: </label>
+            <x-dropdown name="branch_id" :options="$branches" :value="$currentBranch"></x-dropdown><br>
+            @error('branch_id')
+            {{ $message }}
+            @enderror
+
             <button class="form-button">Register</button>
         </form>
         <form>

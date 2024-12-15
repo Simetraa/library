@@ -43,6 +43,10 @@ class User extends Authenticatable
         return $this->hasMany(Reservation::class);
     }
 
+    public function sales(): HasMany {
+        return $this->hasMany(Sale::class);
+    }
+
     // Get preferred branch
     public function branch(): BelongsTo {
         return $this->belongsTo(Branch::class);

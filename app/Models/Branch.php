@@ -23,6 +23,11 @@ class Branch extends Model
         return $this->hasMany(Reservation::class);
     }
 
+    public function sales(): HasMany
+    {
+        return $this->hasMany(Sale::class);
+    }
+
     public static function getBranches(){
         $branches = Branch::all();
         $list = [];

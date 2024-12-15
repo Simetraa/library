@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\SaleController;
 use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Book;
@@ -36,6 +37,10 @@ Route::controller(RegisteredUserController::class)->group(function(){
     Route::get('/register', 'create');
     Route::post('/register', 'store');
     Route::delete('/register', 'destroy')->name("account.destroy");
+});
+
+Route::controller(SaleController::class)->group(function(){
+    Route::get('/account/purchases', 'index');
 });
 
 Route::controller(ReservationController::class)->group(function(){
