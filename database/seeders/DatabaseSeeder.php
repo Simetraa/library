@@ -37,6 +37,10 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'email' => 'test@example.com',
         ]);
+
+        User::factory()->create([
+            'email' => 'admin@example.com',
+        ]);
 //
         Reservation::create([
             'user_id' => 1,
