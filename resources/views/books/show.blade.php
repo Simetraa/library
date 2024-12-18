@@ -44,7 +44,7 @@
 
                     $branches = Branch::getBranches();
 //                    $defaultValue = Branch::first()->id ?? Auth::user()->branch->id;
-                    $defaultValue = Auth::user()->branch->id ?? Branch::first()->id;
+                    $defaultValue = request()->user()->branch->id ?? Branch::first()->id;
                 @endphp
                 @auth
                 <div class="book-info" id = "reserve-container">

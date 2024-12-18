@@ -29,7 +29,7 @@ class ReservationController extends Controller
     }
 
     public function index(){
-        return view("reservations");
+        return view("user.reservations");
     }
 
     // delete

@@ -17,7 +17,7 @@
 <div>
     <h1>Purchases</h1>
     @php
-        $user = Auth::user();
+        $user = request()->user();
         $sales = $user->sales;
     @endphp
 

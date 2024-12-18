@@ -24,14 +24,14 @@
         @method('PATCH')
         <div class="">
             <label for="email">Email: </label>
-            <input type="email" name="email" value="{{ Auth::user()->email }}">
+            <input type="email" name="email" value="{{ request()->user()->email }}">
             @error('email')
             {{ $message }}
             @enderror
 
         </div>
         @php
-            $currentBranch = Auth::user()->branch->id;
+            $currentBranch = request()->user()->branch->id;
             $branches = Branch::getBranches();
        @endphp
 

@@ -12,7 +12,7 @@ use Illuminate\Validation\Rules\Password;
 class RegisteredUserController extends Controller
 {
     public function show() {
-        return view('account');
+        return view('user.account');
     }
     public function create() {
         return view('auth.register');
