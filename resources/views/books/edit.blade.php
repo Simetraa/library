@@ -46,10 +46,7 @@
                     <label for="price">Price (£):</label>
                     <input value={{$book["price"]}} type="number" min="1" step="any" name="price">
                 </div>
-                <div class = "book-input-field">
-                    <label for="quantity">Quantity:</label>
-                    <input value={{$book["quantity"]}} type="number" min="0" name="quantity">
-                </div>
+
                     <button class="edit-create-button">Submit</button>
         </form>
     </div>
