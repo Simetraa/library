@@ -33,4 +33,9 @@ class Sale extends Model
             $book->decrement($book->quantity);
         });
     }
+
+    public function totalPrice()
+    {
+        return $this->books->sum('price');
+    }
 }

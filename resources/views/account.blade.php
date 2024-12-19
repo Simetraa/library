@@ -17,57 +17,82 @@
 {{--  input fields for email, password, branch, reservations, purchases, delete account  --}}
 
 <div>
-    <h1>Account</h1>
-    <form method="POST" action="/account">
-        <h2>Profile</h2>
-        @csrf
-        @method('PATCH')
-        <div class="">
-            <label for="email">Email: </label>
-            <input type="email" name="email" value="{{ Auth::user()->email }}">
-            @error('email')
-            {{ $message }}
-            @enderror
+    <div class="account-container">
+        <h1 style="margin-left: 15px">Account</h1>
+        <hr>
+        <div class="account-info">
+                <form method="POST" action="/account" class="profile-container">
+                    <h2>Profile</h2>
+                    @csrf
+                    @method('PATCH')
+                    <div class="">
+                        <div class = "space-between">
+                            <label for="email">Email: </label>
+                            <input type="email" name="email" value="{{ Auth::user()->email }}">
+                        </div>
+
+                        @error('email')
+                        {{ $message }}
+                        @enderror
+
+                    </div>
+                    @php
+                        $currentBranch = Auth::user()->branch->id;
+                        $branches = Branch::getBranches();
+                    @endphp
+
+                    <div class = "space-between">
+                        <label for="branch">Branch: </label>
+                        <x-dropdown name="branch_id" :options="$branches" :value="$currentBranch"></x-dropdown>
+                    </div>
+
+                    @error('branch_id')
+                    {{ $message }}
+                    @enderror
+
+                    <button class="profile-button" type="submit">Save changes</button>
+                </form>
+
+            <hr>
+                <form method="POST" action="/account/password" class="update-password-conatiner">
+                    <h2>Update password</h2>
+                    @csrf
+                    @method('PUT')
+                    <div class = "space-between">
+                        <label for="current_password">Current password:</label>
+                        <input type="password" name="current_password">
+                    </div>
+                    <div class = "space-between">
+                        <label for="password">New password: </label>
+                        <input type="password" name="password">
+                    </div>
+                    <div class = "space-between">
+                        <label for="password">Confirm password: </label>
+                        <input type="password" name="password_confirmation">
+                    </div>
+
+
+                    @error('password')
+                    {{ $message }}
+                    @enderror
+
+                    <button class="profile-button">Change password</button>
+                </form>
+        </div>
+
+
+
+        <hr>
+        <div class="delete-button-container">
+            <form method="POST" action="{{ route('account.destroy') }}">
+                @csrf
+                @method('DELETE')
+                <button name="delete" class="delete-profile-button">Delete account</button>
+            </form>
 
         </div>
-        @php
-            $currentBranch = Auth::user()->branch->id;
-            $branches = Branch::getBranches();
-       @endphp
+    </div>
 
-        <label for="branch">Branch: </label>
-        <x-dropdown name="branch_id" :options="$branches" :value="$currentBranch"></x-dropdown><br>
-        @error('branch_id')
-        {{ $message }}
-        @enderror
-
-        <button type="submit">Save changes</button>
-    </form>
-
-    <form method="POST" action="/account/password">
-        <h2>Update password</h2>
-        @csrf
-        @method('PUT')
-            <label for="current_password">Current password</label>
-            <input type="password" name="current_password"><br>
-            <label for="password">Password: </label>
-            <input type="password" name="password"><br>
-            <label for="password">Confirm password: </label>
-            <input type="password" name="password_confirmation"><br>
-            @error('password')
-            {{ $message }}
-            @enderror
-
-            <button>Change password</button>
-    </form>
-
-
-    <form method="POST" action="{{ route('account.destroy') }}">
-        <h2>Delete account</h2>
-        @csrf
-        @method('DELETE')
-            <button name="delete">Delete account</button>
-    </form>
 
 
 

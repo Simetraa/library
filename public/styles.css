@@ -3,6 +3,14 @@
 
 
 /*THIS IS WHAT WE ARE WORING ON*/
+:root {
+    --container-white: #ffffffc4;
+    --button-purple: #5b5db1;
+    --purple-background: rgb(131 116 217 / 80%);
+    --dark-purple: #4b3f72;
+
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -57,7 +65,7 @@ body {
 }
 .page-header {
     display: flex;
-    background-color: #4b3f72;
+    background-color: var(--dark-purple);
     justify-content: space-between;
     align-items: center;
     color:#FEFAE0;
@@ -67,7 +75,7 @@ h1 a {
     text-decoration: none;
 }
 a{
-    color: #4b3f72;
+    color: var(--dark-purple);
 }
 
 .gradient-body .page-header, .non-gradient-body .page-header{
@@ -75,11 +83,11 @@ a{
 }
 
 .gradient-body .page-header h1, .non-gradient-body .page-header h1 {
-    color: #4b3f72;
+    color: var(--dark-purple);
 }
 
 .gradient-body .page-header button, .non-gradient-body .page-header button{
-    background-color: #5b5db1;
+    background-color: var(--button-purple);
 }
 
 .header-buttons {
@@ -87,11 +95,12 @@ a{
     gap: 8px;
 
 }
+
 .gap-8 a:hover{
     color: #ac9dde;
 }
 .item-card{
-    background-color: #ffffffc4;
+    background-color: var(--container-white);
     border-radius: 10px;
     padding: 15px;
     max-width: 200px;
@@ -148,7 +157,7 @@ tbody tr:hover {
     border-radius: 10px;
     border: none;
     padding: 5px 20px;
-    background: #ffffffc4;
+    background: var(--container-white);
     box-shadow: 4px 4px 2px 2px rgb(0 0 0 / 10%);
     min-width: 50%;
     width: 55vw;
@@ -161,7 +170,7 @@ tbody tr:hover {
 
 .search-button {
 
-    background: #ffffffc4;
+    background: var(--container-white);
     box-shadow: 4px 4px 2px 2px rgb(0 0 0 / 10%);
     border-radius: 10px;
     width: 100px;
@@ -189,7 +198,7 @@ tbody tr:hover {
 /*    padding: 10px;*/
 /*    border: none;*/
 /*    border-radius: 0px 10px 10px 0px;*/
-/*    background: #ffffffc4;*/
+/*    background: var(--container-white);*/
 /*    box-shadow: 4px 4px 2px 2px rgb(0 0 0 / 10%);*/
 /*    cursor: pointer;*/
 /*}*/
@@ -200,13 +209,13 @@ tbody tr:hover {
 /*    padding: 10px;*/
 /*    border: none;*/
 /*    border-radius: 10px 0px 0px 10px;*/
-/*    background: #ffffffc4;*/
+/*    background: var(--container-white);*/
 /*    box-shadow: 4px 4px 2px 2px rgb(0 0 0 / 10%);*/
 /*    cursor: pointer;*/
 /*}*/
 
 #dropdown {
-    background: #ffffffc4;
+    background: var(--container-white);
     box-shadow: 4px 4px 2px 2px rgb(0 0 0 / 10%);
     border-radius: 10px;
     height: 40px;
@@ -226,17 +235,17 @@ tbody tr:hover {
 }
 
 .reservations-container h1 {
-    color: #4b3f72;
+    color: var(--dark-purple);
     margin: 50px 0;
 }
 
 .reservations-container h2 {
-    color: #4b3f72;
+    color: var(--dark-purple);
     margin: 0;
 }
 
 .reservation-card button {
-    background-color: #5b5db1;
+    background-color: var(--button-purple);
     border-radius: 5px;
     padding: 10px 10px;
     border:0px;
@@ -247,6 +256,10 @@ tbody tr:hover {
 
 }
 
+.reservation-card p {
+    font-size: large;
+}
+
 .reserved-book-info {
     display: flex;
     flex-direction: column;
@@ -254,11 +267,11 @@ tbody tr:hover {
 }
 
 .reservation-card button:hover {
-    background-color: #4b3f72;
+    background-color: var(--dark-purple);
     cursor: pointer;
 }
 .reservation-card {
-    background-color: #ffffffc4;
+    background-color: var(--container-white);
     border-radius: 10px;
     padding: 15px;
     /*height: 400px;*/
@@ -272,6 +285,92 @@ tbody tr:hover {
     max-height: 300px;
     margin: 5px;
 }
+.sale-container{
+    max-width: 70vw;
+    margin: auto;
+}
+.sale-container h1{
+    color: var(--dark-purple);
+    margin: 50px 0;
+}
+.sale-container h2 {
+    color: var(--dark-purple);
+    /*margin: 0;*/
+}
+.sale-card{
+    background-color: var(--container-white);
+    border-radius: 10px;
+    padding: 15px;
+    /*height: 10vh;*/
+    box-shadow: 4px 4px 2px 2px rgb(0 0 0 / 10%);
+    margin-bottom: 30px;
+    width: 70vw;
+    flex-direction: column;
+}
+
+.sale-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sale-header a {
+    text-decoration: none;
+    color: var(--button-purple);
+}
+
+.sale-header a:visited{
+    text-decoration: none;
+}
+
+.sale-and-date {
+    display: flex;
+    align-items: center;
+}
+
+.sale-and-date h2 {
+    margin-right: 25px;
+}
+
+.sale-book-info-pair {
+    display: flex;
+    justify-content: space-between;
+}
+.account-container{
+    background-color: var(--container-white);
+    border-radius: 10px;
+    padding: 15px;
+    /*height: 10vh;*/
+    box-shadow: 4px 4px 2px 2px rgb(0 0 0 / 10%);
+    margin: auto;
+    margin-top: 30px;
+    width: 50vw;
+
+}
+
+.space-between {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+}
+
+.account-info{
+    display: flex;
+    justify-content: center;
+}
+
+.profile-container{
+    margin: 15px;
+    width: 40%;
+    display: grid;
+}
+
+.update-password-conatiner{
+    margin: 15px;
+    width: 50%;
+    height: 100%;
+    display: grid;
+}
 
 #dropdown:hover {
     background-color: lightgray;
@@ -283,7 +382,7 @@ tbody tr:hover {
 }
 
 .search-count {
-    color: #4b3f72;
+    color: var(--dark-purple);
     font-weight: bold;
     font-size: 20px;
 }
@@ -305,8 +404,9 @@ tbody tr:hover {
 }
 
 
+
 #login-button {
-    background-color: #5b5db1;
+    background-color: var(--button-purple);
     padding: 10px;
     margin-top: 10px;
     border: 0;
@@ -326,7 +426,7 @@ tbody tr:hover {
     margin-top: 10px;
     border: 0;
     border-radius: 5px;
-    color: #5b5db1;
+    color: var(--button-purple);
     cursor: pointer;
     width: 70px;
     text-decoration: none;
@@ -337,7 +437,7 @@ tbody tr:hover {
 }
 
 .edit-create-button {
-    background-color: #5b5db1;
+    background-color: var(--button-purple);
     padding: 15px 30px 15px 30px;
     width: 100%;
     border-radius: 5px;
@@ -354,7 +454,7 @@ tbody tr:hover {
 .form-link{
     /*text-decoration: none;*/
     background-color: #f4f1fd;
-    color: #4b3f72;
+    color: var(--dark-purple);
     /*width: 80px;*/
     padding: 5px;
 }
@@ -362,7 +462,7 @@ tbody tr:hover {
     background-color: #dcd9e3;
 }
 .form-button{
-    background-color: #5b5db1;
+    background-color: var(--button-purple);
     padding: 10px;
     margin-top: 10px;
     border: 0;
@@ -370,6 +470,39 @@ tbody tr:hover {
     color: white;
     cursor: pointer;
     width: 25%;
+}
+.profile-button{
+    background-color: var(--button-purple);
+    padding: 5px;
+    margin-top: 10px;
+    border: 0;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    width: 50%;
+    height: 35px;
+}
+.profile-button:hover{
+    background-color: #3f3561;
+}
+.delete-profile-button {
+    background-color: #d41212;
+    padding: 5px;
+    margin-top: 10px;
+    border: 0;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    width: 10vw;
+    height: 40px;
+}
+.delete-profile-button:hover {
+    background-color: #b80909;
+
+}
+.delete-button-container{
+    display:flex;
+    flex-direction: row-reverse;
 }
 .form-button:hover{
     background-color: #3f3561;
@@ -385,7 +518,7 @@ tbody tr:hover {
 }
 
 .book-container{
-    color: #5b5db1;
+    color: var(--button-purple);
     /*text-align: left;*/
     background-color: #f4f1fd;
     /*margin: auto;*/
@@ -417,7 +550,7 @@ tbody tr:hover {
 
 .header-buttons button:hover {
     /* find an actual hover colour here */
-    background-color: #4b3f72;
+    background-color: var(--dark-purple);
 }
 .page-header h1 {
     color: white
@@ -485,7 +618,7 @@ img {
 }
 
 .sign-up-container h2, .login-container h2  {
-    color: #4b3f72;
+    color: var(--dark-purple);
     font-size: 30px;
 }
 
@@ -496,7 +629,7 @@ img {
 }
 
 .book-cover{
-    /*background-color: #ffffffc4;*/
+    /*background-color: var(--container-white);*/
     width: fit-content;
     height: 100%;
     /*padding: 20px;*/
@@ -518,7 +651,7 @@ img {
 }
 
 .book-info{
-    background-color: #ffffffc4;
+    background-color: var(--container-white);
     border-radius: 10px;
     padding: 0px 25px;
     margin: 10px;
@@ -535,8 +668,10 @@ img {
     /*justify-content: space-between;*/
 }
 
+
+
 #reserve-container button {
-    background-color: #5b5db1;
+    background-color: var(--button-purple);
     border-radius: 5px;
     padding: 10px 10px;
     border:0px;
@@ -545,7 +680,7 @@ img {
     cursor: pointer;
 }
 #reserve-container button:hover {
-    background-color: #4b3f72;
+    background-color: var(--dark-purple);
     cursor: pointer;
 }
 
@@ -569,7 +704,7 @@ img {
 
 #book-title {
     font-weight: bold;
-    color: #4b3f72;
+    color: var(--dark-purple);
     font-size: larger;
 }
 
@@ -634,26 +769,26 @@ table {
 
 .recent-purchases{
     height: 300px;
-    background-color: #ffffffc4;
+    background-color: var(--container-white);
     border-radius: 10px;
     box-shadow: 4px 4px 2px 2px rgb(0 0 0 / 10%);
 }
 .revenue{
     height: 300px;
-    background-color: #ffffffc4;
+    background-color: var(--container-white);
     border-radius: 10px;
     box-shadow: 4px 4px 2px 2px rgb(0 0 0 / 10%);
 
 }
 .pie-chart{
     height: 300px;
-    background-color: #ffffffc4;
+    background-color: var(--container-white);
     border-radius: 10px;
     box-shadow: 4px 4px 2px 2px rgb(0 0 0 / 10%);
 }
 .line-graph{
     height: 300px;
-    background-color: #ffffffc4;
+    background-color: var(--container-white);
     border-radius: 10px;
     box-shadow: 4px 4px 2px 2px rgb(0 0 0 / 10%);
 }
@@ -673,7 +808,7 @@ table {
     flex-direction: column;
     align-items: flex-start;
     padding: 0 30px 0 30px;
-    background-color: #4b3f72;
+    background-color: var(--dark-purple);
     color: white;
     border-radius: 6px;
     max-height: fit-content;
@@ -706,7 +841,7 @@ nav {
 }
 
 nav a {
-    color: #4b3f72;
+    color: var(--dark-purple);
     text-decoration: none;
 }
 

@@ -15,21 +15,40 @@
 <body class="non-gradient-body">
 <x-header></x-header>
 <div>
-    <h1>Purchases</h1>
+
     @php
         $user = Auth::user();
         $sales = $user->sales;
     @endphp
 
     @foreach($sales as $sale)
-        <h2>Sale</h2>
-        <p>Quantity: {{ $sale->quantity }}</p>
-        <p>Branch: {{ $sale->branch->name }}</p>
-        <p>Purchase date: {{ $sale->created_at }}</p>
-        @foreach($sale->books as $book)
-            <h3>{{ $book->title }}</h3>
-            <p>{{ $book->author }}</p>
-        @endforeach
-    @endforeach
+        <div class="sale-container">
+            <h1>Purchases</h1>
+            <div class="sale-card">
+                <div class="sale-header">
+                    <div class = "sale-and-date">
+                        <h2>Sale {{ $sale->id }} </h2>
+                        <p style="color: gray">{{$sale->created_at->format('d/m/y')}}</p>
+                    </div>
+                    <a href="">Invoice ></a>
+                </div>
+
+                @foreach($sale->books as $book)
+                    <div class="sale-book-info-pair">
+                        <p>{{ $book->quantity }} x {{ $book->title }}</p>
+                        <p>£ {{$book->price}}</p>
+                    </div>
+                @endforeach
+                <hr>
+                <div class = "sale-total">
+                    <p>Total</p>
+                    <p>{{$sale->totalPrice()}}</p>
+                </div>
+
+                @endforeach
+            </div>
+        </div>
+
+
 </div>
 </body>
