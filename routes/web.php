@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\BranchController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\RegisteredUserController;
@@ -47,5 +48,15 @@ Route::controller(ReservationController::class)->group(function(){
     Route::post('/reservations', 'store');
     Route::get('/account/reservations', 'index')->middleware("auth");
     Route::delete('/reservations/{reservation}', 'destroy');
+});
+
+Route::controller(BranchController::class)->group(function(){
+    Route::get('/branches', 'index');
+    Route::get('/branches/create', 'create');
+    Route::post('/branches', 'store');
+    Route::delete('/branches/{branch}', 'destroy');
+    Route::get('/branches/{branch}',  'show');
+    Route::get('/branches/{branch}/edit', 'edit');
+    Route::patch('/branches/{branch}', 'update');
 });
 

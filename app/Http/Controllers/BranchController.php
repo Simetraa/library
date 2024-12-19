@@ -12,7 +12,7 @@ class BranchController extends Controller
      */
     public function index()
     {
-        //
+        return view('branches.index');
     }
 
     /**
@@ -20,7 +20,7 @@ class BranchController extends Controller
      */
     public function create()
     {
-        //
+        return view('branches.create');
     }
 
     /**
@@ -28,7 +28,14 @@ class BranchController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => ['required']
+        ]);
+
+        Branch::create([
+            'name' => request("name")
+        ]);
+        return redirect("/branches");
     }
 
     /**
@@ -36,7 +43,7 @@ class BranchController extends Controller
      */
     public function show(Branch $branch)
     {
-        //
+        return view("branches.show", ["branch" => $branch]);
     }
 
     /**
@@ -44,7 +51,7 @@ class BranchController extends Controller
      */
     public function edit(Branch $branch)
     {
-        //
+        return view("branches.edit", ["branch" => $branch]);
     }
 
     /**
@@ -52,7 +59,10 @@ class BranchController extends Controller
      */
     public function update(Request $request, Branch $branch)
     {
-        //
+        $branch->update([
+            'name' => $request->get('name')
+        ]);
+        return redirect('/branches');
     }
 
     /**
@@ -60,6 +70,10 @@ class BranchController extends Controller
      */
     public function destroy(Branch $branch)
     {
-        //
+        $branch->delete();
+
+        // TODO: We have to ensure there are no books in the branch before deleting it.
+
+        return redirect("/branches");
     }
 }
