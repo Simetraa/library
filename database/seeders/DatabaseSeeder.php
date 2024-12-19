@@ -36,6 +36,7 @@ class DatabaseSeeder extends Seeder
 
         User::factory()->create([
             'email' => 'test@example.com',
+            'branch_id' => 1,
         ]);
 
         User::factory()->create([
