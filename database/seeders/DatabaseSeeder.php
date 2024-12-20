@@ -20,12 +20,12 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
-//        Branch::factory(5)
-//            ->hasAttached(
-//                Book::factory()->count(5),
-//                ['quantity' => fake()->randomNumber(3)]
-//            )
-//            ->create();
+        Branch::factory(5)
+            ->hasAttached(
+                Book::factory()->count(5),
+                ['quantity' => fake()->randomNumber(3)]
+            )
+            ->create();
 
         Branch::factory()
             ->count(5)
@@ -63,5 +63,39 @@ class DatabaseSeeder extends Seeder
             'price' => 10.00,
             'returned' => false,
         ]);
+//
+//        Book::create([
+//            "title" => "James & the Giant Peach",
+//            "author" => "Roald Dahl",
+//            "cover_url" => "",
+//            "description" => "description",
+//            "price" => "14",
+//            "subjects" =>["Arts"],
+//            "publication_date" => "2021-01-01"]);
+//
+//        Branch::create([
+//            'name' => 'Sheffield',
+//        ]);
+//
+//        User::factory()->create([
+//            'email' => 'test@example.com',
+//            'branch_id' => 1,
+//        ]);
+//
+//        Sale::create([
+//            'user_id' => 1,
+//            'branch_id' => 1
+//        ]);
+//
+//        BookSale::create([
+//            'sale_id' => 1,
+//            'book_id' => 1,
+//            'quantity' => 1,
+//            'price' => 10.00,
+//            'returned' => false
+//        ]);
+
+
+
     }
 }

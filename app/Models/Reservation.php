@@ -16,9 +16,9 @@ class Reservation extends Model
 
     protected $guarded = [];
 
-    public function book(): BelongsTo
+    public function book(): HasOne
     {
-        return $this->belongsTo(Book::class);
+        return $this->hasOne(Book::class);
     }
 
     public function user(): BelongsTo

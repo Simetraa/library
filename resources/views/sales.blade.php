@@ -21,14 +21,19 @@
         $sales = $user->sales;
     @endphp
 
-    @foreach($sales as $sale)
+{{--    {{ dd(\App\Models\Sale::first()->books[0]->pivot) }}--}}
+
+
+@foreach($sales as $sale)
         <h2>Sale</h2>
-        <p>Quantity: {{ $sale->quantity }}</p>
+        <p>Total: {{$sale->totalPrice()}}</p>
         <p>Branch: {{ $sale->branch->name }}</p>
         <p>Purchase date: {{ $sale->created_at }}</p>
         @foreach($sale->books as $book)
             <h3>{{ $book->title }}</h3>
             <p>{{ $book->author }}</p>
+            <p>Quantity: {{ $book->pivot->quantity }}</p>
+            <p>Price: {{ $book->pivot->price }}</p>
         @endforeach
     @endforeach
 </div>

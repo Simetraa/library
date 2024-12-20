@@ -38,12 +38,12 @@ class Book extends Model
         return DB::table('book_branch')->where('book_id', $this->id)->count();
     }
 
-    public function reservations(): HasMany {
-        return $this->hasMany(Reservation::class);
+    public function reservations(): BelongsToMany {
+        return $this->belongsToMany(Reservation::class);
     }
 
-    public function sales(): HasMany {
-        return $this->hasMany(Sale::class);
+    public function sales(): BelongsToMany {
+        return $this->belongsToMany(Sale::class);
     }
 
     function getPrice(): string {
