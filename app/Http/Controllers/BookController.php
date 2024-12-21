@@ -35,10 +35,6 @@ class BookController extends Controller
 
         $books = collect();
 
-
-
-
-
         foreach($genreNames as $genreName) {
             $books = $books->union(DB::table('books')->where('subjects', 'like', '%"'.$genreName.'"%')->get());
         }
@@ -106,8 +102,8 @@ class BookController extends Controller
             "genreNames" => $genreNames
         ]);
     }
-    public function inventory(){
-        return view('inventory', ["books" => Book::all()]);
+    public function index(){
+        return view('books.index', ["books" => Book::all()]);
     }
     public function store(){
         request()->validate([
@@ -119,8 +115,6 @@ class BookController extends Controller
         'quantity' => ['required', 'numeric']
         ]);
 
-
-
         Book::create([
             'title' => request("title"),
             'author' => request("author"),
@@ -130,7 +124,7 @@ class BookController extends Controller
             'price' => request("price"),
             'quantity' => request("quantity")
         ]);
-        return redirect("/inventory");
+        return redirect(view("books.index"));
     }
     public function create(){
         return view("books.create");
@@ -144,7 +138,7 @@ class BookController extends Controller
     }
     public function destroy(Book $book){
         $book->delete();
-        return redirect("/inventory");
+        return redirect(view("books.index"));
     }
     public function update(Book $book, Request $request)
     {
@@ -156,6 +150,6 @@ class BookController extends Controller
             'price' => request('price'),
             'quantity' => request('quantity')
         ]);
-        return redirect('/inventory');
+        return redirect(view("books.index"));
     }
 }

@@ -63,6 +63,14 @@ class DatabaseSeeder extends Seeder
             'price' => 10.00,
             'returned' => false,
         ]);
+
+        BookSale::create([
+            'sale_id' => 1,
+            'book_id' => 3,
+            'quantity' => 15,
+            'price' => 1.00,
+            'returned' => false,
+        ]);
 //
 //        Book::create([
 //            "title" => "James & the Giant Peach",

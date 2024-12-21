@@ -1,4 +1,3 @@
-@php use App\Models\Book; @endphp
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,14 +10,9 @@
 
 <body class="non-gradient-body">
 <x-header></x-header>
-
-@php
-    $books = $branch->books;
-@endphp
-
 <div class="flex-horizontal">
-    <h1>{{ $branch->name }} - Inventory</h1>
-    <input type="text" placeholder="Filter inventory...">
+    <h1>Index</h1>
+    <input type="text" placeholder="Filter index...">
 
     <a href="/books/create">
             <span class="material-symbols-outlined">
@@ -30,19 +24,17 @@
     <div class="inventory-book-pane">
         <table class="inventory-table">
             <thead>
+            <th scope="col"><input type="checkbox"></th>
             <th scope="col">ID</th>
             <th scope="col">Title</th>
             <th scope="col">Author</th>
-            <th scope="col">Quantity</th>
+            <th scope="col">Cover Image</th>
+            <th scope="col">Description</th>
+            <th scope="col">Price</th>
             </thead>
             <tbody>
             @foreach($books as $book)
-                <tr>
-                    <td>{{ $book->id }}</td>
-                    <td>{{ $book->title }}</td>
-                    <td>{{ $book->author }}</td>
-                    <td>{{ $book->quantity }}</td>
-                </tr>
+                <x-inventory-row :book="$book"></x-inventory-row>
             @endforeach
             </tbody>
         </table>

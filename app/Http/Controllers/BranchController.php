@@ -76,4 +76,5 @@ class BranchController extends Controller
 
         return redirect("/branches");
     }
+
 }

@@ -15,7 +15,6 @@ class Sale extends Model
     use HasFactory;
 
     protected $guarded = [];
-    protected $appends = ['total_price'];
 
     public function user(): BelongsTo
     {
@@ -30,12 +29,6 @@ class Sale extends Model
         return $this->belongsTo(Branch::class);
     }
 
-    public function processSale() {
-        $this->books->each(function($book) {
-            $book->decrement($book->quantity);
-        });
-    }
-
     public function totalPrice()
     {
         $total = 0;
@@ -45,3 +38,12 @@ class Sale extends Model
         return $total;
     }
 }
+
+//    public function processSale() {
+//        $this->books->each(function($book) {
+//            $book->decrement($book->quantity);
+//        });
+//    }
+//
+
+//}

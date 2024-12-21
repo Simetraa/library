@@ -29,8 +29,9 @@ class Book extends Model
         'subjects' => 'array',
     ];
 
-    public function branch(): BelongsToMany {
-        return $this->belongsToMany(Branch::class);
+    public function branches(): BelongsToMany {
+        return $this->belongsToMany(Branch::class)
+            ->withPivot('quantity');
     }
 
     public function getQuantityAttribute() {
@@ -38,8 +39,8 @@ class Book extends Model
         return DB::table('book_branch')->where('book_id', $this->id)->count();
     }
 
-    public function reservations(): BelongsToMany {
-        return $this->belongsToMany(Reservation::class);
+    public function reservations(): HasMany {
+        return $this->hasMany(Reservation::class);
     }
 
     public function sales(): BelongsToMany {
