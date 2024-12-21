@@ -63,6 +63,27 @@ class DatabaseSeeder extends Seeder
             'price' => 10.00,
             'returned' => false,
         ]);
+        BookSale::create([
+            'sale_id' => 1,
+            'book_id' => 1,
+            'quantity' => 1,
+            'price' => 10.00,
+            'returned' => false,
+        ]);
+        BookSale::create([
+            'sale_id' => 1,
+            'book_id' => 1,
+            'quantity' => 1,
+            'price' => 10.00,
+            'returned' => false,
+        ]);
+        BookSale::create([
+            'sale_id' => 1,
+            'book_id' => 1,
+            'quantity' => 1,
+            'price' => 10.00,
+            'returned' => false,
+        ]);
 
         BookSale::create([
             'sale_id' => 1,

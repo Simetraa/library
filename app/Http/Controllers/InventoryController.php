@@ -59,8 +59,12 @@ class InventoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Book $book)
+    public function destroy(Branch $branch, Book $book)
     {
-        //
+        // TODO: Display a confirmation before deleting a book if quantity > 0
+        // and do it anyway just do it doubly so if there are still books there.
+
+        $branch->books->find($book)->pivot->delete();
+        return back();
     }
 }

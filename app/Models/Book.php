@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -47,9 +48,17 @@ class Book extends Model
         return $this->belongsToMany(Sale::class);
     }
 
-    function getPrice(): string {
+    public function getPrice(): string {
         $price = $this->attributes['price'];
         return "£" . number_format($price, 2, ".", '');
+    }
+
+    public function getSalesQuantity(string $period){
+        $totalSales = 0;
+        foreach($this->sales as $sale){
+                $totalSales += $sale->books->sum("quantity");
+            }
+        return $totalSales;
     }
 }
 

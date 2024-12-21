@@ -37,11 +37,6 @@ class Sale extends Model
         }
         return $total;
     }
-
-    public function totalPrice()
-    {
-        return $this->books->sum('price');
-    }
 }
 
 //    public function processSale() {

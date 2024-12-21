@@ -42,6 +42,15 @@
                     <td>{{ $book->title }}</td>
                     <td>{{ $book->author }}</td>
                     <td>{{ $book->quantity }}</td>
+                    <td>
+                        <form method="POST" action="/branches/{{$branch->id}}/inventory/{{$book->id}}">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" id="delete_button">
+                                <span class="material-symbols-outlined">delete</span>
+                            </button>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
             </tbody>

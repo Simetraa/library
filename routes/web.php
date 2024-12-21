@@ -31,7 +31,7 @@ Route::get('/login', [SessionController::class, 'create'])->name("login");
 Route::post('/login', [SessionController::class, 'store']);
 Route::post('/logout', [SessionController::class, 'destroy']);
 
-Route::get("/dashboard", [DashboardController::class, 'index']);
+Route::get("/branches/{branch}/dashboard", [DashboardController::class, 'index']);
 
 Route::put('/account/password', [PasswordController::class, 'update'])->middleware("auth");
 
@@ -70,6 +70,7 @@ Route::controller(BranchController::class)->group(function(){
 
 Route::controller(InventoryController::class)->group(function(){
     Route::get('/branches/{branch}/inventory', 'index');
+    Route::delete('/branches/{branch}/inventory/{book}', 'destroy');
 });
 
 Route::controller(StaffSalesController::class)->group(function(){
