@@ -12,9 +12,8 @@
 <x-header></x-header>
 <div class="container-centre">
     <div class="book-container">
-
         <h1>Create book</h1>
-        <div method="POST" action="/books" autocomplete="off">
+        <form method="POST" action="/books" autocomplete="off">
             @csrf
             <div class = "book-input-field">
                 <label for="title">Title</label>
@@ -46,7 +45,7 @@
                 <input type="number" min="0" name="quantity">
             </div>
             <button type="submit" class = "edit-create-button">Submit</button>
-        </div>
+        </form>
     </div>
 </div>
 </form>

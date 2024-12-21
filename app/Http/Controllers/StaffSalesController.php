@@ -2,24 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Branch;
 use App\Models\Sale;
 use Illuminate\Http\Request;
 
-class SaleController extends Controller
+class StaffSalesController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Branch $branch)
     {
-        return view('sales');
+        return view("branches.sales.index", ['branch' => $branch]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Branch $branch)
     {
+        return view("branches.sales.create", ['branch' => $branch]);
 
     }
 
@@ -28,15 +30,24 @@ class SaleController extends Controller
      */
     public function store(Request $request)
     {
+        request()->validate([
+            'branch_id' => ['required'],
+            'books' => ['required']
+        ]);
 
+        Sale::create([
+            'branch_id' => request("branch_id"),
+            'books' => request("books")
+        ]);
+//        return redirect("");
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Sale $sale)
+    public function show(Branch $branch, Sale $sale)
     {
-        //
+        return view("branches.sales.show", ["sale" => $sale]);
     }
 
     /**

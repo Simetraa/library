@@ -15,7 +15,8 @@ class Branch extends Model
     protected $guarded = [];
     public function books(): BelongsToMany
     {
-        return $this->belongsToMany(Book::class);
+        return $this->belongsToMany(Book::class)
+            ->withPivot('quantity');
     }
 
     public function reservations(): HasMany

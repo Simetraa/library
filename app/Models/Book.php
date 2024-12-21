@@ -29,8 +29,9 @@ class Book extends Model
         'subjects' => 'array',
     ];
 
-    public function branch(): BelongsToMany {
-        return $this->belongsToMany(Branch::class);
+    public function branches(): BelongsToMany {
+        return $this->belongsToMany(Branch::class)
+            ->withPivot('quantity');
     }
 
     public function getQuantityAttribute() {
@@ -42,8 +43,8 @@ class Book extends Model
         return $this->hasMany(Reservation::class);
     }
 
-    public function sales(): HasMany {
-        return $this->hasMany(Sale::class);
+    public function sales(): BelongsToMany {
+        return $this->belongsToMany(Sale::class);
     }
 
     function getPrice(): string {
