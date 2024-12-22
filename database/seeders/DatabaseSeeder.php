@@ -93,6 +93,8 @@ class DatabaseSeeder extends Seeder
             'price' => 1.00,
             'returned' => false,
         ]);
+
+        Book::find(15)->update(['visible' => false]);
 //
 //        Book::create([
 //            "title" => "James & the Giant Peach",

@@ -19,6 +19,7 @@ return new class extends Migration {
             $table->integer('price');
             $table->jsonb("subjects");
             $table->date("publication_date");
+            $table->boolean('visible')->default(true);
             $table->timestamps();
         });
     }

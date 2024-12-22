@@ -35,16 +35,15 @@
 
                 @foreach($sale->books as $book)
                     <div class="sale-book-info-pair">
-                        <p>{{ $book->quantity }} x {{ $book->title }}</p>
+                        <p>{{ $book->pivot->quantity }} x {{ $book->title }}</p>
                         <p>£ {{$book->price}}</p>
                     </div>
                 @endforeach
                 <hr>
-                <div class = "sale-total">
-                    <p>Total</p>
-                    <p>{{$sale->totalPrice()}}</p>
+                <div class="sale-total">
+                    <p>Total:</p>
+                    <p><span>£</span>{{$sale->totalPrice()}}</p>
                 </div>
-
                 @endforeach
             </div>
         </div>

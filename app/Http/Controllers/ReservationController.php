@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use App\Models\Branch;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
@@ -17,6 +18,11 @@ class ReservationController extends Controller
             'quantity' => ['required', 'numeric']
         ]);
 
+        $book = Book::find(request('book_id'));
+
+        if(!$book->visible) {
+            return back()->withErrors(['This book is not available for reservation']);
+        }
 
         $reservation = Reservation::create([
             'user_id' => Auth::id(),

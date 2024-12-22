@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\BranchController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\RegisteredUserController;
@@ -13,7 +12,6 @@ use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StaffReservationController;
 use App\Http\Controllers\StaffSalesController;
 use Illuminate\Support\Facades\Route;
-use App\Models\Book;
 
 Route::view('/welcome', 'welcome');
 
@@ -25,7 +23,7 @@ Route::controller(BookController::class)->group(function () {
     Route::get('/books/{book}',  'show');
     Route::get('/books/{book}/edit', 'edit');
     Route::patch('/books/{book}', 'update');
-    Route::delete('/books/{book}', 'destroy');
+    Route::patch('/books/{book}/toggleVisibility', 'toggleVisibility');
 });
 
 Route::get('/login', [SessionController::class, 'create'])->name("login");

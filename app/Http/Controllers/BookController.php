@@ -89,6 +89,7 @@ class BookController extends Controller
                 $books = $books->sortBy("publication_date");
         }
 
+        $books = $books->where('visible', true);
 
         $books = Book::hydrate($books->toArray());
 
@@ -134,9 +135,10 @@ class BookController extends Controller
     public function edit(Book $book){
         return view("books.edit", ["book" => $book]);
     }
-    public function destroy(Book $book){
-        $book->delete();
+    public function toggleVisibility(Book $book){
+        $book->update(['visible' => !($book->visible)]);
         return back();
+    }
 
         // TODO
 
@@ -148,8 +150,7 @@ class BookController extends Controller
         // a bunch of pages.
 
         // I think it wise to simply remove it from visibility, and NOT remove it from reservations
-        // It will still exist in the books/ page and branches/ page,
-    }
+        // It will still exist in the books/ page and branches/ page
     public function update(Book $book, Request $request)
     {
         $book->update([

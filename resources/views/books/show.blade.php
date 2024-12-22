@@ -12,12 +12,12 @@
 
 <body class="non-gradient-body">
 <x-header></x-header>
+
 <div class="book-page">
     <div class="book-cover">
 
         <img src="{{ $book["cover_url"] }}" alt="book cover">
     </div>
-
 
     <div class="book-info-container">
 
@@ -30,6 +30,21 @@
         <div class="book-info">
             <p>{{ $book["description"] }}</p>
         </div>
+
+        @php
+            use App\Models\Branch;
+
+            $branches = Branch::getBranches();
+            $defaultValue = Auth::user()->branch->id ?? Branch::first()->id;
+        @endphp
+
+        @if(!$book->visible)
+            <div class="book-info form-error caps">
+                <p>
+                    This book is no longer available
+                </p>
+            </div>
+        @else
         <div class="stock-info">
             <div class="book-info">
                 <p>Price: {{ $book->getPrice() }}</p>
@@ -39,13 +54,6 @@
             </div>
         </div>
 
-        @php
-            use App\Models\Branch;
-
-            $branches = Branch::getBranches();
-//                    $defaultValue = Branch::first()->id ?? Auth::user()->branch->id;
-            $defaultValue = Auth::user()->branch->id ?? Branch::first()->id;
-        @endphp
         @auth
             <div class="book-info" id="reserve-container">
                 <h3>Reserve this book</h3>
@@ -70,6 +78,7 @@
                 </form>
             </div>
         @endauth
+        @endif
     </div>
 </div>
 </body>

@@ -13,11 +13,11 @@
         </a>
     </td>
     <td>
-        <form method="POST" action="/books/{{$book["id"]}}">
+        <form method="POST" action="/books/{{$book["id"]}}/toggleVisibility">
             @csrf
-            @method('DELETE')
-            <button type="submit" id="delete_button">
-                <span class="material-symbols-outlined">delete</span>
+            @method("PATCH")
+            <button type="submit">
+                <span class="material-symbols-outlined">{{$book->visible ? "visibility" : "visibility_off"}}</span>
             </button>
         </form>
     </td>
