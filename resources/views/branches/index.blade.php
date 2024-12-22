@@ -11,12 +11,13 @@
 
 <body class="non-gradient-body">
 <x-header></x-header>
-<div class="flex-horizontal">
+<div class="header-row">
     <h1>Branches</h1>
-    <a href="/branches/create">
+    <a href="/branches/create" class="add-new-button">
             <span class="material-symbols-outlined">
-                add_circle
+                add
             </span>
+            <span class="add-new-button-label">New</span>
     </a>
 </div>
 <div>
@@ -25,6 +26,7 @@
  @endphp
 
     @foreach($branches as $branch)
+
         <h2><a href="/branches/{{$branch->id}}">Branch</a></h2>
         <p>Branch: {{ $branch->name }}</p>
         <p>Id: {{ $branch->id }}</p>

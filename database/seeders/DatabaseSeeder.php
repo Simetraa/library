@@ -41,6 +41,7 @@ class DatabaseSeeder extends Seeder
 
         User::factory()->create([
             'email' => 'admin@example.com',
+            'role' => 'admin',
         ]);
 //
         Reservation::create([

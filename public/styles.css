@@ -93,8 +93,26 @@ a{
 .header-buttons {
     display: flex;
     gap: 8px;
-
 }
+
+.header-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10px 20px 10px;
+}
+
+.add-new-button {
+    display:flex;
+    align-items: center;
+    background-color: #f4f1fd;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+
 
 .gap-8 a:hover{
     color: #ac9dde;
@@ -348,11 +366,12 @@ tbody tr:hover {
 
 }
 
-.space-between {
-    display: flex;
-    justify-content: space-between;
-    margin: 5px 0;
-}
+
+/*.space-between {*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*    margin: 5px 0;*/
+/*}*/
 
 .account-info{
     display: flex;
@@ -729,6 +748,8 @@ img {
     overflow: hidden;
 }
 
+
+
 .paragraph-truncate {
     display: -webkit-box;
     overflow: hidden;
@@ -800,6 +821,11 @@ table {
     display: flex;
     flex-direction: row;
 }
+
+.space-between {
+    justify-content: space-between;
+}
+
 .flex-horizontal-spaced {
     display: flex;
     flex-direction: row;

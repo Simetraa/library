@@ -2,9 +2,14 @@
     <div class="flex-horizontal gap-16">
         <h1><a href="/">Atlas Books</a></h1>
         <nav class="gap-32">
-            <a href="/books">Inventory</a>
-            <a href="/account/reservations">Reservations</a>
-            <a href="/account/purchases">Purchase History</a>
+            @can('access-staff-pages')
+                <a href="/books">Books</a>
+                <a href="/branches">Branches</a>
+            @endcan
+            @can('access-user-pages')
+                <a href="/account/reservations">Reservations</a>
+                <a href="/account/purchases">Purchase History</a>
+            @endcan
         </nav>
     </div>
 
