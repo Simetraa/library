@@ -35,9 +35,9 @@ class Book extends Model
             ->withPivot('quantity');
     }
 
-    public function getQuantityAttribute() {
+    public function getTotalQuantity() {
         // count the number of this book book in all branches
-        return DB::table('book_branch')->where('book_id', $this->id)->count();
+        return DB::table('book_branch')->where('book_id', $this->id)->sum('quantity');
     }
 
     public function reservations(): HasMany {

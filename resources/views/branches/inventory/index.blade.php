@@ -20,11 +20,13 @@
     <h1>{{ $branch->name }} - Inventory</h1>
     <input type="text" placeholder="Filter inventory...">
 
+
     <a href="/books/create">
             <span class="material-symbols-outlined">
                 add_circle
             </span>
     </a>
+    <x-branches-dropdown :current-branch="$branch"></x-branches-dropdown>
 </div>
 <div class="inventory-panes">
     <div class="inventory-book-pane">
@@ -41,7 +43,7 @@
                     <td>{{ $book->id }}</td>
                     <td>{{ $book->title }}</td>
                     <td>{{ $book->author }}</td>
-                    <td>{{ $book->quantity }}</td>
+                    <td>{{ $book->pivot->quantity }}</td>
                     <td>
                         <form method="POST" action="/branches/{{$branch->id}}/inventory/{{$book->id}}">
                             @csrf

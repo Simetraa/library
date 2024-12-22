@@ -24,6 +24,7 @@
                 add_circle
             </span>
     </a>
+    <x-branches-dropdown :current-branch="$branch"></x-branches-dropdown>
 </div>
 <div class="inventory-panes">
     <div class="inventory-book-pane">

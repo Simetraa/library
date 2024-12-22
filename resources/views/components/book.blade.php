@@ -6,9 +6,9 @@
         <h4>{{ $book->author }}</h4>
 
         <div class="flex-horizontal-spaced">
-        @if($book->quantity == 0)
+        @if($book->getTotalQuantity() == 0)
             <span>Stock: 🔴</span>
-        @elseif($book->quantity >= 10)
+        @elseif($book->getTotalQuantity() <= 10)
             <span>Stock: 🟡</span>
         @else
              <span>Stock: 🟢</span>

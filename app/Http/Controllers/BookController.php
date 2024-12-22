@@ -107,12 +107,11 @@ class BookController extends Controller
     }
     public function store(){
         request()->validate([
-        'title' => ['required', 'min:3'],
-        'author' => ['required'],
-        'cover_url' => ['required'],
-        'description' => ['required'],
-        'price' => ['required', 'numeric'],
-        'quantity' => ['required', 'numeric']
+            'title' => ['required', 'min:3'],
+            'author' => ['required'],
+            'cover_url' => ['required'],
+            'description' => ['required'],
+            'price' => ['required', 'numeric'],
         ]);
 
         Book::create([
@@ -122,7 +121,6 @@ class BookController extends Controller
             'subject' =>[],
             'description' => request("description"),
             'price' => request("price"),
-            'quantity' => request("quantity")
         ]);
         return redirect(view("books.index"));
     }
@@ -138,7 +136,19 @@ class BookController extends Controller
     }
     public function destroy(Book $book){
         $book->delete();
-        return redirect(view("books.index"));
+        return back();
+
+        // TODO
+
+        // Problems I foresee.
+        // If a book is deleted, a bunch of pages will start crashing as we try to access
+        // book.id. We should implement a soft delete instead, because I think
+        // cascading would be worse.
+        // this will be very difficult and take a long time of testing and implementation on
+        // a bunch of pages.
+
+        // I think it wise to simply remove it from visibility, and NOT remove it from reservations
+        // It will still exist in the books/ page and branches/ page,
     }
     public function update(Book $book, Request $request)
     {

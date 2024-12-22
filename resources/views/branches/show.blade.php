@@ -13,9 +13,9 @@
 <x-header></x-header>
 <div class="flex-horizontal">
     <h1>Branch</h1>
+    <x-branches-dropdown :current-branch="$branch"></x-branches-dropdown>
 </div>
     <div>
-        <h2>Branch</h2>
         <p>Branch: {{ $branch->name }}</p>
         <p>Id: {{ $branch->id }}</p>
 
@@ -28,6 +28,54 @@
         <a href="/branches/{{$branch->id}}/edit">
             Edit
         </a>
+
+        {{--DASHBOARD--}}
+        <div class="top-selling-items-container">
+            {{--        <style>--}}
+            {{--            .time-selector {--}}
+            {{--                display: flex;--}}
+            {{--                justify-content: end;--}}
+            {{--            }--}}
+            {{--        </style>--}}
+            {{--        <div class="time-selector">--}}
+            {{--        <x-time-selector label='Time Selector' name="topSellingItemsPeriod" :topSellingItemsPeriod="$topSellingItemsPeriod"></x-time-selector>--}}
+            {{--        </div>--}}
+
+            <div class="dashboard-containers" id="sales-activity-container">
+                <h2>Sales activity</h2>
+                <p>Pending reservations: {{ $pendingReservations }}</p>
+                <p>Collected reservations: {{ $collectedReservations }}</p>
+            </div>
+            <div class="dashboard-containers" id="top-sellers-container">
+                <h2>Top Selling</h2>
+                <div class="flex-horizontal">
+                    @foreach($topSellingItems as $book)
+                        <div>
+                            <p>{{ $book->title }}</p>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+            <div class="dashboard-containers" id="inventory-summary-container">
+                <h2>Stock Status</h2>
+                <p>Books in stock: {{ $booksInStockCount }}</p>
+                <p>Books out of stock: {{ $booksOutOfStockCount }}</p>
+            </div>
+            <div class="dashboard-containers" id="purchase-sales-container">
+                <h2>Sales</h2>
+                <p>Quantity sold: {{$quantitySold}}</p>
+                <p>Revenue: {{$totalRevenue}}</p>
+
+                <h2>Purchases</h2>
+                <p>Quantity ordered: </p>
+                <p>Costs: </p>
+            </div>
+            <div class="dashboard-containers" id="chart">
+
+            </div>
+            {{--        create report and invoice button--}}
+
+        </div>
     </div>
 </body>
 

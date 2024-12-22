@@ -9,6 +9,7 @@ use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StaffReservationController;
 use App\Http\Controllers\StaffSalesController;
 use Illuminate\Support\Facades\Route;
@@ -31,8 +32,6 @@ Route::get('/login', [SessionController::class, 'create'])->name("login");
 Route::post('/login', [SessionController::class, 'store']);
 Route::post('/logout', [SessionController::class, 'destroy']);
 
-Route::get("/branches/{branch}/dashboard", [DashboardController::class, 'index']);
-
 Route::put('/account/password', [PasswordController::class, 'update'])->middleware("auth");
 
 Route::controller(RegisteredUserController::class)->group(function(){
@@ -41,6 +40,14 @@ Route::controller(RegisteredUserController::class)->group(function(){
     Route::get('/register', 'create');
     Route::post('/register', 'store');
     Route::delete('/register', 'destroy')->name("account.destroy");
+});
+
+Route::controller(StaffController::class)->group(function(){
+    Route::get('/branches/{branch}/staff', 'index');
+    Route::get('/branches/{branch}/staff/create', 'create');
+    Route::get('/branches/{branch}/staff/{user}', 'show');
+    Route::get('/branches/{branch}/staff/{user}/edit', 'edit');
+    Route::patch('/branches/{branch}/staff/{user}', 'update');
 });
 
 Route::controller(SaleController::class)->group(function(){

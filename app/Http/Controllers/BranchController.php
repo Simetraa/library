@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use App\Models\Branch;
+use App\Models\Sale;
 use Illuminate\Http\Request;
 
 class BranchController extends Controller
@@ -10,10 +12,53 @@ class BranchController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
+
+    public function index() {
         return view('branches.index');
     }
+    public function show(Request $request, Branch $branch)
+    {
+        $topSellingItemsPeriod = $request->get("topSellingItemsPeriod") ?? "";
+
+        $topSellingItems = Book::all()->sortByDesc(
+            function (Book $book) use ($topSellingItemsPeriod) {
+                return $book->getSalesQuantity($topSellingItemsPeriod);
+            })->take(5);
+
+        $pendingReservations = $branch->reservations()->where("status", "pending")->count();
+        $collectedReservations = $branch->reservations()->where("status", "collected")->count();
+
+        $booksOutOfStockCount = $branch->books->filter(function ($book) {
+            return $book->pivot->quantity === 0;
+        })->count();
+
+        $booksInStockCount = $branch->books->filter(function ($book) {
+            return $book->pivot->quantity > 0;
+        })->count();
+
+        $totalRevenue = $branch->sales->sum(function (Sale $sale) {
+            return $sale->totalPrice();
+        });
+
+        $quantitySold = $branch->sales->sum(function (Sale $sale) {
+            return $sale->books->sum("quantity");
+        });
+
+
+        return view('branches.show',
+            [
+                "branch" => $branch,
+                "topSellingItems" => $topSellingItems,
+                "topSellingItemsPeriod" => $topSellingItemsPeriod,
+                "pendingReservations" => $pendingReservations,
+                "collectedReservations" => $collectedReservations,
+                "booksOutOfStockCount" => $booksOutOfStockCount,
+                "booksInStockCount" => $booksInStockCount,
+                "totalRevenue" => $totalRevenue,
+                "quantitySold" => $quantitySold,
+            ]);
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -36,14 +81,6 @@ class BranchController extends Controller
             'name' => request("name")
         ]);
         return redirect("/branches");
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Branch $branch)
-    {
-        return view("branches.show", ["branch" => $branch]);
     }
 
     /**

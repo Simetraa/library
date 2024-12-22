@@ -23,15 +23,15 @@
 <div>
     @php
         $branches = Branch::all()
- @endphp
+    @endphp
 
     @foreach($branches as $branch)
-
         <h2><a href="/branches/{{$branch->id}}">Branch</a></h2>
         <p>Branch: {{ $branch->name }}</p>
         <p>Id: {{ $branch->id }}</p>
     @endforeach
 </div>
+
 </body>
 
 </html>

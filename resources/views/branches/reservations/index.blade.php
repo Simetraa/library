@@ -19,6 +19,7 @@
 <div class="flex-horizontal">
     <h1>{{ $branch->name }} - Reservations</h1>
     <input type="text" placeholder="Filter inventory...">
+    <x-branches-dropdown :current-branch="$branch"></x-branches-dropdown>
 </div>
 <div class="inventory-panes">
     <div class="inventory-book-pane">
