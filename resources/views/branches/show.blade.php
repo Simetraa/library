@@ -12,12 +12,17 @@
 <body class="non-gradient-body">
 <x-header></x-header>
 <div class="flex-horizontal">
-    <h1>Branch</h1>
+    <h1>Dashboard - {{$branch->name}}</h1>
     <x-branches-dropdown :current-branch="$branch"></x-branches-dropdown>
 </div>
     <div>
         <p>Branch: {{ $branch->name }}</p>
         <p>Id: {{ $branch->id }}</p>
+
+        <a href="/branches/{{$branch->id}}/staff">Staff</a>
+        <a href="/branches/{{$branch->id}}/inventory">Inventory</a>
+        <a href="/branches/{{$branch->id}}/reservations">Reservations</a>
+        <a href="/branches/{{$branch->id}}/sales">Sales</a>
 
         <form method="POST" action="/branches/{{$branch->id}}">
             @csrf

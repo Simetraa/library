@@ -18,7 +18,7 @@
             <input type="password" name="password" class="form-input" placeholder="Password" required>
             <input type="password" name="password_confirmation" class="form-input" placeholder="Re-enter password" required>
             @error('password')
-                <p class="form-error">Passwords do not match</p>
+            <p class="form-error">Passwords do not match</p>
             @enderror
             @php
                 $currentBranch = Branch::first()->id;

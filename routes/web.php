@@ -9,77 +9,84 @@ use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\StaffController;
+use App\Http\Controllers\StaffPasswordController;
 use App\Http\Controllers\StaffReservationController;
 use App\Http\Controllers\StaffSalesController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/welcome', 'welcome');
 
 Route::controller(BookController::class)->group(function () {
     Route::get('/', 'catalogue');
-    Route::get('/books', 'index');
-    Route::post('/books', 'store');
-    Route::get('/books/create', 'create');
-    Route::get('/books/{book}',  'show');
-    Route::get('/books/{book}/edit', 'edit');
-    Route::patch('/books/{book}', 'update');
-    Route::patch('/books/{book}/toggleVisibility', 'toggleVisibility');
+    Route::get('/books', 'index')->middleware('can:access-staff-and-admin-pages');
+    Route::post('/books', 'store')->middleware('can:access-staff-and-admin-pages');
+    Route::get('/books/create', 'create')->middleware('can:access-staff-and-admin-pages');
+    Route::get('/books/{book}',  'show')->middleware('can:access-staff-and-admin-pages');
+    Route::get('/books/{book}/edit', 'edit')->middleware('can:access-staff-and-admin-pages');
+    Route::patch('/books/{book}', 'update')->middleware('can:access-staff-and-admin-pages');
+    Route::patch('/books/{book}/toggleVisibility', 'toggleVisibility')->middleware('can:access-staff-and-admin-pages');
 });
 
 Route::get('/login', [SessionController::class, 'create'])->name("login");
 Route::post('/login', [SessionController::class, 'store']);
 Route::post('/logout', [SessionController::class, 'destroy']);
 
-Route::put('/account/password', [PasswordController::class, 'update'])->middleware("auth");
+Route::put('/account/password', [PasswordController::class, 'update'])->middleware("can:access-user-pages");
 
 Route::controller(RegisteredUserController::class)->group(function(){
-    Route::patch('/account', 'update');
-    Route::get('/account', 'show')->middleware("auth");
+    Route::patch('/account', 'update')->middleware("can:access-user-pages");
+    Route::get('/account', 'show')->middleware("can:access-user-pages");
     Route::get('/register', 'create');
     Route::post('/register', 'store');
-    Route::delete('/register', 'destroy')->name("account.destroy");
+    Route::delete('/register', 'destroy')->name("account.destroy")->middleware("can:access-user-pages");
 });
 
 Route::controller(StaffController::class)->group(function(){
-    Route::get('/branches/{branch}/staff', 'index');
-    Route::get('/branches/{branch}/staff/create', 'create');
-    Route::get('/branches/{branch}/staff/{user}', 'show');
-    Route::get('/branches/{branch}/staff/{user}/edit', 'edit');
-    Route::patch('/branches/{branch}/staff/{user}', 'update');
+    Route::get('/branches/{branch}/staff', 'index')->middleware('can:access-admin-pages');
+    Route::get('/branches/{branch}/staff/create', 'create')->middleware('can:access-admin-pages');
+    Route::post('/branches/{branch}/staff', 'store')->middleware('can:access-admin-pages');
+//    Route::get('/branches/{branch}/staff/{user}', 'show')->middleware('can:access-staff-account-page');
+    Route::get('/branches/{branch}/staff/{user}/edit', 'edit')->can('access-staff-account-page', User::class);
+    Route::patch('/branches/{branch}/staff/{user}', 'update')->middleware('can:access-admin-pages');
+    Route::delete('/branches/{branch}/staff/{user}', 'destroy')->middleware('can:access-admin-pages');
 });
 
+Route::put('/branches/{branch}/staff/{user}/password', [StaffPasswordController::class, 'update'])->middleware('can:access-staff-account-page');
+
 Route::controller(SaleController::class)->group(function(){
-    Route::get('/account/purchases', 'index')->middleware("auth");
+    Route::get('/account/purchases', 'index')->middleware('can:access-staff-and-admin-pages');
 });
 
 Route::controller(ReservationController::class)->group(function(){
-    Route::post('/reservations', 'store');
-    Route::get('/account/reservations', 'index')->middleware("auth");
-    Route::delete('/reservations/{reservation}', 'destroy');
+    Route::post('/reservations', 'store')->middleware('can:access-user-pages');
+    Route::get('/account/reservations', 'index')->middleware('can:access-user-pages');
+    Route::delete('/reservations/{reservation}', 'destroy')->middleware('can:access-user-pages');
 });
 
 Route::controller(StaffReservationController::class)->group(function(){
-    Route::get('/branches/{branch}/reservations', 'index');
-    Route::post('/reservations/{reservation}', 'fulfil');
+    Route::get('/branches/{branch}/reservations', 'index')->middleware('can:access-staff-and-admin-pages');
+    Route::post('/reservations/{reservation}', 'fulfil')->middleware('can:access-staff-and-admin-pages');
 });
 
 Route::controller(BranchController::class)->group(function(){
-    Route::get('/branches', 'index');
-    Route::get('/branches/create', 'create');
-    Route::post('/branches', 'store');
-    Route::delete('/branches/{branch}', 'destroy');
-    Route::get('/branches/{branch}',  'show');
-    Route::get('/branches/{branch}/edit', 'edit');
-    Route::patch('/branches/{branch}', 'update');
+    // TODO: Add gate to restrict access to staff in branch
+    Route::get('/branches', 'index')->middleware('can:access-staff-and-admin-pages');
+    Route::get('/branches/create', 'create')->middleware('can:access-staff-and-admin-pages');
+    Route::post('/branches', 'store')->middleware('can:access-staff-and-admin-pages');
+    Route::delete('/branches/{branch}', 'destroy')->middleware('can:access-staff-and-admin-pages');
+    Route::get('/branches/{branch}',  'show')->middleware('can:access-staff-and-admin-pages');
+    Route::get('/branches/{branch}/edit', 'edit')->middleware('can:access-staff-and-admin-pages');
+    Route::patch('/branches/{branch}', 'update')->middleware('can:access-staff-and-admin-pages');
 });
 
 Route::controller(InventoryController::class)->group(function(){
-    Route::get('/branches/{branch}/inventory', 'index');
-    Route::delete('/branches/{branch}/inventory/{book}', 'destroy');
+    Route::get('/branches/{branch}/inventory', 'index')->middleware('can:access-staff-and-admin-pages');
+    Route::delete('/branches/{branch}/inventory/{book}', 'destroy')->middleware('can:access-staff-and-admin-pages');
 });
 
 Route::controller(StaffSalesController::class)->group(function(){
-    Route::get('/branches/{branch}/sales', 'index');
-    Route::get('/branches/{branch}/sales/create', 'create');
-    Route::get('/branches/{branch}/sales/{sale}', 'show');
+    Route::get('/branches/{branch}/sales', 'index')->middleware('can:access-staff-and-admin-pages');
+    Route::get('/branches/{branch}/sales/create', 'create')->middleware('can:access-staff-and-admin-pages');
+    Route::get('/branches/{branch}/sales/{sale}', 'show')->middleware('can:access-staff-and-admin-pages');
 });

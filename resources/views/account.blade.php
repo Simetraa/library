@@ -71,7 +71,6 @@
                         <input type="password" name="password_confirmation">
                     </div>
 
-
                     @error('password')
                     {{ $message }}
                     @enderror

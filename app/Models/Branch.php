@@ -28,6 +28,10 @@ class Branch extends Model
     {
         return $this->hasMany(Sale::class);
     }
+    public function users(): HasMany
+    {
+        return $this->hasMany(User::class);
+    }
 
     public static function getBranches(){
         $branches = Branch::all();
