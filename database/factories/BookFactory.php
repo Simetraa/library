@@ -28,6 +28,7 @@ class BookFactory extends Factory
 
         return [
             'title' => fake()->sentence(),
+            'isbn' => fake()->isbn13(),
             'author' => fake()->name(),
             'cover_url' => "/test_images/cover.jpg",
             'subjects' => $fakeCategories,

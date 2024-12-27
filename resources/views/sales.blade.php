@@ -27,7 +27,7 @@
             <div class="sale-card">
                 <div class="sale-header">
                     <div class="sale-and-date">
-                        <h2>Sale {{ $sale->id }} </h2>
+                        <h2>Sale #{{ $sale->id }} </h2>
                         <p style="color: gray">{{$sale->created_at->format('d/m/y')}}</p>
                     </div>
                     <a href="">Invoice</a>
@@ -36,7 +36,7 @@
                 @foreach($sale->books as $book)
                     <div class="sale-book-info-pair">
                         <p>{{ $book->pivot->quantity }} x {{ $book->title }}</p>
-                        <p>£ {{$book->price}}</p>
+                        <p>£ {{$book->pivot->price}}</p>
                     </div>
                 @endforeach
                 <hr>
