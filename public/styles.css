@@ -900,3 +900,56 @@ nav a {
 
 
 
+/* DASHBOARD */
+
+.dashboard{
+    display: flex;
+    flex-direction: row;
+}
+.dashboard-sidebar{
+    background-color: #1a202c;
+    color: #cbd5e0;
+    height: 100vh;
+}
+.dashboard-branch-info{
+    font-weight: bold;
+    font-size: 17px;
+    padding: 15px;
+}
+.dashboard-branch-info select{
+    padding: 3px;
+    border-radius: 5px;
+    background-color: #cbd5e0;
+}
+.dashboard-sidebar-links{
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+}
+.dashboard-sidebar-links a{
+    text-decoration: none;
+    background-color: #242a3e;
+    color: #cbd5e0;
+    padding: 15px;
+    margin-bottom: 3px;
+}
+.dashboard-sidebar-links a:hover{
+    background-color: #695aa0;
+}
+#dashboard-delete-button{
+    background-color: #df3636;
+    font-size: 17px;
+    padding: 5px;
+    margin: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+#dashboard-delete-button:hover{
+    background-color: #af2f2f;
+}
+
+.dashboard-body{
+    padding: 20px;
+}
