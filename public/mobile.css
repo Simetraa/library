@@ -125,9 +125,12 @@
     align-items: stretch;
 }
 
-.create-branch-container{
-    max-width: 70vw;
-    margin:auto;
+.create-branch-container {
+    width: fit-content;
+    margin: auto;
+}
+.create-branch-card{
+    min-width: 70vw;
 }
 
 .sale-container{
