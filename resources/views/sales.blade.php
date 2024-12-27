@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 @php
-    use App\Models\Branch;
+    use App\Models\Branch;use Illuminate\Support\Facades\Auth;
 @endphp
 
 <head>
@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Purchase History</title>
     <link rel="stylesheet" href="{{ asset('styles.css') }}?ts=<?=time()?>"/>
-    <link rel="stylesheet" href="{{ asset('mobile.css') }}?ts=<?=time()?>" media ="only screen and (max-width: 720px)"/>
+    <link rel="stylesheet" href="{{ asset('mobile.css') }}?ts=<?=time()?>" media="only screen and (max-width: 720px)"/>
 </head>
 
 <body class="non-gradient-body">
@@ -26,7 +26,7 @@
             <h1>Purchases</h1>
             <div class="sale-card">
                 <div class="sale-header">
-                    <div class = "sale-and-date">
+                    <div class="sale-and-date">
                         <h2>Sale {{ $sale->id }} </h2>
                         <p style="color: gray">{{$sale->created_at->format('d/m/y')}}</p>
                     </div>

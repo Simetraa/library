@@ -55,7 +55,7 @@ Route::controller(StaffController::class)->group(function(){
 Route::put('/branches/{branch}/staff/{user}/password', [StaffPasswordController::class, 'update'])->middleware('can:access-staff-account-page');
 
 Route::controller(SaleController::class)->group(function(){
-    Route::get('/account/purchases', 'index')->middleware('can:access-staff-and-admin-pages');
+    Route::get('/account/purchases', 'index')->middleware('can:access-user-pages');
 });
 
 Route::controller(ReservationController::class)->group(function(){
