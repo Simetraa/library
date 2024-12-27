@@ -16,10 +16,13 @@
     $staffMembers = $branch->users->where('role', 'staff');
 @endphp
 
-<div class="flex-horizontal">
-    <h1>{{ $branch->name }} - Staff</h1>
-    <input type="text" placeholder="Filter inventory...">
-    <x-branches-dropdown :current-branch="$branch"></x-branches-dropdown>
+<div class="inventory-header">
+    <div class="branches-dropdown"><x-branches-dropdown class="branches-dropdown" :current-branch="$branch"></x-branches-dropdown></div>
+    <h1> - Staff</h1>
+</div>
+
+<div  class = "inventory-inputs">
+    <input type="text" placeholder="Filter inventory..." >
 </div>
 <div class="inventory-panes">
     <div class="inventory-book-pane">

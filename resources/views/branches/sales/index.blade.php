@@ -16,16 +16,24 @@
     $sales = $branch->sales;
 @endphp
 
-<div class="flex-horizontal">
-    <h1>{{ $branch->name }} - Sales</h1>
-    <input type="text" placeholder="Filter Sales...">
-    <a href="sales/create">
-        <span class="material-symbols-outlined">
-                add_circle
-            </span>
-    </a>
-    <x-branches-dropdown :current-branch="$branch"></x-branches-dropdown>
+<div class="inventory-header">
+    <div class="branches-dropdown"><x-branches-dropdown class="branches-dropdown" :current-branch="$branch"></x-branches-dropdown></div>
+    <h1> - Sales</h1>
 </div>
+
+
+<div class="space-between">
+    <div  class = "inventory-inputs">
+        <input type="text" placeholder="Filter Sales..." >
+    </div>
+    <a href="sales/create" class="add-new-button">
+            <span class="material-symbols-outlined">
+                add
+            </span>
+        <span class="add-new-button-label">New</span>
+    </a>
+</div>
+
 <div class="inventory-panes">
     <div class="inventory-book-pane">
         <table class="inventory-table">
