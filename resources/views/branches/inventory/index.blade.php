@@ -16,17 +16,22 @@
     $books = $branch->books;
 @endphp
 
-<div class="flex-horizontal">
-    <h1>{{ $branch->name }} - Inventory</h1>
-    <input type="text" placeholder="Filter inventory...">
+<div class="inventory-header">
+    <div class="branches-dropdown"><x-branches-dropdown :current-branch="$branch"></x-branches-dropdown></div>
+    <h1> - Inventory</h1>
+</div>
 
+<div class="space-between">
+    <div class="inventory-inputs">
+        <input type="text" placeholder="Filter inventory...">
 
-    <a href="/books/create">
+    </div>
+    <a href="/books/create" class="add-new-button">
             <span class="material-symbols-outlined">
-                add_circle
+                add
             </span>
+        <span class="add-new-button-label">New</span>
     </a>
-    <x-branches-dropdown :current-branch="$branch"></x-branches-dropdown>
 </div>
 <div class="inventory-panes">
     <div class="inventory-book-pane">

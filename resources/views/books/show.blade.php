@@ -32,7 +32,7 @@
         </div>
 
         @php
-            use App\Models\Branch;
+            use App\Models\Branch;use Illuminate\Support\Facades\Auth;
 
             $branches = Branch::getBranches();
             $defaultValue = Auth::user()->branch->id ?? Branch::first()->id;
@@ -45,39 +45,41 @@
                 </p>
             </div>
         @else
-        <div class="stock-info">
-            <div class="book-info">
-                <p>Price: {{ $book->getPrice() }}</p>
+            <div class="stock-info">
+                <div class="book-info">
+                    <p>Price: {{ $book->getPrice() }}</p>
+                </div>
+                <div class="book-info">
+                    <p>Quantity: {{ $book->getTotalQuantity() }}</p>
+                </div>
             </div>
-            <div class="book-info">
-                <p>Quantity: {{ $book->getTotalQuantity() }}</p>
-            </div>
-        </div>
 
-        @auth
-            <div class="book-info" id="reserve-container">
-                <h3>Reserve this book</h3>
-                <form action="/reservations" method="POST">
-                    @csrf
-                    <div id="reserve-container-inputs">
-                        <div>
-                            <input type="hidden" name="book_id" value="{{ $book->id }}">
-                            <label for="quantity">Quantity:</label>
-                            <input name="quantity" value="1" type="number" min="1" class="text-input-field">
+            @auth
+                @can('access-user-pages')
+                <div class="book-info" id="reserve-container">
+                    <h3>Reserve this book</h3>
+                    <form action="/reservations" method="POST">
+                        @csrf
+                        <div id="reserve-container-inputs">
+                            <div>
+                                <input type="hidden" name="book_id" value="{{ $book->id }}">
+                                <label for="quantity">Quantity:</label>
+                                <input name="quantity" value="1" type="number" min="1" class="text-input-field">
+                            </div>
+                            <div>
+                                <label for="location">Collect at:</label>
+                                <x-dropdown name="branch_id"
+                                            :options="$branches"
+                                            :value="$defaultValue"
+                                            id="reserve-dropdown">
+                                </x-dropdown>
+                            </div>
+                            <button>Reserve</button>
                         </div>
-                        <div>
-                            <label for="location">Collect at:</label>
-                            <x-dropdown name="branch_id"
-                                        :options="$branches"
-                                        :value="$defaultValue"
-                                        id="reserve-dropdown">
-                            </x-dropdown>
-                        </div>
-                        <button>Reserve</button>
-                    </div>
-                </form>
-            </div>
-        @endauth
+                    </form>
+                </div>
+                @endcan
+            @endauth
         @endif
     </div>
 </div>

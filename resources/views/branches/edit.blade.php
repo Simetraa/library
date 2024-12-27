@@ -11,24 +11,32 @@
 
 <body class="non-gradient-body">
     <x-header></x-header>
-    <div class="flex-horizontal">
-        <h1>Edit Branch</h1>
-    </div>
-    <div>
+
+    <div class = "edit-branch-container">
+        <div class="space-between">
+            <h1>Edit Branch</h1>
+            <button id="login-button">Submit</button>
+        </div>
+
         <form method="POST" action="/branches/{{$branch->id}}" autocomplete="off">
             @csrf
             @method("PATCH")
 
-            <div>
+            <div class="space-between">
                 <label for="id">Id</label>
                 <input readonly value="{{ $branch->id }}" type="text" name="id" disabled>
             </div>
 
-            <div>
+            <div class="space-between">
                 <label for="name">Name</label>
                 <input value="{{ $branch->name }}" type="text" name="name">
             </div>
-            <button>Submit</button>
+
+        </form>
+        <form method="POST" action="/branches/{{$branch->id}}">
+            @csrf
+            @method('DELETE')
+            <button type="submit">Delete</button>
         </form>
     </div>
 </body>
