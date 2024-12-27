@@ -13,8 +13,9 @@
     <x-header></x-header>
 
     <div class = "edit-branch-container">
-        <div class="flex-horizontal">
+        <div class="space-between">
             <h1>Edit Branch</h1>
+            <button id="login-button">Submit</button>
         </div>
 
         <form method="POST" action="/branches/{{$branch->id}}" autocomplete="off">
@@ -30,7 +31,7 @@
                 <label for="name">Name</label>
                 <input value="{{ $branch->name }}" type="text" name="name">
             </div>
-            <button id="login-button">Submit</button>
+
         </form>
     </div>
 </body>
