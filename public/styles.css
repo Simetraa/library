@@ -187,7 +187,6 @@ tbody tr:hover {
 }
 
 .search-button {
-
     background: var(--container-white);
     box-shadow: 4px 4px 2px 2px rgb(0 0 0 / 10%);
     border-radius: 10px;
@@ -370,14 +369,39 @@ tbody tr:hover {
     width: 150px;
     border: none;
     border-radius: 5px;
+    padding-left: 10px;
 }
 
+.edit-branch-container {
+    background-color: var(--container-white);
+    border-radius: 10px;
+    padding: 30px;
+    /*height: 10vh;*/
+    box-shadow: 4px 4px 2px 2px rgb(0 0 0 / 10%);
+    margin: auto;
+    margin-top: 30px;
+    width: 30vw;
+}
+
+.edit-branch-container h1 {
+    margin-left: 15px;
+    color: var(--dark-purple);
+}
+
+.edit-branch-container input, .edit-branch-container dropdown{
+    height: 25px;
+    width: 200px;
+    border: none;
+    border-radius: 5px;
+    padding-left: 10px;
+}
 
 .space-between {
     display: flex;
     justify-content: space-between;
     margin: 5px 0;
     width: 100%;
+    align-items: center;
 }
 
 .account-info{
