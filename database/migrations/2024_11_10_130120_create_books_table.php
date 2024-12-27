@@ -18,6 +18,7 @@ return new class extends Migration {
             $table->text('description');
             $table->integer('price');
             $table->jsonb("subjects");
+            $table->integer("isbn");
             $table->date("publication_date");
             $table->boolean('visible')->default(true);
             $table->timestamps();

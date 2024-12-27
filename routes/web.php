@@ -19,6 +19,7 @@ Route::view('/welcome', 'welcome');
 
 Route::controller(BookController::class)->group(function () {
     Route::get('/', 'catalogue');
+    Route::post('/books/autofill', 'autofill')->middleware('can:access-staff-and-admin-pages');
     Route::get('/books', 'index')->middleware('can:access-staff-and-admin-pages');
     Route::post('/books', 'store')->middleware('can:access-staff-and-admin-pages');
     Route::get('/books/create', 'create')->middleware('can:access-staff-and-admin-pages');
