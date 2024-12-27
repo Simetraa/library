@@ -43,6 +43,11 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@example.com',
             'role' => 'admin',
         ]);
+
+        User::factory()->create([
+            'email' => 'staff@example.com',
+            'role' => 'staff',
+        ]);
 //
         Reservation::create([
             'user_id' => 1,
@@ -60,28 +65,7 @@ class DatabaseSeeder extends Seeder
         BookSale::create([
             'sale_id' => 1,
             'book_id' => 1,
-            'quantity' => 1,
-            'price' => 10.00,
-            'returned' => false,
-        ]);
-        BookSale::create([
-            'sale_id' => 1,
-            'book_id' => 1,
-            'quantity' => 1,
-            'price' => 10.00,
-            'returned' => false,
-        ]);
-        BookSale::create([
-            'sale_id' => 1,
-            'book_id' => 1,
-            'quantity' => 1,
-            'price' => 10.00,
-            'returned' => false,
-        ]);
-        BookSale::create([
-            'sale_id' => 1,
-            'book_id' => 1,
-            'quantity' => 1,
+            'quantity' => 4,
             'price' => 10.00,
             'returned' => false,
         ]);
@@ -90,7 +74,7 @@ class DatabaseSeeder extends Seeder
             'sale_id' => 1,
             'book_id' => 3,
             'quantity' => 15,
-            'price' => 1.00,
+            'price' => 6.00,
             'returned' => false,
         ]);
 
