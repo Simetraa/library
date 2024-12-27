@@ -373,6 +373,54 @@ tbody tr:hover {
     padding-left: 10px;
 }
 
+
+.branch-container,.create-branch-container{
+    color: var(--dark-purple);
+    /*
+    margin: 50px 0;
+    */
+    width: 70vw;
+    margin:auto;
+}
+.create-branch-container{
+    width: 25vw;
+}
+
+.branch-container h1{
+    color: var(--dark-purple);
+}
+.create-branch-container h1{
+    margin-top:10px;
+}
+.branch-card,.create-branch-card{
+    background-color: var(--container-white);
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 4px 4px 2px 2px rgb(0 0 0 / 10%);
+    margin-bottom: 30px;
+    flex-direction: column;
+}
+.create-branch-card{
+    margin-top: 20px;
+    max-width: 25vw;
+}
+
+.branch-input-field{
+    display: flex;
+    justify-content: space-between;
+    margin:  10px;
+    align-items: center;
+}
+.branch-input-field input {
+    width: 60%;
+    padding: 5px;
+}
+/*.space-between {*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*    margin: 5px 0;*/
+/*}*/
+
 .edit-branch-container {
     background-color: var(--container-white);
     border-radius: 10px;
@@ -403,6 +451,7 @@ tbody tr:hover {
     width: 100%;
     align-items: center;
 }
+
 
 .account-info{
     display: flex;
@@ -486,7 +535,7 @@ tbody tr:hover {
     background-color: lightgray;
 }
 
-.edit-create-button {
+.edit-create-button,.edit-create-button-branch {
     background-color: var(--button-purple);
     padding: 15px 30px 15px 30px;
     width: 100%;
@@ -495,6 +544,9 @@ tbody tr:hover {
     border: none;
     margin-top: 40px;
     cursor: pointer;
+}
+.edit-create-button-branch{
+    margin-top: 20px;
 }
 .edit-create-button:hover {
     background-color: #3f3561;
@@ -797,6 +849,8 @@ td {
     flex-direction: row;
     gap: 8px;
     background-color: #f4f1fd;
+    width: 90vw;
+    margin:auto;
 }
 
 table {
@@ -953,6 +1007,16 @@ nav a {
 
 @media (max-width: 720px) {
     .book-cover {
+        display: none;
+    }
+}
+@media (max-width: 720px) {
+    .book-cover-reservation{
+        display: none;
+    }
+}
+@media (max-width: 720px) {
+    .mobile-hr{
         display: none;
     }
 }
