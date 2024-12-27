@@ -110,6 +110,7 @@ a{
     padding: 5px 10px;
     border-radius: 5px;
     text-decoration: none;
+    margin-right: 15px;
 }
 
 
@@ -797,6 +798,38 @@ td {
     gap: 8px;
     background-color: #f4f1fd;
 }
+
+table {
+    width: 100vw;
+}
+
+.inventory-inputs {
+    display: flex;
+    flex-direction: row;
+}
+
+.inventory-inputs input{
+    height: 40px;
+    border-radius: 5px;
+    margin-left: 15px;
+}
+
+.inventory-header {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    align-items: center;
+}
+
+.branches-dropdown > *{
+    background: none;
+    font-size: 30px;
+    font-weight: bolder;
+    height: 40px;
+    border: none;
+    padding-right: 15px;
+}
+
 #edit_button, #delete_button{
     text-decoration: none;
     color: #18181b;
