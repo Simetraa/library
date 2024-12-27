@@ -21,11 +21,24 @@
         </div>
 
         <div class="dashboard-sidebar-links">
-            <a href="/branches/{{$branch->id}}/staff">Staff</a>
-            <a href="/branches/{{$branch->id}}/inventory">Inventory</a>
-            <a href="/branches/{{$branch->id}}/reservations">Reservations</a>
-            <a href="/branches/{{$branch->id}}/sales">Sales</a>
-            <a href="/branches/{{$branch->id}}/edit">Edit branch</a>
+            <a href="/branches/{{$branch->id}}/staff">
+                <span class="material-symbols-outlined">store</span>
+                <span>Staff</span>
+            </a>
+            <a href="/branches/{{$branch->id}}/inventory">
+                <span class="material-symbols-outlined">book</span>
+                <span>Inventory</span>
+            </a>
+            <a href="/branches/{{$branch->id}}/reservations">
+                <span class="material-symbols-outlined">confirmation_number</span>
+                <span>Reservations</span></a>
+            <a href="/branches/{{$branch->id}}/sales">
+                <span class="material-symbols-outlined">payments</span>
+                <span>Sales</span>
+            </a>
+            <a href="/branches/{{$branch->id}}/edit">
+                <span class="material-symbols-outlined">edit</span>
+                <span>Edit branch</span></a>
         </div>
 
         <form method="POST" action="/branches/{{$branch->id}}">
