@@ -428,7 +428,7 @@ tbody tr:hover {
     /*height: 10vh;*/
     box-shadow: 4px 4px 2px 2px rgb(0 0 0 / 10%);
     margin: auto;
-    margin-top: 30px;
+    margin-top: 100px;
     width: 30vw;
 }
 
@@ -853,9 +853,6 @@ td {
     margin:auto;
 }
 
-table {
-    width: 100vw;
-}
 
 .inventory-inputs {
     display: flex;
@@ -1025,6 +1022,10 @@ nav a {
     text-transform: uppercase;
 }
 
+.sidebar-body{
+    display: flex;
+    flex-direction: row;
+}
 
 
 /* DASHBOARD */
@@ -1054,7 +1055,7 @@ nav a {
     display: flex;
     flex-direction: column;
     font-size: 20px;
-    margin-top: 30px;
+    gap: 3px;
 }
 
 .dashboard-sidebar-links a {
@@ -1064,37 +1065,19 @@ nav a {
     background-color: #242a3e;
     color: #cbd5e0;
     padding: 15px;
+    text-decoration: none;
 }
 
 .dashboard-sidebar-links a:hover {
     background-color: #695aa0;
 }
-
-.dashboard-sidebar-links a {
-    text-decoration: none;
-    color: #cbd5e0;
-}
-
-#dashboard-delete-button{
-    background-color: #df3636;
-    font-size: 17px;
-    padding: 5px;
-    margin: 10px 20px;
-    border-radius: 5px;
-    border: none;
-    color: white;
-    cursor: pointer;
-}
-#dashboard-delete-button:hover{
-    background-color: #af2f2f;
-}
-
 .dashboard-body{
     padding: 20px;
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-rows: 33% 16.5% 16.5% 33%;
     gap: 15px;
+    /*height: 100%;*/
 }
 .dashboard-containers{
     background-color: rgba(255, 255, 255, 0.5);
