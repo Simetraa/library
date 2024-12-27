@@ -73,12 +73,12 @@ Route::controller(StaffReservationController::class)->group(function(){
 Route::controller(BranchController::class)->group(function(){
     // TODO: Add gate to restrict access to staff in branch
     Route::get('/branches', 'index')->middleware('can:access-staff-and-admin-pages');
-    Route::get('/branches/create', 'create')->middleware('can:access-staff-and-admin-pages');
-    Route::post('/branches', 'store')->middleware('can:access-staff-and-admin-pages');
-    Route::delete('/branches/{branch}', 'destroy')->middleware('can:access-staff-and-admin-pages');
+    Route::get('/branches/create', 'create')->middleware('can:access-admin-pages');
+    Route::post('/branches', 'store')->middleware('can:access-admin-pages');
+    Route::delete('/branches/{branch}', 'destroy')->middleware('can:access-admin-pages');
     Route::get('/branches/{branch}',  'show')->middleware('can:access-staff-and-admin-pages');
-    Route::get('/branches/{branch}/edit', 'edit')->middleware('can:access-staff-and-admin-pages');
-    Route::patch('/branches/{branch}', 'update')->middleware('can:access-staff-and-admin-pages');
+    Route::get('/branches/{branch}/edit', 'edit')->middleware('can:access-admin-pages');
+    Route::patch('/branches/{branch}', 'update')->middleware('can:access-admin-pages');
 });
 
 Route::controller(InventoryController::class)->group(function(){
