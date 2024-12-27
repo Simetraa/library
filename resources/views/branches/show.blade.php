@@ -17,22 +17,19 @@
     <div class="dashboard-sidebar">
         <div class="dashboard-branch-info">
             <p>Branch: <x-branches-dropdown :current-branch="$branch"></x-branches-dropdown></p>
-            <p>Id: {{ $branch->id }}</p>
+            <p>Branch Id: {{ $branch->id }}</p>
         </div>
 
         <div class="dashboard-sidebar-links">
-            <a href="/branches/{{$branch->id}}/staff">Staff</a>
             <a href="/branches/{{$branch->id}}/inventory">Inventory</a>
             <a href="/branches/{{$branch->id}}/reservations">Reservations</a>
             <a href="/branches/{{$branch->id}}/sales">Sales</a>
-            <a href="/branches/{{$branch->id}}/edit">Edit branch</a>
+            <a href="/branches">Branches</a>
+            @can('access-admin-pages')
+                <a href="/branches/{{$branch->id}}/staff">Staff</a>
+                <a href="/branches/{{$branch->id}}/edit">Edit branch</a>
+            @endcan
         </div>
-
-        <form method="POST" action="/branches/{{$branch->id}}">
-            @csrf
-            @method('DELETE')
-            <button id="dashboard-delete-button" type="submit">Delete</button>
-        </form>
 
     </div>
 

@@ -30,6 +30,11 @@
             </div>
             <button>Submit</button>
         </form>
+        <form method="POST" action="/branches/{{$branch->id}}">
+            @csrf
+            @method('DELETE')
+            <button type="submit">Delete</button>
+        </form>
     </div>
 </body>
 </html>

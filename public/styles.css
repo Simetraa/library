@@ -913,18 +913,21 @@ nav a {
 }
 .dashboard-branch-info{
     font-weight: bold;
-    font-size: 17px;
+    font-size: 19px;
     padding: 15px;
 }
 .dashboard-branch-info select{
-    padding: 3px;
+    padding: 5px;
     border-radius: 5px;
-    background-color: #cbd5e0;
+    background-color: rgba(161, 153, 209, 0.8);
+    width: 100%;
+    font-size: 17px;
 }
 .dashboard-sidebar-links{
     display: flex;
     flex-direction: column;
     font-size: 20px;
+    margin-top: 30px;
 }
 .dashboard-sidebar-links a{
     text-decoration: none;
@@ -936,20 +939,30 @@ nav a {
 .dashboard-sidebar-links a:hover{
     background-color: #695aa0;
 }
-#dashboard-delete-button{
-    background-color: #df3636;
-    font-size: 17px;
-    padding: 5px;
-    margin: 10px 20px;
-    border-radius: 5px;
-    border: none;
-    color: white;
-    cursor: pointer;
-}
-#dashboard-delete-button:hover{
-    background-color: #af2f2f;
-}
-
 .dashboard-body{
     padding: 20px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 33% 16.5% 16.5% 33%;
+    gap: 15px;
+}
+.dashboard-containers{
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    padding: 10px;
+}
+#sales-activity-container{
+    grid-area: 1 / 1 / 2 / auto;
+}
+#top-sellers-container{
+    grid-area: 1 / 2 / 3 / auto;
+}
+#inventory-summary-container{
+    grid-area: 2 / 1 / 4 / auto;
+}
+#purchase-sales-container{
+    grid-area: 4 / 1 / 5 / auto;
+}
+#chart{
+    grid-area: 3 / 2 / 5 / auto;
 }
