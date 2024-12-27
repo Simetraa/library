@@ -13,12 +13,14 @@
 <x-header></x-header>
 <div class="header-row">
     <h1>Branches</h1>
-    <a href="/branches/create" class="add-new-button">
-            <span class="material-symbols-outlined">
-                add
-            </span>
-            <span class="add-new-button-label">New</span>
-    </a>
+    @can('access-admin-pages')
+        <a href="/branches/create" class="add-new-button">
+                <span class="material-symbols-outlined">
+                    add
+                </span>
+                <span class="add-new-button-label">New</span>
+        </a>
+    @endcan
 </div>
 <div>
     @php

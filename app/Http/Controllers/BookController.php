@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Models\Category;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -11,6 +12,54 @@ use function Laravel\Prompts\search;
 
 class BookController extends Controller
 {
+    public function autofill(Request $request) {
+        $isbn = $request->get("isbn");
+        $editionUrl = "https://openlibrary.org/isbn/" . $isbn . ".json";
+        $editionResponse = file_get_contents($editionUrl);
+        $editionJson = json_decode($editionResponse);
+
+        $title = $editionJson->title;
+        $publicationDate = Carbon::parse($editionJson->publish_date)->format("Y-m-d");
+
+
+        $authorIdList = $editionJson->authors;
+        $authors = collect($authorIdList);
+        $authors = $authors ->map(function($authorId) {
+            $authorId = str_replace("/authors/", "", $authorId->key);
+            $authorUrl = 'https://openlibrary.org/authors/' . $authorId . '.json';
+            $authorResponse = file_get_contents($authorUrl);
+            $authorJson = json_decode($authorResponse);
+            return $authorJson->name;
+        });
+
+        $authors = join(",", $authors->toArray());
+
+
+        $cover_url = "https://covers.openlibrary.org/b/id/" . $editionJson->covers[0] . "-S.jpg";
+
+        $workId = str_replace("/works/", "", $editionJson->works[0]->key);
+        $workUrl = 'https://openlibrary.org/works/' . $workId . '.json';
+        $workResponse = file_get_contents($workUrl);
+        $workJson = json_decode($workResponse);
+
+        $description = $workJson->description;
+        $subjects = join(",", $workJson->subjects);
+
+
+
+        return back()->with(
+            [
+                "isbn" => $isbn,
+                "title" => $title,
+                "author" => $authors,
+                "cover_url" => $cover_url,
+                "description" => $description,
+                "subjects" => $subjects,
+                "publication_date" => $publicationDate
+            ]
+        );
+    }
+
     public function catalogue(Request $request){
 
         $genresFiltered = $request->get("genre") ?? [];
@@ -107,22 +156,38 @@ class BookController extends Controller
         return view('books.index', ["books" => Book::all()]);
     }
     public function store(){
+
+        // TODO: Work out what is required, and clean up using Request.
         request()->validate([
-            'title' => ['required', 'min:3'],
+            'title' => ['required'],
             'author' => ['required'],
             'cover_url' => ['required'],
             'description' => ['required'],
             'price' => ['required', 'numeric'],
+            'isbn' => ['required', 'numeric'],
+            'publication_date' => ['required', 'date'],
         ]);
 
-        Book::create([
+
+        // validation is failing on something
+
+
+        $subjects = explode("", request('subjects'));
+
+
+
+        $book = Book::create([
             'title' => request("title"),
             'author' => request("author"),
             'cover_url' => request("cover_url"),
-            'subject' =>[],
+            'subjects' => $subjects,
             'description' => request("description"),
             'price' => request("price"),
+            'isbn' => request("isbn"),
+            'publication_date' => request("publication_date"),
         ]);
+
+        dd($book);
         return redirect(view("books.index"));
     }
     public function create(){
