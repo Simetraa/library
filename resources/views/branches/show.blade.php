@@ -17,7 +17,7 @@
     <div class="dashboard-sidebar">
         <div class="dashboard-branch-info">
             <p>Branch: <x-branches-dropdown :current-branch="$branch"></x-branches-dropdown></p>
-            <p>Id: {{ $branch->id }}</p>
+            <p>Branch Id: {{ $branch->id }}</p>
         </div>
 
         <div class="dashboard-sidebar-links">
@@ -40,12 +40,6 @@
                 <span class="material-symbols-outlined">edit</span>
                 <span>Edit branch</span></a>
         </div>
-
-        <form method="POST" action="/branches/{{$branch->id}}">
-            @csrf
-            @method('DELETE')
-            <button id="dashboard-delete-button" type="submit">Delete</button>
-        </form>
 
     </div>
 
