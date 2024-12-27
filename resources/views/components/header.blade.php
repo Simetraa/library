@@ -2,13 +2,7 @@
     <div class="flex-horizontal gap-16">
         <h1><a href="/">Atlas Books</a></h1>
         <nav class="gap-32">
-            @can('access-staff-pages')
-                <a href="/books">Books</a>
-                <a href="/branches">Branches</a>
-                <a href="/branches/{{Auth::user()->branch->id}}">Dashboard</a>
-            @endcan
-
-            @can('access-admin-pages')
+            @can('access-staff-and-admin-pages')
                 <a href="/books">Books</a>
                 <a href="/branches">Branches</a>
                 <a href="/branches/{{Auth::user()->branch->id}}">Dashboard</a>
