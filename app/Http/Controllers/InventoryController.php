@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\Branch;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class InventoryController extends Controller
 {
@@ -43,17 +44,60 @@ class InventoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Book $book)
+    public function edit(Branch $branch, Book $book)
     {
-        //
+        return view('branches.inventory.edit', ['book' => $book, 'branch' => $branch]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Book $book)
+    public function update(Request $request, Branch $branch, Book $book)
     {
-        //
+
+        $allowedReasons = ['damaged', 'lost', 'theft'];
+
+        $validatedAttributes = $request->validate([
+            'quantity' => ['required', 'numeric', 'min:0'],
+            'reason' => ['required', 'string', Rule::in($allowedReasons)]
+        ]);
+
+
+        $branch->books->find($book)->pivot->update(['quantity' => $validatedAttributes['quantity']]);
+
+        return back();
+    }
+
+    public function transfer(Request $request, Branch $branch, Book $book)
+    {
+        $validatedAttributes = $request->validate([
+            'quantity' => ['required', 'numeric', 'min:0'],
+            'destination_branch_id' => ['required', 'numeric', 'exists:branches,id']
+        ]);
+
+        $book = $branch->books->find($book);
+
+        $destinationBranch = Branch::find($validatedAttributes['destination_branch_id']);
+        // check if destination branch stocks that book?
+        // if not, create a new entry in the pivot table?
+        // check if source has enough books to transfer
+        // if not, return an error message
+        // if yes, update the quantity in the pivot table for both branches
+
+
+
+//        if ($book->pivot->quantity < $validatedAttributes['quantity']) {
+//            return back()->withErrors(['quantity' => 'Not enough books in stock to transfer']);
+//        }
+
+
+
+//        $branch->books->find($book)->pivot->update(['quantity' => $validatedAttributes['quantity']]);
+//        $branch->books->find($book)->pivot->update(['branch_id' => $validatedAttributes['destination_branch_id']]);
+
+
+
+        return back();
     }
 
     /**
@@ -63,6 +107,9 @@ class InventoryController extends Controller
     {
         // TODO: Display a confirmation before deleting a book if quantity > 0
         // and do it anyway just do it doubly so if there are still books there.
+
+
+        // TODO: DO WE HAVE TO USE detatch() instead of delete()?
 
         $branch->books->find($book)->pivot->delete();
         return back();
