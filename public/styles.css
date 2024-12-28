@@ -894,11 +894,16 @@ table {
     overflow-y: scroll;
 }
 
+thead {
+    background-color: #f4f1fd;
+}
+
 /*.inventory-panes > div {*/
 /*    padding: 20px;*/
 /*    border: solid;*/
 /*    height: 60vh*/
 /*}*/
+
 
 
 .recent-purchases{

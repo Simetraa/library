@@ -23,56 +23,51 @@
         <div  class = "inventory-inputs">
             <input type="text" placeholder="Filter Reservations...">
         </div>
+        <table class="inventory-table">
+            <thead>
+            <th scope="col">Reservation ID</th>
+            <th scope="col">User ID</th>
+            <th scope="col">Email</th>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Branch Stock</th>
+            <th scope="col">Status</th>
+            </thead>
+            <tbody>
+            @foreach($reservations as $reservation)
+                @php
+                    // check if branch stock level < reservation quantity
+                    // TODO: We have to put a check here.
 
-        <div class="inventory-panes">
-            <div class="inventory-book-pane">
-                <table class="inventory-table">
-                    <thead>
-                    <th scope="col">Reservation ID</th>
-                    <th scope="col">User ID</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Author</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Branch Stock</th>
-                    <th scope="col">Status</th>
-                    </thead>
-                    <tbody>
-                    @foreach($reservations as $reservation)
-                        @php
-                            // check if branch stock level < reservation quantity
-                            // TODO: We have to put a check here.
+                    // $branch->books->first()->pivot->quantity
+                    $branchStock = $branch->books->find($reservation->book->id)->pivot->quantity;
+                    $reservationQuantity = $reservation->quantity;
 
-                            // $branch->books->first()->pivot->quantity
-                            $branchStock = $branch->books->find($reservation->book->id)->pivot->quantity;
-                            $reservationQuantity = $reservation->quantity;
+                    $isStockAvailable = $branchStock >= $reservationQuantity;
+                    $collected = $reservation->status === "collected";
+                    $canCollect = $isStockAvailable && !$collected;
+                @endphp
+                <tr>
+                    <td>{{ $reservation->id }}</td>
+                    <td>{{ $reservation->user->id }}</td>
+                    <td>{{ $reservation->user->email }}</td>
+                    <td>{{ $reservation->book->title }}</td>
+                    <td>{{ $reservation->book->author }}</td>
+                    <td>{{ $reservation->quantity }}</td>
+                    <td>{{ $branchStock }}</td>
+                    <td>{{ $reservation->status }}</td>
+                    <td>
 
-                            $isStockAvailable = $branchStock >= $reservationQuantity;
-                            $collected = $reservation->status === "collected";
-                            $canCollect = $isStockAvailable && !$collected;
-                        @endphp
-                        <tr>
-                            <td>{{ $reservation->id }}</td>
-                            <td>{{ $reservation->user->id }}</td>
-                            <td>{{ $reservation->user->email }}</td>
-                            <td>{{ $reservation->book->title }}</td>
-                            <td>{{ $reservation->book->author }}</td>
-                            <td>{{ $reservation->quantity }}</td>
-                            <td>{{ $branchStock }}</td>
-                            <td>{{ $reservation->status }}</td>
-                            <td>
-
-                                <form action="/reservations/{{$reservation->id}}" method="POST">
-                                    @csrf
-                                    <button type="submit" {{$canCollect ? "" : "disabled"}}>Fulfil</button>
-                                </form>
-                            </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-            </div>
-        </div>
+                        <form action="/reservations/{{$reservation->id}}" method="POST">
+                            @csrf
+                            <button type="submit" {{$canCollect ? "" : "disabled"}}>Fulfil</button>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
     </div>
 </div>
 </body>
