@@ -33,16 +33,20 @@
 
         @foreach($branches as $branch)
             <div class="branch-card">
-                <h2><a href="/branches/{{$branch->id}}">Branch</a></h2>
-                <p>Branch: {{ $branch->name }}</p>
-                <p>Id: {{ $branch->id }}</p>
+                <div>
+                    <h3>Branch: {{ $branch->name }}</h3>
+                    <p>Id: {{ $branch->id }}</p>
+                </div>
+                <div>
+                    <h3><a href="/branches/{{$branch->id}}">Manage Branch</a></h3>
+                </div>
             </div>
 
 
         @endforeach
     </div>
 
-<div class="header-row">
+{{--<div class="header-row">
     <h1>Branches</h1>
     @can('access-admin-pages')
         <a href="/branches/create" class="add-new-button">
@@ -64,7 +68,7 @@
         <p>Id: {{ $branch->id }}</p>
     @endforeach
 
-</div>
+</div>--}}
 
 
 
