@@ -50,17 +50,18 @@
 
 @endphp
 
-<div class="inventory-header">
-    <h1>{{$branch->name}} - Inventory</h1>
-</div>
-
-<div class="space-between">
-    <div class="inventory-inputs">
-        <form action="/branches/{{$branch->id}}/inventory">
-        <input name="search" type="text" placeholder="Filter inventory..." value="{{request('search')}}">
-        <x-dropdown name="sort-by"
-                    :value="request('sort-by')"
-                    :options="[
+<div class="sidebar-body">
+    {{-- side bar --}}
+    <x-dashboard-sidebar :branch="$branch"></x-dashboard-sidebar>
+    <div>
+        <h1>{{$branch->name}} - Inventory</h1>
+        <div class="space-between">
+            <div class="inventory-inputs">
+                <form action="/branches/{{$branch->id}}/inventory">
+                    <input name="search" type="text" placeholder="Filter inventory..." value="{{request('search')}}">
+                    <x-dropdown name="sort-by"
+                                :value="request('sort-by')"
+                                :options="[
                     ['ID', 'id'],
                     ['Title: A-Z', 'title-az'],
                     ['Title: Z-A', 'title-za'],
@@ -69,53 +70,52 @@
                     ['Quantity: Low - High', 'quantity-low-high'],
                     ['Quantity: High - Low', 'quantity-high-low'],
                 ]">
-        </x-dropdown>
-        </form>
-    </div>
-
-    <a href="/books/create" class="add-new-button">
-            <span class="material-symbols-outlined">
-                add
-            </span>
-        <span class="add-new-button-label">New</span>
-    </a>
-
-</div>
-<div class="inventory-panes">
-    <div class="inventory-book-pane">
-        <table class="inventory-table">
-            <thead>
-            <th scope="col">ID</th>
-            <th scope="col">Title</th>
-            <th scope="col">Author</th>
-            <th scope="col">Quantity</th>
-            </thead>
-            <tbody>
-            @foreach($books as $book)
-                <tr>
-                    <td>{{ $book->id }}</td>
-                    <td>{{ $book->title }}</td>
-                    <td>{{ $book->author }}</td>
-                    <td>
-                        <td>{{ $book->pivot->quantity }}</td>
-                    <td>
-                        <a href="/branches/{{$branch->id}}/inventory/{{$book->id}}">
-                            <span class="material-symbols-outlined">inventory_2</span>
-                        </a>
-                    </td>
-                    <td>
-                        <form method="POST" action="/branches/{{$branch->id}}/inventory/{{$book->id}}">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" id="delete_button">
-                                <span class="material-symbols-outlined">delete</span>
-                            </button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
+                    </x-dropdown>
+                </form>
+            </div>
+            <a href="/books/create" class="add-new-button">
+                    <span class="material-symbols-outlined">
+                        add
+                    </span>
+                <span class="add-new-button-label">New</span>
+            </a>
+        </div>
+        <div class="inventory-panes">
+            <div class="inventory-book-pane">
+                <table class="inventory-table">
+                    <thead>
+                    <th scope="col">ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Quantity</th>
+                    </thead>
+                    <tbody>
+                    @foreach($books as $book)
+                        <tr>
+                            <td>{{ $book->id }}</td>
+                            <td>{{ $book->title }}</td>
+                            <td>{{ $book->author }}</td>
+                            <td>{{ $book->pivot->quantity }}</td>
+                            <td>
+                                <a href="/branches/{{$branch->id}}/inventory/{{$book->id}}">
+                                    <span class="material-symbols-outlined">inventory_2</span>
+                                </a>
+                            </td>
+                            <td>
+                                <form method="POST" action="/branches/{{$branch->id}}/inventory/{{$book->id}}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" id="delete_button">
+                                        <span class="material-symbols-outlined">delete</span>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
 </body>

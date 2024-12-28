@@ -39,8 +39,9 @@
                     <button>Cancel reservation</button>
                 </form>
             </div>
-
-            <img src = '{{$reservation->book["cover_url"]}}' alt="book cover">
+            <div class="book-cover-reservation">
+                <img src = '{{$reservation->book["cover_url"]}}' alt="book cover">
+            </div>
         </div>
     @endforeach
 </div>

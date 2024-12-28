@@ -373,6 +373,54 @@ tbody tr:hover {
     padding-left: 10px;
 }
 
+
+.branch-container,.create-branch-container{
+    color: var(--dark-purple);
+    /*
+    margin: 50px 0;
+    */
+    width: 70vw;
+    margin:auto;
+}
+.create-branch-container{
+    width: 25vw;
+}
+
+.branch-container h1{
+    color: var(--dark-purple);
+}
+.create-branch-container h1{
+    margin-top:10px;
+}
+.branch-card,.create-branch-card{
+    background-color: var(--container-white);
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 4px 4px 2px 2px rgb(0 0 0 / 10%);
+    margin-bottom: 30px;
+    flex-direction: column;
+}
+.create-branch-card{
+    margin-top: 20px;
+    max-width: 25vw;
+}
+
+.branch-input-field{
+    display: flex;
+    justify-content: space-between;
+    margin:  10px;
+    align-items: center;
+}
+.branch-input-field input {
+    width: 60%;
+    padding: 5px;
+}
+/*.space-between {*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*    margin: 5px 0;*/
+/*}*/
+
 .edit-branch-container {
     background-color: var(--container-white);
     border-radius: 10px;
@@ -380,7 +428,7 @@ tbody tr:hover {
     /*height: 10vh;*/
     box-shadow: 4px 4px 2px 2px rgb(0 0 0 / 10%);
     margin: auto;
-    margin-top: 30px;
+    margin-top: 100px;
     width: 30vw;
 }
 
@@ -403,6 +451,7 @@ tbody tr:hover {
     width: 100%;
     align-items: center;
 }
+
 
 .account-info{
     display: flex;
@@ -486,7 +535,7 @@ tbody tr:hover {
     background-color: lightgray;
 }
 
-.edit-create-button {
+.edit-create-button,.edit-create-button-branch {
     background-color: var(--button-purple);
     padding: 15px 30px 15px 30px;
     width: 100%;
@@ -495,6 +544,9 @@ tbody tr:hover {
     border: none;
     margin-top: 40px;
     cursor: pointer;
+}
+.edit-create-button-branch{
+    margin-top: 20px;
 }
 .edit-create-button:hover {
     background-color: #3f3561;
@@ -797,11 +849,10 @@ td {
     flex-direction: row;
     gap: 8px;
     background-color: #f4f1fd;
+    width: 90vw;
+    margin:auto;
 }
 
-table {
-    width: 100vw;
-}
 
 .inventory-inputs {
     display: flex;
@@ -956,11 +1007,25 @@ nav a {
         display: none;
     }
 }
+@media (max-width: 720px) {
+    .book-cover-reservation{
+        display: none;
+    }
+}
+@media (max-width: 720px) {
+    .mobile-hr{
+        display: none;
+    }
+}
 
 .caps {
     text-transform: uppercase;
 }
 
+.sidebar-body{
+    display: flex;
+    flex-direction: row;
+}
 
 
 /* DASHBOARD */
@@ -990,7 +1055,7 @@ nav a {
     display: flex;
     flex-direction: column;
     font-size: 20px;
-    margin-top: 30px;
+    gap: 3px;
 }
 
 .dashboard-sidebar-links a {
@@ -1000,37 +1065,19 @@ nav a {
     background-color: #242a3e;
     color: #cbd5e0;
     padding: 15px;
+    text-decoration: none;
 }
 
 .dashboard-sidebar-links a:hover {
     background-color: #695aa0;
 }
-
-.dashboard-sidebar-links a {
-    text-decoration: none;
-    color: #cbd5e0;
-}
-
-#dashboard-delete-button{
-    background-color: #df3636;
-    font-size: 17px;
-    padding: 5px;
-    margin: 10px 20px;
-    border-radius: 5px;
-    border: none;
-    color: white;
-    cursor: pointer;
-}
-#dashboard-delete-button:hover{
-    background-color: #af2f2f;
-}
-
 .dashboard-body{
     padding: 20px;
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-rows: 33% 16.5% 16.5% 33%;
     gap: 15px;
+    /*height: 100%;*/
 }
 .dashboard-containers{
     background-color: rgba(255, 255, 255, 0.5);

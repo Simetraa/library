@@ -23,7 +23,11 @@ Route::controller(BookController::class)->group(function () {
     Route::get('/books', 'index')->middleware('can:access-staff-and-admin-pages');
     Route::post('/books', 'store')->middleware('can:access-staff-and-admin-pages');
     Route::get('/books/create', 'create')->middleware('can:access-staff-and-admin-pages');
+
+    Route::get('/books/{book}',  'show')->middleware('can:access-user-pages');
+
     Route::get('/books/{book}',  'show');
+
     Route::get('/books/{book}/edit', 'edit')->middleware('can:access-staff-and-admin-pages');
     Route::patch('/books/{book}', 'update')->middleware('can:access-staff-and-admin-pages');
     Route::patch('/books/{book}/toggleVisibility', 'toggleVisibility')->middleware('can:access-staff-and-admin-pages');
