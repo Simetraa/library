@@ -54,6 +54,7 @@
                         <td>{{ $sale->user->id }}</td>
                         <td>{{ $sale->user->email }}</td>
                         <td>{{ $sale->totalPrice() }}</td>
+
                     </tr>
             @endforeach
             </tbody>

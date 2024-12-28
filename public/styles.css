@@ -376,10 +376,7 @@ tbody tr:hover {
 
 .branch-container,.create-branch-container{
     color: var(--dark-purple);
-    /*
-    margin: 50px 0;
-    */
-    width: 70vw;
+    width: 60vw;
     margin:auto;
 }
 .create-branch-container{
@@ -398,11 +395,15 @@ tbody tr:hover {
     padding: 15px;
     box-shadow: 4px 4px 2px 2px rgb(0 0 0 / 10%);
     margin-bottom: 30px;
-    flex-direction: column;
+    flex-direction: row;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .create-branch-card{
     margin-top: 20px;
     max-width: 25vw;
+    flex-direction: column;
 }
 
 .branch-input-field{
@@ -852,6 +853,9 @@ td {
     width: 90vw;
     margin:auto;
 }
+.inventory-table{
+    width:90vw;
+}
 
 table {
     width: 100vw;
@@ -868,12 +872,20 @@ table {
     margin-left: 15px;
 }
 
-.inventory-header {
+.inventory-header,.book-inventory-header {
     display: flex;
     flex-direction: row;
     margin: 10px;
     align-items: center;
 }
+.book-inventory-header h1{
+    color: var(--dark-purple);
+}
+.book-inventory-header{
+    margin:auto;
+    width:90vw;
+}
+
 
 .branches-dropdown > *{
     background: none;
