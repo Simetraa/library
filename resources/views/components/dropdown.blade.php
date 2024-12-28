@@ -1,5 +1,8 @@
 @props(["name", "options", "value"])
 
+@php
+    $value = $value ?? "";
+@endphp
 {{-- we should work out how to access name from attributes instead. --}}
 <select {{ $attributes }} name="{{ $name }}">
     @foreach($options as $option)

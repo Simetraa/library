@@ -14,34 +14,7 @@
 
 <div class="dashboard">
     {{-- side bar --}}
-    <div class="dashboard-sidebar">
-        <div class="dashboard-branch-info">
-            <p>Branch: <x-branches-dropdown :current-branch="$branch"></x-branches-dropdown></p>
-            <p>Branch Id: {{ $branch->id }}</p>
-        </div>
-
-        <div class="dashboard-sidebar-links">
-            <a href="/branches/{{$branch->id}}/staff">
-                <span class="material-symbols-outlined">store</span>
-                <span>Staff</span>
-            </a>
-            <a href="/branches/{{$branch->id}}/inventory">
-                <span class="material-symbols-outlined">book</span>
-                <span>Inventory</span>
-            </a>
-            <a href="/branches/{{$branch->id}}/reservations">
-                <span class="material-symbols-outlined">confirmation_number</span>
-                <span>Reservations</span></a>
-            <a href="/branches/{{$branch->id}}/sales">
-                <span class="material-symbols-outlined">payments</span>
-                <span>Sales</span>
-            </a>
-            <a href="/branches/{{$branch->id}}/edit">
-                <span class="material-symbols-outlined">edit</span>
-                <span>Edit branch</span></a>
-        </div>
-
-    </div>
+    <x-dashboard-sidebar :branch="$branch"></x-dashboard-sidebar>
 
     {{--DASHBOARD--}}
     <div class="dashboard-body">

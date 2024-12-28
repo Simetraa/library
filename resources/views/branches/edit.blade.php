@@ -10,9 +10,11 @@
 </head>
 
 <body class="non-gradient-body">
-    <x-header></x-header>
-
-    <div class = "edit-branch-container">
+<x-header></x-header>
+<div class="sidebar-body">
+    {{-- side bar --}}
+    <x-dashboard-sidebar :branch="$branch"></x-dashboard-sidebar>
+    <div class="edit-branch-container">
         <div class="space-between">
             <h1>Edit Branch</h1>
             <button id="login-button">Submit</button>
@@ -39,6 +41,7 @@
             <button type="submit">Delete</button>
         </form>
     </div>
+</div>
 </body>
 </html>
 
