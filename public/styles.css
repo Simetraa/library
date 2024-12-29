@@ -118,17 +118,19 @@ a{
 .gap-8 a:hover{
     color: #ac9dde;
 }
-.item-card{
+.item-card,.reservation-card,.sale-card,.branch-card,.create-branch-card{
     background-color: var(--container-white);
     border-radius: 10px;
     padding: 15px;
+    box-shadow: 4px 4px 2px 2px rgb(0 0 0 / 10%);
+    display: flex;
+    justify-content: space-between;
+}
+.item-card{
     max-width: 200px;
     min-width: 200px;
     height: 400px;
-    box-shadow: 4px 4px 2px 2px rgb(0 0 0 / 10%);
-    display: flex;
     flex-direction: column;
-    justify-content: space-between;
 }
 .item-link{
     text-decoration: none;
@@ -289,13 +291,6 @@ tbody tr:hover {
     cursor: pointer;
 }
 .reservation-card {
-    background-color: var(--container-white);
-    border-radius: 10px;
-    padding: 15px;
-    /*height: 400px;*/
-    box-shadow: 4px 4px 2px 2px rgb(0 0 0 / 10%);
-    display: flex;
-    justify-content: space-between;
     margin-bottom: 30px;
 }
 
@@ -316,11 +311,6 @@ tbody tr:hover {
     /*margin: 0;*/
 }
 .sale-card{
-    background-color: var(--container-white);
-    border-radius: 10px;
-    padding: 15px;
-    /*height: 10vh;*/
-    box-shadow: 4px 4px 2px 2px rgb(0 0 0 / 10%);
     margin-bottom: 30px;
     width: 70vw;
     flex-direction: column;
@@ -390,14 +380,8 @@ tbody tr:hover {
     margin-top:10px;
 }
 .branch-card,.create-branch-card{
-    background-color: var(--container-white);
-    border-radius: 10px;
-    padding: 15px;
-    box-shadow: 4px 4px 2px 2px rgb(0 0 0 / 10%);
     margin-bottom: 30px;
     flex-direction: row;
-    display:flex;
-    justify-content: space-between;
     align-items: center;
 }
 .create-branch-card{
