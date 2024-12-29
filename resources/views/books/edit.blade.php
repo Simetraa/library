@@ -47,7 +47,7 @@
                     <input value={{$book["price"]}} type="number" min="1" step="any" name="price">
                 </div>
 
-                    <button class="edit-create-button">Submit</button>
+                    <button class="button-p" id="edit-create-button">Submit</button>
         </form>
     </div>
 </div>

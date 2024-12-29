@@ -28,7 +28,7 @@
                     <div class="">
                         <div class = "space-between">
                             <label for="email">Email: </label>
-                            <input type="email" name="email" value="{{ Auth::user()->email }}">
+                            <input type="email" name="email" value="{{ Auth::user()->email }}" class="input">
                         </div>
 
                         @error('email')
@@ -50,7 +50,7 @@
                     {{ $message }}
                     @enderror
 
-                    <button class="profile-button" type="submit">Save changes</button>
+                    <button class="button-p" id="profile-button" type="submit">Save changes</button>
                 </form>
 
             <hr>
@@ -60,22 +60,22 @@
                     @method('PUT')
                     <div class = "space-between">
                         <label for="current_password">Current password:</label>
-                        <input type="password" name="current_password">
+                        <input type="password" name="current_password" class="input">
                     </div>
                     <div class = "space-between">
                         <label for="password">New password: </label>
-                        <input type="password" name="password">
+                        <input type="password" name="password" class="input">
                     </div>
                     <div class = "space-between">
                         <label for="password">Confirm password: </label>
-                        <input type="password" name="password_confirmation">
+                        <input type="password" name="password_confirmation" class="input">
                     </div>
 
                     @error('password')
                     {{ $message }}
                     @enderror
 
-                    <button class="profile-button">Change password</button>
+                    <button class="button-p" id="profile-button">Change password</button>
                 </form>
         </div>
 
@@ -86,7 +86,7 @@
             <form method="POST" action="{{ route('account.destroy') }}">
                 @csrf
                 @method('DELETE')
-                <button name="delete" class="delete-profile-button">Delete account</button>
+                <button name="delete" class="button-r" id="delete-profile-button">Delete account</button>
             </form>
 
         </div>

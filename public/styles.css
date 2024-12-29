@@ -2,36 +2,112 @@
 @import url(https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined);
 
 
-/*THIS IS WHAT WE ARE WORING ON*/
+
 :root {
     --container-white: #ffffffc4;
     --button-purple: #5b5db1;
     --purple-background: rgb(131 116 217 / 80%);
     --dark-purple: #4b3f72;
-
+    --gradient-bg: linear-gradient(139deg, rgba(160, 90, 156, 1) 0%, rgb(131 116 217 / 80%) 66%, rgba(241, 242, 242, 1) 100%);
+    --box-shadow: 4px 4px 2px 2px rgb(0 0 0 / 10%);
 }
 
-body {
-    margin: 0;
-    padding: 0;
-    font-family: "Poppins", sans-serif;
-    background-color: #FEFAE0;
-}
-.gradient-body{
+/* Body styles */
+.gradient-body, .non-gradient-body {
     margin: 0;
     padding: 0;
     font-family: "Arial", sans-serif;
-    background: rgb(160,90,156);
-    background: linear-gradient(139deg, rgba(160, 90, 156, 1) 0%, rgb(131 116 217 / 80%) 66%, rgba(241, 242, 242, 1) 100%);
     height: 100vh;
 }
-.non-gradient-body{
-    margin: 0;
-    padding: 0;
-    font-family: "Arial", sans-serif;
-    background: rgb(131 116 217 / 80%);
-    height: 100vh;
+
+.gradient-body {
+    background: var(--gradient-bg);
 }
+
+.non-gradient-body {
+    background: var(--purple-background);
+}
+/* Body styles */
+
+/* Header styles */
+.page-header {
+    display: flex;
+    background-color: var(--dark-purple);
+    justify-content: space-between;
+    align-items: center;
+    color:#FEFAE0;
+    padding: 0 25px;
+}
+
+.gradient-body .page-header, .non-gradient-body .page-header{
+    background-color: #f4f1fd;
+}
+
+.gradient-body .page-header h1, .non-gradient-body .page-header h1 {
+    color: var(--dark-purple);
+}
+
+.gradient-body .page-header button, .non-gradient-body .page-header button{
+    background-color: var(--button-purple);
+}
+/* Header styles */
+
+/* classes : card, item-card, branch-card, container, input, dropdown  */
+
+/* Button styles */
+.button-p, .button-w, .button-r {
+    cursor: pointer;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.button-p {
+    background: var(--button-purple);
+    color: white;
+}
+
+.button-p:hover {
+    background: var(--dark-purple);
+}
+
+.button-w {
+    background: var(--container-white);
+    color: var(--dark-purple);
+}
+
+.button-w:hover {
+    background: lightgray;
+}
+
+.button-r {
+    background: #d41212;
+    color: white;
+}
+
+.button-r:hover {
+    background-color: #b80909;
+}
+/* Button styles */
+
+/* Input and dropdown styles */
+dropdown {
+
+}
+
+.input {
+    background: var(--container-white);
+    padding: 5px;
+    border: none;
+    cursor: text;
+    border-radius: 5px;
+}
+
+.input:focus {
+    outline: none;
+}
+/* Input and dropdown styles */
+
 
 .form-error{
     margin: 0;
@@ -55,7 +131,6 @@ body {
     justify-content: center;
     padding: 16px;
     gap:32px;
-
 }
 .container-row-reverse > div {
     display: flex;
@@ -63,14 +138,7 @@ body {
     gap:8px;
     width: 100%;
 }
-.page-header {
-    display: flex;
-    background-color: var(--dark-purple);
-    justify-content: space-between;
-    align-items: center;
-    color:#FEFAE0;
-    padding: 0 25px;
-}
+
 h1 a {
     text-decoration: none;
 }
@@ -78,17 +146,6 @@ a{
     color: var(--dark-purple);
 }
 
-.gradient-body .page-header, .non-gradient-body .page-header{
-    background-color: #f4f1fd;
-}
-
-.gradient-body .page-header h1, .non-gradient-body .page-header h1 {
-    color: var(--dark-purple);
-}
-
-.gradient-body .page-header button, .non-gradient-body .page-header button{
-    background-color: var(--button-purple);
-}
 
 .header-buttons {
     display: flex;
@@ -171,66 +228,33 @@ tbody tr:hover {
     /*margin: 30px 30px 0 30px;*/
 }
 
-.search-results input {
+/* searchbar */
+#search-catalogue {
     height: 30px;
-    border-radius: 10px;
-    border: none;
     padding: 5px 20px;
-    background: var(--container-white);
-    box-shadow: 4px 4px 2px 2px rgb(0 0 0 / 10%);
     min-width: 50%;
     width: 55vw;
     margin-right: 30px;
+    box-shadow: var(--box-shadow);
+    border-radius: 10px;
 }
 
 .search-results input:focus {
     outline: none;
 }
 
-.search-button {
-    background: var(--container-white);
+#search-button {
     box-shadow: 4px 4px 2px 2px rgb(0 0 0 / 10%);
-    border-radius: 10px;
     width: 100px;
     height: 40px;
-    padding: 10px;
-    border: none;
+    border-radius: 10px;
 }
-
-.search-button:hover {
-    background-color: lightgray;
-    cursor: pointer;
-}
-
 
 .search-sort-by{
     display: flex;
     gap: 32px;
     justify-content: flex-start;
 }
-
-
-/*.grid-button {*/
-/*    height: 40px;*/
-/*    width: 50px;*/
-/*    padding: 10px;*/
-/*    border: none;*/
-/*    border-radius: 0px 10px 10px 0px;*/
-/*    background: var(--container-white);*/
-/*    box-shadow: 4px 4px 2px 2px rgb(0 0 0 / 10%);*/
-/*    cursor: pointer;*/
-/*}*/
-
-/*.list-button {*/
-/*    height: 40px;*/
-/*    width: 50px;*/
-/*    padding: 10px;*/
-/*    border: none;*/
-/*    border-radius: 10px 0px 0px 10px;*/
-/*    background: var(--container-white);*/
-/*    box-shadow: 4px 4px 2px 2px rgb(0 0 0 / 10%);*/
-/*    cursor: pointer;*/
-/*}*/
 
 #dropdown {
     background: var(--container-white);
@@ -262,18 +286,6 @@ tbody tr:hover {
     margin: 0;
 }
 
-.reservation-card button {
-    background-color: var(--button-purple);
-    border-radius: 5px;
-    padding: 10px 10px;
-    border:0px;
-    height: 50px;
-    width: 200px;
-    color:white;
-    cursor: pointer;
-
-}
-
 .reservation-card p {
     font-size: large;
 }
@@ -284,10 +296,7 @@ tbody tr:hover {
     justify-content: space-between;
 }
 
-.reservation-card button:hover {
-    background-color: var(--dark-purple);
-    cursor: pointer;
-}
+
 .reservation-card {
     background-color: var(--container-white);
     border-radius: 10px;
@@ -365,12 +374,9 @@ tbody tr:hover {
     width: 50vw;
 }
 
-.account-container input, .accounts-container dropdown{
+.account-container input{
     height: 25px;
     width: 150px;
-    border: none;
-    border-radius: 5px;
-    padding-left: 10px;
 }
 
 
@@ -536,21 +542,13 @@ tbody tr:hover {
     background-color: lightgray;
 }
 
-.edit-create-button,.edit-create-button-branch {
-    background-color: var(--button-purple);
+#edit-create-button,.edit-create-button-branch {
     padding: 15px 30px 15px 30px;
     width: 100%;
-    border-radius: 5px;
-    color: white;
-    border: none;
     margin-top: 40px;
-    cursor: pointer;
 }
 .edit-create-button-branch{
     margin-top: 20px;
-}
-.edit-create-button:hover {
-    background-color: #3f3561;
 }
 
 
@@ -564,56 +562,26 @@ tbody tr:hover {
 .form-link:hover{
     background-color: #dcd9e3;
 }
-.form-button{
-    background-color: var(--button-purple);
-    padding: 10px;
+#form-button{
     margin-top: 10px;
-    border: 0;
     border-radius: 5px;
-    color: white;
-    cursor: pointer;
     width: 25%;
 }
-.profile-button{
-    background-color: var(--button-purple);
-    padding: 5px;
+#profile-button{
     margin-top: 10px;
-    border: 0;
-    border-radius: 5px;
-    color: white;
-    cursor: pointer;
     width: 50%;
     height: 35px;
 }
-.profile-button:hover{
-    background-color: #3f3561;
-}
-.delete-profile-button {
-    background-color: #d41212;
-    padding: 5px;
+
+#delete-profile-button {
     margin-top: 10px;
-    border: 0;
-    border-radius: 5px;
-    color: white;
-    cursor: pointer;
     width: 10vw;
     height: 40px;
 }
-.delete-profile-button:hover {
-    background-color: #b80909;
 
-}
-.form-button:hover{
-    background-color: #3f3561;
-}
 
-.form-input {
-    padding: 5px;
+#form-input {
     width: 80%;
-    border: 0;
-}
-.form-input:focus{
-    border: 1px solid black;
 }
 
 .book-container{
@@ -781,14 +749,6 @@ img {
     color:white;
     cursor: pointer;
 }
-#reserve-container button:hover {
-    background-color: var(--dark-purple);
-    cursor: pointer;
-}
-
-#reserve-container label {
-
-}
 
 .text-input-field{
     width: 35px;
@@ -900,18 +860,9 @@ td {
 #edit_button:hover, #delete_button:hover{
     color: #8486bd;
 }
-
-
 table {
     overflow-y: scroll;
 }
-
-/*.inventory-panes > div {*/
-/*    padding: 20px;*/
-/*    border: solid;*/
-/*    height: 60vh*/
-/*}*/
-
 
 .recent-purchases{
     height: 300px;
