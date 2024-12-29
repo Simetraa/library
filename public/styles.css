@@ -108,6 +108,18 @@ dropdown {
 }
 /* Input and dropdown styles */
 
+/* Container styles */
+.bg-white-container {
+    text-align: center;
+    background-color: var(--container-white);
+    box-shadow: var(--box-shadow);
+    margin: 100px auto auto;
+    width: 400px;
+    padding: 25px;
+    border-radius: 6px;
+}
+/* Container styles */
+
 
 .form-error{
     margin: 0;
@@ -146,7 +158,6 @@ a{
     color: var(--dark-purple);
 }
 
-
 .header-buttons {
     display: flex;
     gap: 8px;
@@ -169,9 +180,6 @@ a{
     text-decoration: none;
     margin-right: 15px;
 }
-
-
-
 .gap-8 a:hover{
     color: #ac9dde;
 }
@@ -363,18 +371,10 @@ tbody tr:hover {
     display: flex;
     justify-content: space-between;
 }
-.account-container{
-    background-color: var(--container-white);
-    border-radius: 10px;
-    padding: 15px;
-    /*height: 10vh;*/
-    box-shadow: 4px 4px 2px 2px rgb(0 0 0 / 10%);
-    margin: auto;
-    margin-top: 30px;
+#account-container{
     width: 50vw;
 }
-
-.account-container input{
+#account-container input{
     height: 25px;
     width: 150px;
 }
@@ -428,22 +428,15 @@ tbody tr:hover {
 /*    margin: 5px 0;*/
 /*}*/
 
-.edit-branch-container {
-    background-color: var(--container-white);
-    border-radius: 10px;
-    padding: 30px;
-    /*height: 10vh;*/
-    box-shadow: 4px 4px 2px 2px rgb(0 0 0 / 10%);
-    margin: auto;
-    margin-top: 100px;
+#edit-branch-container {
     width: 30vw;
 }
 
-.edit-branch-container h1 {
+#edit-branch-container h1 {
     color: var(--dark-purple);
 }
 
-.edit-branch-container input, .edit-branch-container dropdown{
+#edit-branch-container input, #edit-branch-container dropdown{
     height: 25px;
     width: 200px;
     border: none;
@@ -471,7 +464,7 @@ tbody tr:hover {
     display: grid;
 }
 
-.update-password-conatiner{
+.update-password-container{
     margin: 15px;
     width: 50%;
     height: 100%;
@@ -497,66 +490,45 @@ tbody tr:hover {
     outline: none;
 }
 
-
-
-.header-buttons button {
-    background-color: #1f2041;
-    border-radius: 5px;
-    padding: 10px 10px;
-    border: 0px;
-    height: 35px;
-    color:white;
-    cursor: pointer;
-}
-
-
-
-#login-button {
-    background-color: var(--button-purple);
-    padding: 10px;
-    margin-top: 10px;
-    border: 0;
-    border-radius: 5px;
-    color: white;
+#login-button, #signup-button {
     cursor: pointer;
     width: 70px;
     text-decoration: none;
     text-align: center;
+    padding: 10px;
+    margin-top: 10px;
+    border: 0;
+    border-radius: 5px;
+}
+
+#login-button {
+    background-color: var(--button-purple);
+    color: white;
 }
 #login-button:hover {
     background-color: #3f3561;
 }
 #signup-button {
     background: none;
-    padding: 10px;
-    margin-top: 10px;
-    border: 0;
-    border-radius: 5px;
     color: var(--button-purple);
-    cursor: pointer;
-    width: 70px;
-    text-decoration: none;
-    text-align: center;
 }
 #signup-button:hover {
     background-color: lightgray;
 }
 
-#edit-create-button,.edit-create-button-branch {
+#edit-create-button,#edit-create-button-branch {
     padding: 15px 30px 15px 30px;
     width: 100%;
     margin-top: 40px;
 }
-.edit-create-button-branch{
+#edit-create-button-branch{
     margin-top: 20px;
 }
 
 
 .form-link{
-    /*text-decoration: none;*/
     background-color: #f4f1fd;
     color: var(--dark-purple);
-    /*width: 80px;*/
     padding: 5px;
 }
 .form-link:hover{
@@ -584,23 +556,14 @@ tbody tr:hover {
     width: 80%;
 }
 
-.book-container{
+#book-container{
     color: var(--button-purple);
-    /*text-align: left;*/
-    background-color: #f4f1fd;
-    /*margin: auto;*/
-    /*margin-top: 100px;*/
     margin: 30px;
     width: 25%;
     max-width: 600px;
-    padding: 25px;
-    border-radius: 6px;
-    /*align-items: center;*/
-    /*min-height: 550px;*/
-    box-shadow: 4px 4px 2px 2px rgb(0 0 0 / 10%);
 }
 
-.book-container h1{
+#book-container h1{
     text-align: center;
     margin-bottom: 35px;
 }
@@ -636,17 +599,7 @@ img {
     width: 60px;
 }
 
-.login-container {
-    text-align: center;
-    background-color: #f4f1fd;
-    margin: auto;
-    margin-top: 100px;
-    width: 400px;
-    padding: 25px;
-    border-radius: 6px;
-}
-
-.login-container form{
+#login-container form, #sign-up-container form{
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -654,38 +607,13 @@ img {
     gap: 10px;
     padding: 25px;
 }
-.login-container form input{
+#login-container form input, #sign-up-container form input{
     border-radius: 6px;
     padding: 5px;
     width: 80%;
 }
 
-
-.sign-up-container {
-    text-align: center;
-    background-color: #f4f1fd;
-    margin: auto;
-    margin-top: 100px;
-    width: 400px;
-    padding: 25px;
-    border-radius: 6px;
-    box-shadow: 4px 4px 2px 2px rgb(0 0 0 / 10%);
-}
-.sign-up-container form{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    padding: 10px;
-}
-.sign-up-container form input{
-    border-radius: 6px;
-    padding: 5px;
-    width: 80%;
-}
-
-.sign-up-container h2, .login-container h2  {
+#sign-up-container h2, #login-container h2  {
     color: var(--dark-purple);
     font-size: 30px;
 }
@@ -702,14 +630,14 @@ img {
     max-width: 400px;
     height: 100%;
     /*padding: 20px;*/
-    margin: 25px 0px 25px 25px;
+    margin: 25px 0 25px 25px;
     align-content: center;
 }
 
 .book-cover img {
     max-height: 550px;
     border-radius: 10px;
-    box-shadow: 4px 4px 2px 2px rgb(0 0 0 / 10%);
+    box-shadow: var(--box-shadow);
 }
 
 .book-info-container{
@@ -725,29 +653,15 @@ img {
     border-radius: 10px;
     padding: 0px 25px;
     margin: 10px;
-    box-shadow: 4px 4px 2px 2px rgb(0 0 0 / 10%);
+    box-shadow: var(--box-shadow);
 }
-
-
-
 #reserve-container {
     padding: 15px 25px;
     margin-top: 50px;
-
-    /*display: flex;*/
-    /*justify-content: space-between;*/
 }
-
-
-
 #reserve-container button {
     background-color: var(--button-purple);
-    border-radius: 5px;
-    padding: 10px 10px;
-    border:0px;
     height: 35px;
-    color:white;
-    cursor: pointer;
 }
 
 .text-input-field{
@@ -778,18 +692,6 @@ img {
 .stock-info .book-info {
     width: 100%;
 }
-
-.dashboard-container{
-    padding: 20px;
-    display: grid;
-    justify-content: center;
-    grid-template-columns: 40% 40%;
-    gap: 20px;
-    overflow: hidden;
-}
-
-
-
 .paragraph-truncate {
     display: -webkit-box;
     overflow: hidden;
@@ -843,7 +745,6 @@ td {
     width:90vw;
 }
 
-
 .branches-dropdown > *{
     background: none;
     font-size: 30px;
@@ -862,32 +763,6 @@ td {
 }
 table {
     overflow-y: scroll;
-}
-
-.recent-purchases{
-    height: 300px;
-    background-color: var(--container-white);
-    border-radius: 10px;
-    box-shadow: 4px 4px 2px 2px rgb(0 0 0 / 10%);
-}
-.revenue{
-    height: 300px;
-    background-color: var(--container-white);
-    border-radius: 10px;
-    box-shadow: 4px 4px 2px 2px rgb(0 0 0 / 10%);
-
-}
-.pie-chart{
-    height: 300px;
-    background-color: var(--container-white);
-    border-radius: 10px;
-    box-shadow: 4px 4px 2px 2px rgb(0 0 0 / 10%);
-}
-.line-graph{
-    height: 300px;
-    background-color: var(--container-white);
-    border-radius: 10px;
-    box-shadow: 4px 4px 2px 2px rgb(0 0 0 / 10%);
 }
 
 .flex-horizontal {
@@ -958,11 +833,6 @@ nav a {
     .genres-button {
         display:none;
     }
-
-
-    /*#filters {*/
-    /*    display:flex;*/
-    /*}*/
 }
 
 @media (max-width: 720px) {
@@ -990,9 +860,7 @@ nav a {
     flex-direction: row;
 }
 
-
 /* DASHBOARD */
-
 .dashboard{
     display: flex;
     flex-direction: row;

@@ -17,7 +17,7 @@
 {{--  input fields for email, password, branch, reservations, purchases, delete account  --}}
 
 <div>
-    <div class="account-container">
+    <div class="bg-white-container" id="account-container">
         <h1 style="margin-left: 15px">Account</h1>
         <hr>
         <div class="account-info">
@@ -54,7 +54,7 @@
                 </form>
 
             <hr>
-                <form method="POST" action="/account/password" class="update-password-conatiner">
+                <form method="POST" action="/account/password" class="update-password-container">
                     <h2>Update password</h2>
                     @csrf
                     @method('PUT')

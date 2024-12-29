@@ -15,7 +15,7 @@
 <body class="non-gradient-body">
 <x-header></x-header>
 <div>
-    <div class="account-container">
+    <div class="bg-white-container" id="account-container">
         <h1 style="margin-left: 15px">Account</h1>
         <hr>
         <div class="account-info">
@@ -78,7 +78,7 @@
             @endcan
 
             <hr>
-            <form method="POST" action="/branches/{{$branch->id}}/staff/{{$user->id}}/password" class="update-password-conatiner">
+            <form method="POST" action="/branches/{{$branch->id}}/staff/{{$user->id}}/password" class="update-password-container">
                 <h2>Update password</h2>
                 @csrf
                 @method('PUT')

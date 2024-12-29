@@ -10,7 +10,7 @@
 </head>
 <body class="gradient-body">
     <x-header></x-header>
-    <div class="sign-up-container">
+    <div class="bg-white-container" id="sign-up-container">
         <h2>Register</h2>
         <form method="POST" action="/register">
             @csrf

@@ -11,7 +11,7 @@
 </head>
 <body class="gradient-body">
     <x-header></x-header>
-    <div class="login-container">
+    <div class="bg-white-container" id="login-container">
         <h2>Log In</h2>
         <form method="POST" action="/login">
             @csrf
