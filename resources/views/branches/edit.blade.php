@@ -14,7 +14,7 @@
 <div class="sidebar-body">
     {{-- side bar --}}
     <x-dashboard-sidebar :branch="$branch"></x-dashboard-sidebar>
-    <div class="edit-branch-container">
+    <div class="bg-white-container" id="edit-branch-container">
         <div class="space-between">
             <h1>Edit Branch</h1>
             <button id="login-button">Submit</button>

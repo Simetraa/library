@@ -10,13 +10,13 @@
 </head>
 <body class="gradient-body">
     <x-header></x-header>
-    <div class="sign-up-container">
+    <div class="bg-white-container" id="sign-up-container">
         <h2>Register</h2>
         <form method="POST" action="/register">
             @csrf
-            <input type="email" name="email" class="form-input" placeholder="Email" value="{{old('email')}}" required>
-            <input type="password" name="password" class="form-input" placeholder="Password" required>
-            <input type="password" name="password_confirmation" class="form-input" placeholder="Re-enter password" required>
+            <input type="email" name="email" class="input" id="form-input" placeholder="Email" value="{{old('email')}}" required>
+            <input type="password" name="password" class="input" id="form-input" placeholder="Password" required>
+            <input type="password" name="password_confirmation" class="input" id="form-input" placeholder="Re-enter password" required>
             @error('password')
             <p class="form-error">Passwords do not match</p>
             @enderror
@@ -30,7 +30,7 @@
             {{ $message }}
             @enderror
 
-            <button class="form-button">Register</button>
+            <button class="button-p" id="form-button">Register</button>
         </form>
         <form>
             <a href="/login" class="form-link">Already have an account?</a>

@@ -17,7 +17,7 @@
             @csrf
             <label for="title">ISBN:</label>
             <input name="isbn">
-            <button type="submit">Autofill Form</button>
+            <button type="submit" class="button-p">Autofill Form</button>
         </form>
 
         @php
@@ -69,7 +69,7 @@
                 <input type="date" name="publication-date" value="{{$publicationDate}}">
             </div>
 
-            <button type="submit" class = "edit-create-button">Submit</button>
+            <button type="submit" class="button-p" id="edit-create-button">Submit</button>
         </form>
     </div>
 </div>
