@@ -10,20 +10,22 @@
 
 <body class="non-gradient-body">
 <x-header></x-header>
+    <div class="book-inventory-header">
+        <h1>Index</h1>
+        <div class="space-between">
+            <div class="inventory-inputs">
+                <input type="text" placeholder="Filter inventory...">
 
-    <h1>Index</h1>
-    <div class="space-between">
-        <div class="inventory-inputs">
-            <input type="text" placeholder="Filter inventory...">
-
-        </div>
-        <a href="/books/create" class="add-new-button">
+            </div>
+            <a href="/books/create" class="add-new-button">
             <span class="material-symbols-outlined">
                 add
             </span>
-            <span class="add-new-button-label">New</span>
-        </a>
+                <span class="add-new-button-label">New</span>
+            </a>
+        </div>
     </div>
+
 
 <div class="inventory-panes">
     <div class="inventory-book-pane">

@@ -11,17 +11,17 @@
 </head>
 <body class="gradient-body">
     <x-header></x-header>
-    <div class="login-container">
+    <div class="bg-white-container" id="login-container">
         <h2>Log In</h2>
         <form method="POST" action="/login">
             @csrf
 
-            <input type="email" name="email" class="form-input" placeholder="Email" value="{{old('email')}}" required>
-            <input type="password" name="password" class="form-input" placeholder="Password" required>
+            <input type="email" name="email" class="input" id="form-input" placeholder="Email" value="{{old('email')}}" required>
+            <input type="password" name="password" class="input" id="form-input" placeholder="Password" required>
             @error('email')
                 <p class="form-error">Email and password do not match</p>
             @enderror
-            <button type="submit" class="form-button">Login</button>
+            <button type="submit" class="button-p" id="form-button">Login</button>
             <a href="/register" class="form-link">Dont have an account?</a>
         </form>
     </div>

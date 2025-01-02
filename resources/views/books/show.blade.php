@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book</title>
-    <link rel="stylesheet" href="{{ asset('styles.css') }}?ts=<?=time()?>"/>
-    <link rel="stylesheet" href="{{ asset('mobile.css') }}?ts=<?=time()?>" media="only screen and (max-width: 720px)"/>
+    <link rel="stylesheet" href="{{ asset('styles.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('mobile.css') }}" media="only screen and (max-width: 720px)"/>
 
 </head>
 
@@ -74,7 +74,7 @@
                                             id="reserve-dropdown">
                                 </x-dropdown>
                             </div>
-                            <button>Reserve</button>
+                            <button class="button-p">Reserve</button>
                         </div>
                     </form>
                 </div>

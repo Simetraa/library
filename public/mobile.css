@@ -132,6 +132,10 @@
 .create-branch-card{
     min-width: 70vw;
 }
+.branch-card{
+    flex-direction: column;
+    align-items: flex-start;
+}
 
 .sale-container{
     margin:auto;

@@ -36,7 +36,7 @@
                 <form method="POST" action="/reservations/{{ $reservation->id }}">
                     @csrf
                     @method('DELETE')
-                    <button>Cancel reservation</button>
+                    <button class="button-r">Cancel reservation</button>
                 </form>
             </div>
             <div class="book-cover-reservation">

@@ -18,7 +18,7 @@
 <div class="sidebar-body">
     {{-- side bar --}}
     <x-dashboard-sidebar :branch="$branch"></x-dashboard-sidebar>
-    <div>
+    <div class="branch-tables">
         <h1>{{$branch->name}} - Sales</h1>
         <div class="space-between">
             <div class="inventory-inputs">

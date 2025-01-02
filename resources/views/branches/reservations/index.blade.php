@@ -18,7 +18,7 @@
 <div class="sidebar-body">
     {{-- side bar --}}
     <x-dashboard-sidebar :branch="$branch"></x-dashboard-sidebar>
-    <div>
+    <div class="branch-tables">
         <h1>{{$branch->name}} - Reservations</h1>
         <div  class = "inventory-inputs">
             <input type="text" placeholder="Filter Reservations...">

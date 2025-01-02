@@ -24,7 +24,7 @@
                     <label for="name">Branch Name:</label>
                     <input type="text" name="name" id="name" required>
                 </div>
-                <button type="submit" class="edit-create-button-branch">Submit</button>
+                <button type="submit" class="button-p" id="edit-create-button-branch">Submit</button>
             </form>
         </div>
     </div>

@@ -47,13 +47,13 @@
             $books = $books->sortBy('id');
             break;
     }
-
 @endphp
+
 
 <div class="sidebar-body">
     {{-- side bar --}}
     <x-dashboard-sidebar :branch="$branch"></x-dashboard-sidebar>
-    <div>
+    <div class="branch-tables">
         <h1>{{$branch->name}} - Inventory</h1>
         <div class="space-between">
             <div class="inventory-inputs">
@@ -117,9 +117,11 @@
                     </tbody>
                 </table>
             </div>
+
         </div>
     </div>
 </div>
+
 </body>
 
 </html>

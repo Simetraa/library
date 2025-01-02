@@ -30,7 +30,7 @@
 
                     <form method="POST" action="/logout">
                 @csrf
-                <button>Log out</button>
+                <button class="button-p">Log out</button>
             </form>
         @endauth
     </div>

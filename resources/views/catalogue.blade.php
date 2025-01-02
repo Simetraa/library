@@ -18,8 +18,8 @@
             <div id='search' class="search-results">
                 <div class="search-sort-by">
                     <div class="search-options">
-                        <input type="text" name="search" placeholder="Search the catalogue" value="{{ $search ?? "" }}">
-                        <button class="search-button" id="">Search</button>
+                        <input class="input" id="search-catalogue" type="text" name="search" placeholder="Search the catalogue" value="{{ $search ?? "" }}">
+                        <button class="button-w" id="search-button">Search</button>
                     </div>
 
 

@@ -15,7 +15,7 @@
 <body class="non-gradient-body">
 <x-header></x-header>
 <div>
-    <div class="account-container">
+    <div class="bg-white-container" id="account-container">
         <h1 style="margin-left: 15px">Account</h1>
         <hr>
         <div class="account-info">
@@ -34,7 +34,7 @@
                     <div class="">
                         <div class = "space-between">
                             <label for="email">Email: </label>
-                            <input type="email" name="email" value="{{ $user->email }}">
+                            <input type="email" name="email" value="{{ $user->email }}" class="input">
                         </div>
 
                         @error('email')
@@ -53,7 +53,7 @@
                     {{ $message }}
                     @enderror
 
-                    <button class="profile-button" type="submit">Save changes</button>
+                    <button class="button-p" id="profile-button" type="submit">Save changes</button>
                 </form>
             @endcan
             @can('access-staff-pages')
@@ -65,7 +65,7 @@
                         <div class="">
                             <div class = "space-between">
                                 <label for="email">Email: </label>
-                                <input type="email" name="email" value="{{ $user->email }}" disabled>
+                                <input type="email" name="email" value="{{ $user->email }}" class="input" disabled>
                             </div>
                         </div>
 
@@ -78,21 +78,21 @@
             @endcan
 
             <hr>
-            <form method="POST" action="/branches/{{$branch->id}}/staff/{{$user->id}}/password" class="update-password-conatiner">
+            <form method="POST" action="/branches/{{$branch->id}}/staff/{{$user->id}}/password" class="update-password-container">
                 <h2>Update password</h2>
                 @csrf
                 @method('PUT')
                 <div class = "space-between">
                     <label for="current_password">Current password:</label>
-                    <input type="password" name="current_password">
+                    <input type="password" name="current_password" class="input">
                 </div>
                 <div class = "space-between">
                     <label for="password">New password: </label>
-                    <input type="password" name="password">
+                    <input type="password" name="password" class="input">
                 </div>
                 <div class = "space-between">
                     <label for="password">Confirm password: </label>
-                    <input type="password" name="password_confirmation">
+                    <input type="password" name="password_confirmation" class="input">
                 </div>
 
 
@@ -100,7 +100,7 @@
                 {{ $message }}
                 @enderror
 
-                <button class="profile-button">Change password</button>
+                <button class="button-p" id="profile-button">Change password</button>
             </form>
         </div>
             @can('access-admin-pages')
@@ -109,7 +109,7 @@
                 <form method="POST" action="/branches/{{$branch->id}}/staff/{{$user->id}}">
                     @csrf
                     @method('DELETE')
-                    <button name="delete" class="delete-profile-button">Delete account</button>
+                    <button name="delete" class="button-r" id="delete-profile-button">Delete account</button>
                 </form>
             </div>
         @endcan
