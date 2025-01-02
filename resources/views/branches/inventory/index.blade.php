@@ -59,7 +59,9 @@
             <div class="inventory-inputs">
                 <form action="/branches/{{$branch->id}}/inventory">
                     <input name="search" type="text" placeholder="Filter inventory..." value="{{request('search')}}">
-                    <x-dropdown name="sort-by"
+                    <x-dropdown
+                                autosubmit
+                                name="sort-by"
                                 :value="request('sort-by')"
                                 :options="[
                     ['ID', 'id'],
