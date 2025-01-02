@@ -512,7 +512,6 @@ tbody tr:hover {
 
 
 .form-link{
-    background-color: #f4f1fd;
     color: var(--dark-purple);
     padding: 5px;
 }
