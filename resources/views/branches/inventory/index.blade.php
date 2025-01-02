@@ -24,46 +24,6 @@
             return false !== stripos($book->title, $searchQuery) || false !== stripos($book->author, $searchQuery);
         });
 
-
-    </div>
-    <a href="/books/create" class="add-new-button">
-            <span class="material-symbols-outlined">
-                add
-            </span>
-        <span class="add-new-button-label">New</span>
-    </a>
-</div>
-<div class="inventory-table">
-    <div class="inventory-panes">
-        <div class="inventory-book-pane">
-            <table class="inventory-table">
-                <thead>
-                <th scope="col">ID</th>
-                <th scope="col">Title</th>
-                <th scope="col">Author</th>
-                <th scope="col">Quantity</th>
-                </thead>
-                <tbody>
-                @foreach($books as $book)
-                    <tr>
-                        <td>{{ $book->id }}</td>
-                        <td>{{ $book->title }}</td>
-                        <td>{{ $book->author }}</td>
-                        <td>{{ $book->pivot->quantity }}</td>
-                        <td>
-                            <form method="POST" action="/branches/{{$branch->id}}/inventory/{{$book->id}}">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" id="delete_button">
-                                    <span class="material-symbols-outlined">delete</span>
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
-
     switch ($sortBy) {
         case 'title-az':
             $books = $books->sortBy('title');
@@ -87,13 +47,13 @@
             $books = $books->sortBy('id');
             break;
     }
-
 @endphp
+
 
 <div class="sidebar-body">
     {{-- side bar --}}
     <x-dashboard-sidebar :branch="$branch"></x-dashboard-sidebar>
-    <div>
+    <div class="branch-tables">
         <h1>{{$branch->name}} - Inventory</h1>
         <div class="space-between">
             <div class="inventory-inputs">

@@ -19,11 +19,12 @@
 <div class="sidebar-body">
     {{-- side bar --}}
     <x-dashboard-sidebar :branch="$branch"></x-dashboard-sidebar>
-    <div>
-        <h1>{{$branch->name}} - Staff</h1>
-        <div class="inventory-inputs">
-            <input type="text" placeholder="Filter inventory...">
-        </div>
+    <div class="branch-tables">
+            <h1>{{$branch->name}} - Staff</h1>
+            <div class="inventory-inputs">
+                <input type="text" placeholder="Filter inventory...">
+            </div>
+
         <div class="inventory-panes">
             <div class="inventory-book-pane">
                 <table class="inventory-table">

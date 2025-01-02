@@ -696,13 +696,20 @@ td {
     flex-direction: row;
     gap: 8px;
     background-color: #f4f1fd;
-    width: 90vw;
     margin:auto;
 }
-.inventory-table{
-    width:90vw;
+
+.branch-tables {
+    width: 100%;
 }
 
+.inventory-book-pane {
+    width: 100%;
+}
+
+.inventory-table {
+    width: 100%;
+}
 
 .inventory-inputs {
     display: flex;
