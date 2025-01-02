@@ -131,16 +131,10 @@ dropdown {
     justify-content: center;
 }
 
-.search-options {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
 .container-row-reverse {
     display: flex;
     flex-direction: row-reverse;
-    justify-content: center;
+    /*justify-content: center;*/
     padding: 16px;
     gap:32px;
 }
@@ -472,6 +466,13 @@ tbody tr:hover {
 
 #sort-by:focus {
     outline: none;
+}
+
+#search-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
 }
 
 #login-button, #signup-button {
@@ -859,7 +860,8 @@ nav a {
 .dashboard-sidebar{
     background-color: #1a202c;
     color: #cbd5e0;
-    height: 100vh;
+    height: 100%;
+    min-height: 100vh;
 }
 .dashboard-branch-info{
     font-weight: bold;
@@ -869,7 +871,7 @@ nav a {
 .dashboard-branch-info select{
     padding: 5px;
     border-radius: 5px;
-    background-color: rgba(161, 153, 209, 0.8);
+    background-color: #f4f1fd;
     width: 100%;
     font-size: 17px;
 }
@@ -899,15 +901,47 @@ nav a {
     grid-template-columns: 50% 50%;
     grid-template-rows: 33% 16.5% 16.5% 33%;
     gap: 15px;
-    /*height: 100%;*/
+    height: 100%;
+    width: 100%;
 }
 .dashboard-containers{
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: #f4f1fd;
     border-radius: 20px;
-    padding: 10px;
+    padding: 20px;
 }
-#sales-activity-container{
+.dashboard-container-content{
+    font-size: 18px;
+}
+.dashboard-containers h2{
+    margin: 0;
+}
+#reservation-activity-container{
     grid-area: 1 / 1 / 2 / auto;
+}
+.reservation-activity-container-item{
+    text-align: center;
+}
+#pending-res-h1{
+    color: #e9be3d;
+}
+#collected-res-h1, #in-stock-h2{
+    color: #2cbc62;
+}
+#out-stock-h2{
+    color: #e3533f;
+}
+.reservation-activity-container-item p{
+    display: flex;
+    align-items: center;
+}
+.reservation-activity-container-item > *{
+    margin: 0;
+}
+#reservation-activity-container-items{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 30px 0;
 }
 #top-sellers-container{
     grid-area: 1 / 2 / 3 / auto;
@@ -915,8 +949,26 @@ nav a {
 #inventory-summary-container{
     grid-area: 2 / 1 / 4 / auto;
 }
+#inventory-summary-container-items{
+    padding: 0 30px;
+}
+.inventory-summary-container-item{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.inventory-summary-container-item hr{
+    width: 70%;
+    border: 1px dashed;
+}
 #purchase-sales-container{
     grid-area: 4 / 1 / 5 / auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: fit-content;
 }
 #chart{
     grid-area: 3 / 2 / 5 / auto;
