@@ -38,7 +38,7 @@ class ReservationCancellation extends Mailable
     public function content(): Content
     {
         return new Content(
-            markdown: 'mail.reservations.cancelled',
+            view: 'mail.reservations.cancelled',
         );
     }
 
@@ -55,6 +55,6 @@ class ReservationCancellation extends Mailable
     public function build() {
         return $this
             ->from('noreply@atlas.com')
-            ->subject('Reservation Cancellation');
+            ->subject('Reservation Confirmation');
     }
 }
