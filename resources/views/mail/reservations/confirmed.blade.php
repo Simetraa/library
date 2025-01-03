@@ -67,8 +67,7 @@
             <a href="http://library.test/account/reservations">View all reservations</a>
         </div>
 
-        <p>Thanks,<br>
-            ATLAS</p>
+        <p>Thanks,<br>ATLAS</p>
 
     </body>
 </html>
