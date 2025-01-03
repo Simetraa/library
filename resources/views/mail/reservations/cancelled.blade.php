@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 
-
-
 <html>
     <head>
         <style>
@@ -49,19 +47,18 @@
             }
 
         </style>
-        <title>Reservation Confirmation</title>
+        <title>Reservation Cancellation</title>
     </head>
     <body>
         <h1>ATLAS</h1>
-        <h2>Reservation Confirmation</h2>
+        <h2>Reservation Cancellation</h2>
 
-        <p>Your reservation has been received! Please pick up your book within 7 days.</p>
+        <p>Your reservation has been Cancelled!</p>
 
         <div class="book-info">
             <h3>{{ $reservation->book->title }}</h3>
             <p>Author: {{ $reservation->book->author }}</p>
             <p>Branch: {{ $reservation->branch->name }}</p>
-            <p>Pickup by: {{ $reservation->pickupDate->format("d-m-Y") }}</p>
             <p>Quantity: {{ $reservation->quantity }}</p>
             <br>
             <a href="http://library.test/account/reservations">View all reservations</a>

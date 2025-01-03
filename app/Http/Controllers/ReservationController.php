@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ReservationCancelation;
+use App\Mail\ReservationCancellation;
 use App\Mail\ReservationConfirmation;
 use App\Models\Book;
 use App\Models\Branch;
@@ -51,6 +53,9 @@ class ReservationController extends Controller
         }
 
         $reservation->delete();
+
+        Mail::to($request->user())->send(new ReservationCancellation($reservation));
+
         return back();
     }
 }
