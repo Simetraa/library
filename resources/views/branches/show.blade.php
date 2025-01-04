@@ -29,13 +29,23 @@
         {{--        <x-time-selector label='Time Selector' name="topSellingItemsPeriod" :topSellingItemsPeriod="$topSellingItemsPeriod"></x-time-selector>--}}
         {{--        </div>--}}
 
-        <div class="dashboard-containers" id="sales-activity-container">
-            <h2>Sales activity</h2>
-            <p>Pending reservations: {{ $pendingReservations }}</p>
-            <p>Collected reservations: {{ $collectedReservations }}</p>
+        <div class="dashboard-containers" id="reservation-activity-container">
+            <h2>Reservations activity</h2>
+            <hr>
+            <div class="dashboard-container-content" id="reservation-activity-container-items">
+                <div class="reservation-activity-container-item">
+                    <h1 id="pending-res-h1">{{ $pendingReservations }}</h1>
+                    <p><span class="material-symbols-outlined">pending</span>Pending reservations</p>
+                </div>
+                <div class="reservation-activity-container-item">
+                    <h1 id="collected-res-h1">{{ $collectedReservations }}</h1>
+                    <p><span class="material-symbols-outlined">check_circle</span>Collected reservations</p>
+                </div>
+            </div>
         </div>
         <div class="dashboard-containers" id="top-sellers-container">
             <h2>Top Selling</h2>
+            <hr>
             <div class="flex-horizontal">
                 @foreach($topSellingItems as $book)
                     <div>
@@ -45,18 +55,36 @@
             </div>
         </div>
         <div class="dashboard-containers" id="inventory-summary-container">
-            <h2>Stock Status</h2>
-            <p>Books in stock: {{ $booksInStockCount }}</p>
-            <p>Books out of stock: {{ $booksOutOfStockCount }}</p>
+            <h2>Inventory summary</h2>
+            <hr>
+            <div class="dashboard-container-content" id="inventory-summary-container-items">
+                <div class="inventory-summary-container-item">
+                    <p>Books in stock: </p>
+                    <hr>
+                    <h2 id="in-stock-h2">{{ $booksInStockCount }}</h2>
+                </div>
+                <div class="inventory-summary-container-item">
+                    <p>Books out of stock: </p>
+                    <hr>
+                    <h2 id="out-stock-h2">{{ $booksOutOfStockCount }}</h2>
+                </div>
+            </div>
         </div>
         <div class="dashboard-containers" id="purchase-sales-container">
-            <h2>Sales</h2>
-            <p>Quantity sold: {{$quantitySold}}</p>
-            <p>Revenue: {{$totalRevenue}}</p>
-
-            <h2>Purchases</h2>
-            <p>Quantity ordered: </p>
-            <p>Costs: </p>
+            <div>
+                <h2>Sales</h2>
+                <div class="dashboard-container-content">
+                    <p>Quantity sold: {{$quantitySold}}</p>
+                    <p>Revenue: {{$totalRevenue}}</p>
+                </div>
+            </div>
+            <div>
+                <h2>Purchases</h2>
+                <div class="dashboard-container-content">
+                    <p>Quantity ordered: </p>
+                    <p>Costs: </p>
+                </div>
+            </div>
         </div>
         <div class="dashboard-containers" id="chart">
 
