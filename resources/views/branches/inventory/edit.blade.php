@@ -48,7 +48,7 @@
         @method('POST')
         <div>
             <label for="quantity">Transfer Quantity</label>
-            <input required type="number" min="0" name="quantity" value="{{$book->pivot->quantity}}">
+            <input required type="number" min="0" max="{{$book->pivot->quantity}}" name="quantity" value="{{$book->pivot->quantity}}">
         </div>
 
         <x-dropdown id="branch-selection-dropdown"
