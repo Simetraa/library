@@ -154,6 +154,7 @@ a{
 
 .header-buttons {
     display: flex;
+    align-items: center;
     gap: 8px;
 }
 
@@ -808,7 +809,7 @@ nav {
     gap: 16px;
 }
 
-nav a {
+nav a, .header-buttons a {
     color: var(--dark-purple);
     text-decoration: none;
 }
@@ -898,7 +899,7 @@ nav a {
     padding: 20px;
     display: grid;
     grid-template-columns: 50% 50%;
-    grid-template-rows: 33% 16.5% 16.5% 33%;
+    grid-template-rows: 30% 15.5% 18.5% 45%;
     gap: 15px;
     height: 100%;
     width: 100%;
@@ -953,6 +954,13 @@ nav a {
     max-width: 20%;
     text-align: center;
 }
+.top-selling-item a{
+    text-decoration: none;
+    color: black;
+}
+.top-selling-item a:hover{
+    text-decoration: underline;
+}
 .top-selling-item img{
     width: 100px;
     border-radius: 5px;
@@ -961,7 +969,8 @@ nav a {
     grid-area: 2 / 1 / 4 / auto;
 }
 #inventory-summary-container-items{
-    padding: 0 30px;
+    padding-left: 30px;
+    width: 100%;
 }
 .inventory-summary-container-item{
     display: flex;
