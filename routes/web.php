@@ -88,6 +88,7 @@ Route::controller(InventoryController::class)->group(function(){
     Route::post('/branches/{branch}/inventory', 'store')->middleware('can:access-staff-and-admin-pages');
     Route::get('/branches/{branch}/inventory/{book}', 'edit')->middleware('can:access-staff-and-admin-pages');
     Route::delete('/branches/{branch}/inventory/{book}', 'destroy')->middleware('can:access-staff-and-admin-pages');
+    Route::post('/branches/{branch}/inventory/{book}/transfer', 'transfer')->middleware('can:access-staff-and-admin-pages');
 });
 
 Route::controller(StaffSalesController::class)->group(function(){

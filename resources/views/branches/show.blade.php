@@ -34,11 +34,11 @@
             <hr>
             <div class="dashboard-container-content" id="reservation-activity-container-items">
                 <div class="reservation-activity-container-item">
-                    <h1 id="pending-res-h1">{{ $pendingReservations }}</h1>
+                    <div class="res-number" id="pending-res-h1">{{ $pendingReservations }}</div>
                     <p><span class="material-symbols-outlined">pending</span>Pending reservations</p>
                 </div>
                 <div class="reservation-activity-container-item">
-                    <h1 id="collected-res-h1">{{ $collectedReservations }}</h1>
+                    <div class="res-number" id="collected-res-h1">{{ $collectedReservations }}</div>
                     <p><span class="material-symbols-outlined">check_circle</span>Collected reservations</p>
                 </div>
             </div>
@@ -59,30 +59,38 @@
             <hr>
             <div class="dashboard-container-content" id="inventory-summary-container-items">
                 <div class="inventory-summary-container-item">
-                    <p>Books in stock: </p>
-                    <hr>
-                    <h2 id="in-stock-h2">{{ $booksInStockCount }}</h2>
+                    Books in stock: <span class="prefix-dots" id="in-stock-h2">{{ $booksInStockCount }}</span>
                 </div>
                 <div class="inventory-summary-container-item">
-                    <p>Books out of stock: </p>
-                    <hr>
-                    <h2 id="out-stock-h2">{{ $booksOutOfStockCount }}</h2>
+                    Books out of stock: <span class="prefix-dots" id="out-stock-h2">{{ $booksOutOfStockCount }}</span>
                 </div>
             </div>
         </div>
         <div class="dashboard-containers" id="purchase-sales-container">
             <div>
-                <h2>Sales</h2>
-                <div class="dashboard-container-content">
-                    <p>Quantity sold: {{$quantitySold}}</p>
-                    <p>Revenue: {{$totalRevenue}}</p>
+                <h2 class="purchase-sale-header">Sales</h2>
+                <div class="dashboard-container-content purchase-sale-data">
+                    <div>
+                        <p class="purchase-sale-number">{{$quantitySold}}</p>
+                        <p>Quantity sold</p>
+                    </div>
+                    <div>
+                        <p class="purchase-sale-number">£{{$totalRevenue}}</p>
+                        <p>Revenue</p>
+                    </div>
                 </div>
             </div>
             <div>
-                <h2>Purchases</h2>
-                <div class="dashboard-container-content">
-                    <p>Quantity ordered: </p>
-                    <p>Costs: </p>
+                <h2 class="purchase-sale-header">Purchases</h2>
+                <div class="dashboard-container-content purchase-sale-data">
+                    <div>
+                        <p class="purchase-sale-number">0</p>
+                        <p>Quantity ordered</p>
+                    </div>
+                    <div>
+                        <p class="purchase-sale-number">£0</p>
+                        <p>Costs</p>
+                    </div>
                 </div>
             </div>
         </div>
