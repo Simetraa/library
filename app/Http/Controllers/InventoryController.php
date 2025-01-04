@@ -84,11 +84,18 @@ class InventoryController extends Controller
         }
 
         $destinationBranch = Branch::find($validatedAttributes['branch_id']);
-        $destinationBranchQuantity = $destinationBranch->books->find($book)->pivot->quantity;
+        if ($destinationBranch->books->find($book)) {
+            $destinationBranch->books->find($book)->pivot->quantity += $validatedAttributes['quantity'];
+            $destinationBranch->books->find($book)->pivot->save();
+        }
+        else{
+            $destinationBranch->books()->attach($book, ['quantity' => $validatedAttributes['quantity']]);
+        }
+        $branch->books->find($book)->pivot->quantity -= $validatedAttributes['quantity'];
+        $branch->books->find($book)->pivot->save();
 
-        $destinationBranchBookPivot = $destinationBranch->books->firstOrCreate($book);
+//        $destinationBranchBookPivot = $destinationBranch->books->find($book)->firstOrCreate($book);
 
-        dd($currentBranchQuantity, $destinationBranchQuantity);
         // check if destination branch stocks that book?
         // if not, create a new entry in the pivot table?
         // check if source has enough books to transfer
