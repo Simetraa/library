@@ -44,11 +44,12 @@
             </div>
         </div>
         <div class="dashboard-containers" id="top-sellers-container">
-            <h2>Top Selling</h2>
+            <h2>Top Selling Books</h2>
             <hr>
             <div class="flex-horizontal">
                 @foreach($topSellingItems as $book)
-                    <div>
+                    <div class="top-selling-item">
+                        <img alt="cover-image" src="{{ $book->cover_url }}">
                         <p>{{ $book->title }}</p>
                     </div>
                 @endforeach
@@ -95,7 +96,7 @@
             </div>
         </div>
         <div class="dashboard-containers" id="chart">
-
+            <h2>Sales chart</h2>
         </div>
         {{--        create report and invoice button--}}
 

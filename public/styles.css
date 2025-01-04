@@ -949,6 +949,14 @@ nav a {
 #top-sellers-container{
     grid-area: 1 / 2 / 3 / auto;
 }
+.top-selling-item{
+    max-width: 20%;
+    text-align: center;
+}
+.top-selling-item img{
+    width: 100px;
+    border-radius: 5px;
+}
 #inventory-summary-container{
     grid-area: 2 / 1 / 4 / auto;
 }
