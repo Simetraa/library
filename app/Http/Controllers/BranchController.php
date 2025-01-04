@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Charts\Graph;
 use App\Models\Book;
 use App\Models\Branch;
 use App\Models\Sale;
@@ -44,6 +45,11 @@ class BranchController extends Controller
             return $sale->books->sum("pivot.quantity");
         });
 
+        $pieChart = new Graph;
+        $pieChart->labels(['In stock', 'Out of stock']);
+        $pieChart->dataset('Stock data', 'doughnut', [$booksInStockCount, $booksOutOfStockCount])->backgroundColor(['#2cbc62', '#e3533f']);
+        $pieChart->minimalist(true);
+        $pieChart->height(150);
 
         return view('branches.show',
             [
@@ -56,6 +62,7 @@ class BranchController extends Controller
                 "booksInStockCount" => $booksInStockCount,
                 "totalRevenue" => $totalRevenue,
                 "quantitySold" => $quantitySold,
+                "pieChart" => $pieChart,
             ]);
     }
 
