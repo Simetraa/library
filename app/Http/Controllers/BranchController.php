@@ -41,7 +41,7 @@ class BranchController extends Controller
         });
 
         $quantitySold = $branch->sales->sum(function (Sale $sale) {
-            return $sale->books->sum("quantity");
+            return $sale->books->sum("pivot.quantity");
         });
 
 

@@ -55,7 +55,7 @@ class InventoryController extends Controller
     public function update(Request $request, Branch $branch, Book $book)
     {
 
-        $allowedReasons = ['damaged', 'lost', 'theft'];
+        $allowedReasons = ['damage', 'lost', 'theft'];
 
         $validatedAttributes = $request->validate([
             'quantity' => ['required', 'numeric', 'min:0'],
@@ -72,12 +72,23 @@ class InventoryController extends Controller
     {
         $validatedAttributes = $request->validate([
             'quantity' => ['required', 'numeric', 'min:0'],
-            'destination_branch_id' => ['required', 'numeric', 'exists:branches,id']
+            'branch_id' => ['required', 'numeric', 'exists:branches,id']
         ]);
 
-        $book = $branch->books->find($book);
+        // $book = $branch->books->find($book);
 
-        $destinationBranch = Branch::find($validatedAttributes['destination_branch_id']);
+        $currentBranchQuantity = $branch->books->find($book)->pivot->quantity;
+
+        if($currentBranchQuantity < $validatedAttributes['quantity']) {
+            return back()->withError('transfer_quantity');
+        }
+
+        $destinationBranch = Branch::find($validatedAttributes['branch_id']);
+        $destinationBranchQuantity = $destinationBranch->books->find($book)->pivot->quantity;
+
+        $destinationBranchBookPivot = $destinationBranch->books->firstOrCreate($book);
+
+        dd($currentBranchQuantity, $destinationBranchQuantity);
         // check if destination branch stocks that book?
         // if not, create a new entry in the pivot table?
         // check if source has enough books to transfer
