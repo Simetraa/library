@@ -32,7 +32,8 @@ class Branch extends Model
         return $this->hasMany(User::class);
     }
 
-    public static function getBranches(){
+    public static function getBranches(): array
+    {
         $branches = Branch::all();
         $list = [];
         foreach ($branches as $branch){
