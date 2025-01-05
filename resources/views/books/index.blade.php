@@ -31,7 +31,6 @@
     <div class="inventory-book-pane">
         <table class="inventory-table">
             <thead>
-            <th scope="col"><input type="checkbox"></th>
             <th scope="col">ID</th>
             <th scope="col">Title</th>
             <th scope="col">Author</th>

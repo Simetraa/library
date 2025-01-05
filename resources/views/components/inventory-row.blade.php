@@ -1,6 +1,5 @@
 @props(["book"])
 <tr>
-    <td><input type="checkbox"></td>
     <td>{{ $book["id"] }}</td>
     <td>{{ $book["title"] }}</td>
     <td>{{ $book["author"] }}</td>
@@ -21,5 +20,4 @@
             </button>
         </form>
     </td>
-{{--    <td><button id="visibility_button">visibility</button></td>--}}
 </tr>
