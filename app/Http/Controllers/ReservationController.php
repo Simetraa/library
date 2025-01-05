@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\ReservationCancelation;
+
 use App\Mail\ReservationCancellation;
 use App\Mail\ReservationConfirmation;
 use App\Models\Book;

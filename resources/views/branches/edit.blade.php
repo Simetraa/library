@@ -38,7 +38,7 @@
         <form method="POST" action="/branches/{{$branch->id}}">
             @csrf
             @method('DELETE')
-            <button type="submit">Delete</button>
+            <button type="submit" class="button-r" id="edit-create-button">Delete</button>
         </form>
     </div>
 </div>
