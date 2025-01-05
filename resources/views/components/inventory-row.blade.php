@@ -15,7 +15,7 @@
         <form method="POST" action="/books/{{$book["id"]}}/toggleVisibility">
             @csrf
             @method("PATCH")
-            <button type="submit">
+            <button class="icon" type="submit">
                 <span class="material-symbols-outlined">{{$book->visible ? "visibility" : "visibility_off"}}</span>
             </button>
         </form>

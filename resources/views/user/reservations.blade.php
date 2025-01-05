@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 @php
-    use App\Models\Branch;
+    use App\Models\Branch;use Illuminate\Support\Facades\Auth;
 @endphp
 
 <head>
@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catalogue</title>
     <link rel="stylesheet" href="{{ asset('styles.css') }}?ts=<?=time()?>"/>
-    <link rel="stylesheet" href="{{ asset('mobile.css') }}?ts=<?=time()?>" media ="only screen and (max-width: 720px)"/>
+    <link rel="stylesheet" href="{{ asset('mobile.css') }}?ts=<?=time()?>" media="only screen and (max-width: 720px)"/>
 </head>
 
 <body class="non-gradient-body">
@@ -23,7 +23,7 @@
 
     @foreach($reservations as $reservation)
         <div class="reservation-card">
-            <div class = "reserved-book-info">
+            <div class="reserved-book-info">
                 <div>
                     <h2>{{ $reservation->book->title }}</h2>
                     <p>Quantity: {{ $reservation->quantity }}</p>
@@ -40,9 +40,12 @@
                 </form>
             </div>
             <div class="book-cover-reservation">
-                <img src = '{{$reservation->book["cover_url"]}}' alt="book cover">
+                <img src='{{$reservation->book["cover_url"]}}' alt="book cover">
             </div>
         </div>
     @endforeach
+    @empty($reservation)
+        <p id="reservations-error">No reservations</p>
+    @endempty
 </div>
 </body>
