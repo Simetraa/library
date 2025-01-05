@@ -34,6 +34,7 @@
                 <th scope="col">Quantity</th>
                 <th scope="col">Branch Stock</th>
                 <th scope="col">Status</th>
+                <th scope="col">Fulfil</th>
             </tr>
             </thead>
             <tbody>

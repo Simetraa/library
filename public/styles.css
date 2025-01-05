@@ -1047,3 +1047,9 @@ nav a, .header-buttons a {
 #chart{
     grid-area: 3 / 2 / 5 / auto;
 }
+
+.icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
