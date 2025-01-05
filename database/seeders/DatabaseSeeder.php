@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\BookSale;
 use App\Models\Branch;
+use App\Models\Purchase;
 use App\Models\Reservation;
 use App\Models\ReservationBook;
 use App\Models\Sale;
@@ -61,6 +62,10 @@ class DatabaseSeeder extends Seeder
             'user_id' => 1,
             'branch_id' => 1,
         ]);
+        Sale::create([
+            'user_id' => 1,
+            'branch_id' => 1,
+        ]);
 
         BookSale::create([
             'sale_id' => 1,
@@ -77,6 +82,28 @@ class DatabaseSeeder extends Seeder
             'price' => 6.00,
             'returned' => false,
         ]);
+
+        BookSale::create([
+            'sale_id' => 2,
+            'book_id' => 5,
+            'quantity' => 35,
+            'price' => 9.00,
+            'returned' => false,
+        ]);
+
+        Purchase::create([
+            'branch_id' => 1,
+            'book_id' => 1,
+            'quantity' => 100,
+            'price' => 200.00
+        ]);
+        Purchase::create([
+            'branch_id' => 1,
+            'book_id' => 2,
+            'quantity' => 300,
+            'price' => 500.00
+        ]);
+
 
         Book::find(15)->update(['visible' => false]);
 //
