@@ -44,7 +44,7 @@
 
         @endforeach
     </div>
-
+</div>
 {{--<div class="header-row">
     <h1>Branches</h1>
     @can('access-admin-pages')
