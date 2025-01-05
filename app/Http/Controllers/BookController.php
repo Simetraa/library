@@ -13,21 +13,35 @@ use function Laravel\Prompts\search;
 class BookController extends Controller
 {
     public function autofill(Request $request) {
+
+
+        set_time_limit(120); // this can take a while as we have to submit multiple requests
+
         $isbn = $request->get("isbn");
+        $isbn = str_replace("-", "", $isbn);
+
         $editionUrl = "https://openlibrary.org/isbn/" . $isbn . ".json";
-        $editionResponse = file_get_contents($editionUrl);
+        $editionResponse = @file_get_contents($editionUrl);
+        if($editionResponse === false) {
+            return back()->withErrors(["autofill" => "Book not found"]);
+        }
         $editionJson = json_decode($editionResponse);
 
         $title = $editionJson->title;
-        $publicationDate = Carbon::parse($editionJson->publish_date)->format("Y-m-d");
+        $publicationDate = Carbon::createFromDate($editionJson->publish_date, 1, 1)->format("Y-m-d");
 
+
+//        dd($publicationDate, $editionJson);
 
         $authorIdList = $editionJson->authors;
         $authors = collect($authorIdList);
         $authors = $authors ->map(function($authorId) {
             $authorId = str_replace("/authors/", "", $authorId->key);
             $authorUrl = 'https://openlibrary.org/authors/' . $authorId . '.json';
-            $authorResponse = file_get_contents($authorUrl);
+            $authorResponse = @file_get_contents($authorUrl);
+            if($authorResponse === false) {
+                return back()->withErrors(["autofill" => "Author not found"]);
+            }
             $authorJson = json_decode($authorResponse);
             return $authorJson->name;
         });
@@ -35,16 +49,18 @@ class BookController extends Controller
         $authors = join(",", $authors->toArray());
 
 
-        $cover_url = "https://covers.openlibrary.org/b/id/" . $editionJson->covers[0] . "-S.jpg";
+        $cover_url = "https://covers.openlibrary.org/b/id/" . $editionJson->covers[0] . "-L.jpg";
 
         $workId = str_replace("/works/", "", $editionJson->works[0]->key);
         $workUrl = 'https://openlibrary.org/works/' . $workId . '.json';
-        $workResponse = file_get_contents($workUrl);
+        $workResponse = @file_get_contents($workUrl);
+        if($workResponse === false) {
+            return back()->withErrors(["autofill" => "Work not found"]);
+        }
         $workJson = json_decode($workResponse);
 
         $description = $workJson->description;
         $subjects = join(",", $workJson->subjects);
-
 
 
         return back()->with(
@@ -155,10 +171,10 @@ class BookController extends Controller
     public function index(){
         return view('books.index', ["books" => Book::all()]);
     }
-    public function store(){
+    public function store(Request $request){
 
         // TODO: Work out what is required, and clean up using Request.
-        request()->validate([
+        $validatedAttributes = $request->validate([
             'title' => ['required'],
             'author' => ['required'],
             'cover_url' => ['required'],
@@ -169,11 +185,7 @@ class BookController extends Controller
         ]);
 
 
-        // validation is failing on something
-
-
-        $subjects = explode("", request('subjects'));
-
+        $subjects = explode(",", request('subjects'));
 
 
         $book = Book::create([
@@ -187,8 +199,7 @@ class BookController extends Controller
             'publication_date' => request("publication_date"),
         ]);
 
-        dd($book);
-        return redirect(view("books.index"));
+        return redirect("/books");
     }
     public function create(){
         return view("books.create");
@@ -218,14 +229,23 @@ class BookController extends Controller
         // It will still exist in the books/ page and branches/ page
     public function update(Book $book, Request $request)
     {
-        $book->update([
-            'title' => request('title'),
-            'author' => request('author'),
-            'cover_url' => request('cover_url'),
-            'description' => request('description'),
-            'price' => request('price'),
-            'quantity' => request('quantity')
+        $validatedAttributes = $request->validate([
+            'title' => ['required'],
+            'author' => ['required'],
+            'cover_url' => ['required'],
+            'description' => ['required'],
+            'price' => ['required', 'numeric'],
+            'isbn' => ['required', 'numeric'],
+            'subjects' => [],
+            'publication_date' => ['required', 'date'],
         ]);
-        return redirect(view("books.index"));
+
+        $validatedAttributes['subjects'] = explode(',', $validatedAttributes['subjects']);
+
+
+        $book->update($validatedAttributes);
+
+
+        return redirect("/books");
     }
 }
