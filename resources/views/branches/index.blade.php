@@ -34,8 +34,7 @@
         @foreach($branches as $branch)
             <div class="branch-card">
                 <div>
-                    <h3>Branch: {{ $branch->name }}</h3>
-                    <p>Id: {{ $branch->id }}</p>
+                    <h3>{{ $branch->name }} - #{{ $branch->id }}</h3>
                 </div>
                 <div>
                     <h3><a href="/branches/{{$branch->id}}">Manage Branch</a></h3>
