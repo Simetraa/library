@@ -16,8 +16,8 @@
         <form method="POST" action="/login">
             @csrf
 
-            <input type="email" name="email" class="input" id="form-input" placeholder="Email" value="{{old('email')}}" required>
-            <input type="password" name="password" class="input" id="form-input" placeholder="Password" required>
+            <input type="email" name="email" class="input form-input" placeholder="Email" value="{{old('email')}}" required>
+            <input type="password" name="password" class="input form-input" placeholder="Password" required>
             @error('email')
                 <p class="form-error">Email and password do not match</p>
             @enderror
