@@ -109,7 +109,7 @@
                                 <form method="POST" action="/branches/{{$branch->id}}/inventory/{{$book->id}}">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" id="delete_button">
+                                    <button class="icon" type="submit" id="delete_button">
                                         <span class="material-symbols-outlined">delete</span>
                                     </button>
                                 </form>

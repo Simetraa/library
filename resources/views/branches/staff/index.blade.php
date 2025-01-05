@@ -40,13 +40,13 @@
                             <td>{{ $staff->id }}</td>
                             <td>{{ $staff->email }}</td>
                             <td>
-                                <a href="/branches/{{$branch->id}}/staff/{{$staff->id}}/edit">edit</a>
+                                <a href="/branches/{{$branch->id}}/staff/{{$staff->id}}/edit"><span class="material-symbols-outlined">edit</span></a>
                             </td>
                             <td>
                                 <form action="/branches/{{$branch->id}}/staff/{{$staff->id}}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit"><span class="material-symbols-outlined">delete</span></button>
+                                    <button class="icon" type="submit"><span class="material-symbols-outlined">delete</span></button>
                                 </form>
                             </td>
                         </tr>
