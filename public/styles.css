@@ -584,6 +584,37 @@ img {
     width: 60px;
 }
 
+.edit-inventory-item-form {
+    margin: 10px;
+    width: 42%;
+}
+
+.back-link {
+    padding: 3px;
+    color: var(--button-purple);
+    text-decoration: none;
+}
+
+.back-link:hover {
+    background: lightgray;
+}
+
+.back-link:visited {
+    text-decoration: none;
+    color: var(--button-purple);
+}
+
+#edit-inventory-item-container {
+    padding: 15px;
+    width: 600px;
+}
+
+#branch-selection-dropdown {
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+}
+
 #login-container form, #sign-up-container form{
     display: flex;
     justify-content: center;
@@ -632,6 +663,7 @@ img {
     display: flex;
     flex-direction: column;
 }
+
 
 .book-info{
     background-color: var(--container-white);
