@@ -23,7 +23,7 @@
             <span>Sales</span>
         </a>
         <a href="/branches/{{$branch->id}}/purchases">
-            <span class="material-symbols-outlined">payments</span>
+            <span class="material-symbols-outlined">local_shipping</span>
             <span>Purchases</span>
         </a>
         @can('access-admin-pages')

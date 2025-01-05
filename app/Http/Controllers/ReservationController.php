@@ -52,9 +52,8 @@ class ReservationController extends Controller
             abort(403);
         }
 
-        $reservation->delete();
-
         Mail::to($request->user())->send(new ReservationCancellation($reservation));
+        $reservation->delete();
 
         return back();
     }

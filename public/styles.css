@@ -275,7 +275,10 @@ tbody tr:hover {
     padding: 5px;
     border: none;
 }
-
+#reservations-error{
+    font-size: 20px;
+    font-weight: bold;
+}
 .reservations-container{
     max-width: 70vw;
     margin: auto;
@@ -782,7 +785,7 @@ td {
     text-decoration: none;
     color: #18181b;
 }
-#edit_button:hover, #delete_button:hover{
+#edit_button:hover, #delete_button:hover, .icon:hover{
     color: #8486bd;
 }
 table {
