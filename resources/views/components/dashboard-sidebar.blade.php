@@ -22,6 +22,10 @@
             <span class="material-symbols-outlined">payments</span>
             <span>Sales</span>
         </a>
+        <a href="/branches/{{$branch->id}}/purchases">
+            <span class="material-symbols-outlined">payments</span>
+            <span>Purchases</span>
+        </a>
         @can('access-admin-pages')
             <a href="/branches/{{$branch->id}}/edit">
                 <span class="material-symbols-outlined">edit</span>

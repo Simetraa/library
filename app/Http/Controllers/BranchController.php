@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Charts\Graph;
 use App\Models\Book;
 use App\Models\Branch;
+use App\Models\Purchase;
 use App\Models\Sale;
 use Illuminate\Http\Request;
 
@@ -45,11 +46,31 @@ class BranchController extends Controller
             return $sale->books->sum("pivot.quantity");
         });
 
+        $quantityOrdered = $branch->purchases->sum('quantity');
+
+        $totalCost = $branch->purchases->sum('price');
+
         $pieChart = new Graph;
         $pieChart->labels(['In stock', 'Out of stock']);
         $pieChart->dataset('Stock data', 'doughnut', [$booksInStockCount, $booksOutOfStockCount])->backgroundColor(['#2cbc62', '#e3533f']);
         $pieChart->minimalist(true);
         $pieChart->height(150);
+
+        $times = [];
+        $times[] = $branch->purchases->map(function (Purchase $purchase) {
+            return $purchase->created_at->toDateString();
+        });
+        $times[] = $branch->sales->map(function (Sale $sale) {
+            return $sale->created_at->toDateString();
+        });
+
+        $lineChart = new Graph;
+        $lineChart->labels($times);
+        $lineChart->dataset('Cost', 'line', $branch->purchases->pluck('price'))->color('#e3533f')->backgroundColor('#e3533f29');
+        $lineChart->dataset('Revenue', 'line', $branch->sales->map(function (Sale $sale) {
+            return $sale->totalPrice();
+        }))->color('#2cbc62')->backgroundColor('#2cbc6229');
+        $lineChart->height(100);
 
         return view('branches.show',
             [
@@ -62,7 +83,10 @@ class BranchController extends Controller
                 "booksInStockCount" => $booksInStockCount,
                 "totalRevenue" => $totalRevenue,
                 "quantitySold" => $quantitySold,
+                "quantityOrdered" => $quantityOrdered,
+                "totalCost" => $totalCost,
                 "pieChart" => $pieChart,
+                "lineChart" => $lineChart,
             ]);
     }
 

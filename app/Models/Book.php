@@ -41,6 +41,11 @@ class Book extends Model
         return $this->belongsToMany(Sale::class);
     }
 
+    public function purchases(): HasMany
+    {
+        return $this->hasMany(Purchase::class);
+    }
+
     public function getPrice(): string {
         $price = $this->attributes['price'];
         return "£" . number_format($price, 2, ".", '');

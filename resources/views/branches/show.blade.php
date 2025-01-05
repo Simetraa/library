@@ -94,11 +94,11 @@
                 <h2 class="purchase-sale-header">Purchases</h2>
                 <div class="dashboard-container-content purchase-sale-data">
                     <div>
-                        <p class="purchase-sale-number">0</p>
+                        <p class="purchase-sale-number">{{$quantityOrdered}}</p>
                         <p>Quantity ordered</p>
                     </div>
                     <div>
-                        <p class="purchase-sale-number">£0</p>
+                        <p class="purchase-sale-number">£{{$totalCost}}</p>
                         <p>Costs</p>
                     </div>
                 </div>
@@ -106,6 +106,9 @@
         </div>
         <div class="dashboard-containers" id="chart">
             <h2>Sales chart</h2>
+            {!! $lineChart->container() !!}
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
+            {!! $lineChart->script() !!}
         </div>
         {{--        create report and invoice button--}}
 
