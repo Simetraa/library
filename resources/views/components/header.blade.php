@@ -2,9 +2,16 @@
     <div class="flex-horizontal gap-16">
         <h1><a href="/">Atlas Books</a></h1>
         <nav class="gap-32">
-            <a href="/inventory">Inventory</a>
-            <a href="/account/reservations">Reservations</a>
-            <a href="/account/purchases">Purchase History</a>
+            @can('access-staff-and-admin-pages')
+                <a href="/books">Books</a>
+                <a href="/branches">Branches</a>
+                <a href="/branches/{{Auth::user()->branch->id}}">Dashboard</a>
+            @endcan
+
+            @can('access-user-pages')
+                <a href="/account/reservations">Reservations</a>
+                <a href="/account/purchases">Purchase History</a>
+            @endcan
         </nav>
     </div>
 
@@ -14,10 +21,16 @@
             <a href="/register" id = signup-button>Sign Up</a>
         @endguest
         @auth
-            <a href="/account">{{ Auth()->user()->email }}</a>
-            <form method="POST" action="/logout">
+            @can('access-staff-and-admin-pages')
+                    <a href="/branches/{{Auth::user()->branch->id}}/staff/{{Auth::user()->id}}/edit">{{ Auth()->user()->email }}</a>
+            @endcan
+            @can('access-user-pages')
+                    <a href="/account">{{ Auth::user()->email }}</a>
+            @endcan
+
+                    <form method="POST" action="/logout">
                 @csrf
-                <button>Log out</button>
+                <button class="button-p">Log out</button>
             </form>
         @endauth
     </div>

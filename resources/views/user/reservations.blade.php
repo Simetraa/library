@@ -36,11 +36,12 @@
                 <form method="POST" action="/reservations/{{ $reservation->id }}">
                     @csrf
                     @method('DELETE')
-                    <button>Cancel reservation</button>
+                    <button class="button-r">Cancel reservation</button>
                 </form>
             </div>
-
-            <img src = '{{$reservation->book["cover_url"]}}' alt="book cover">
+            <div class="book-cover-reservation">
+                <img src = '{{$reservation->book["cover_url"]}}' alt="book cover">
+            </div>
         </div>
     @endforeach
 </div>

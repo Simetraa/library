@@ -7,18 +7,17 @@
     <td>{{ $book["cover_url"] }}</td>
     <td class="paragraph-truncate">{{ $book["description"] }}</td>
     <td>{{ $book->getPrice()}}</td>
-    <td class="text-right">{{ $book["quantity"] }}</td>
     <td>
         <a id="edit_button" href="/books/{{$book["id"]}}/edit">
             <span class="material-symbols-outlined">edit</span>
         </a>
     </td>
     <td>
-        <form method="POST" action="/books/{{$book["id"]}}">
+        <form method="POST" action="/books/{{$book["id"]}}/toggleVisibility">
             @csrf
-            @method('DELETE')
-            <button type="submit" id="delete_button">
-                <span class="material-symbols-outlined">delete</span>
+            @method("PATCH")
+            <button type="submit">
+                <span class="material-symbols-outlined">{{$book->visible ? "visibility" : "visibility_off"}}</span>
             </button>
         </form>
     </td>

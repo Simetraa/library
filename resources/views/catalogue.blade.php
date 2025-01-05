@@ -17,14 +17,13 @@
         <div>
             <div id='search' class="search-results">
                 <div class="search-sort-by">
-                    <div class="search-options">
-                        <input type="text" name="search" placeholder="Search the catalogue" value="{{ $search ?? "" }}">
-                        <button class="search-button" id="">Search</button>
+                    <div id="search-container">
+                        <input class="input" id="search-catalogue" type="text" name="search" placeholder="Search the catalogue" value="{{ $search ?? "" }}">
+                        <button class="button-w" id="search-button">Search</button>
                     </div>
 
 
-                    <div class="search-options">
-
+                    <div>
                         <x-dropdown id="dropdown"
                                     name="sort-by"
                                     :value="request()->get('sort-by')"

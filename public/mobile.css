@@ -125,6 +125,41 @@
     align-items: stretch;
 }
 
+.create-branch-container {
+    width: fit-content;
+    margin: auto;
+}
+.create-branch-card{
+    min-width: 70vw;
+}
+.branch-card{
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.sale-container{
+    margin:auto;
+    width: 80vw;
+}
+.sale-book-info-pair{
+    flex-wrap: wrap;
+}
+.account-info{
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+.account-container{
+    width:70vw;
+}
+.delete-profile-button{
+    width: 20vw;
+}
+.profile-button{
+    width: 20vw;
+    padding: 2px;
+}
+
+
 /*.filter-close {*/
 /*    background: none;*/
 /*    color: white;*/

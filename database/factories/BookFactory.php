@@ -28,12 +28,13 @@ class BookFactory extends Factory
 
         return [
             'title' => fake()->sentence(),
+            'isbn' => fake()->isbn13(),
             'author' => fake()->name(),
             'cover_url' => "/test_images/cover.jpg",
             'subjects' => $fakeCategories,
             'description' => fake()->paragraph(),
             'publication_date' => fake()->date(),
             'price' => fake()->numberBetween(5, 20),
-        ];
+            ];
     }
 }
