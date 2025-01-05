@@ -36,10 +36,12 @@
             <div class="inventory-book-pane">
                 <table class="inventory-table">
                     <thead>
-                    <th scope="col">Sale ID</th>
-                    <th scope="col">User ID</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Total Price</th>
+                    <tr>
+                        <th scope="col">Sale ID</th>
+                        <th scope="col">User ID</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Total Price</th>
+                    </tr>
                     </thead>
                     <tbody>
                     @foreach($sales as $sale)

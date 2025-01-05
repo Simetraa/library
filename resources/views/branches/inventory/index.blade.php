@@ -86,10 +86,12 @@
             <div class="inventory-book-pane">
                 <table class="inventory-table">
                     <thead>
-                    <th scope="col">ID</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Author</th>
-                    <th scope="col">Quantity</th>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Author</th>
+                        <th scope="col">Quantity</th>
+                    </tr>
                     </thead>
                     <tbody>
                     @foreach($books as $book)

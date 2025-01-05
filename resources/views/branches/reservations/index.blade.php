@@ -25,14 +25,16 @@
         </div>
         <table class="inventory-table">
             <thead>
-            <th scope="col">Reservation ID</th>
-            <th scope="col">User ID</th>
-            <th scope="col">Email</th>
-            <th scope="col">Title</th>
-            <th scope="col">Author</th>
-            <th scope="col">Quantity</th>
-            <th scope="col">Branch Stock</th>
-            <th scope="col">Status</th>
+            <tr>
+                <th scope="col">Reservation ID</th>
+                <th scope="col">User ID</th>
+                <th scope="col">Email</th>
+                <th scope="col">Title</th>
+                <th scope="col">Author</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Branch Stock</th>
+                <th scope="col">Status</th>
+            </tr>
             </thead>
             <tbody>
             @foreach($reservations as $reservation)

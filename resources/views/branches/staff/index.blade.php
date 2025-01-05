@@ -29,8 +29,10 @@
             <div class="inventory-book-pane">
                 <table class="inventory-table">
                     <thead>
-                    <th scope="col">Staff ID</th>
-                    <th scope="col">Email</th>
+                    <tr>
+                        <th scope="col">Staff ID</th>
+                        <th scope="col">Email</th>
+                    </tr>
                     </thead>
                     <tbody>
                     @foreach($staffMembers as $staff)

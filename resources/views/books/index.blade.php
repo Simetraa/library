@@ -31,12 +31,14 @@
     <div class="inventory-book-pane">
         <table class="inventory-table">
             <thead>
-            <th scope="col">ID</th>
-            <th scope="col">Title</th>
-            <th scope="col">Author</th>
-            <th scope="col">Cover Image</th>
-            <th scope="col">Description</th>
-            <th scope="col">Price</th>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Title</th>
+                <th scope="col">Author</th>
+                <th scope="col">Cover Image</th>
+                <th scope="col">Description</th>
+                <th scope="col">Price</th>
+            </tr>
             </thead>
             <tbody>
             @foreach($books as $book)

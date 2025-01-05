@@ -10,14 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\DB;
 
-/**
- * Class News
- * @property int $id
- * @property string $created_at
- * @property string $updated_at
- * @mixin \Eloquent
- * @package App
- */
+
 class Book extends Model
 {
     /** @use HasFactory<\Database\Factories\BookFactory> */
