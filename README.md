@@ -93,5 +93,11 @@ By default, there are three test users
 
 ## Testing
 
-TODO
-
+1. Install latest ChromeDriver for your browser version
+    ```console
+    php artisan dusk:chrome-driver --detect
+    ```
+2. Run tests
+    ```console
+    php artisan dusk
+    ```
