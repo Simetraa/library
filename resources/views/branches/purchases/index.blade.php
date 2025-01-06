@@ -40,6 +40,7 @@
                     <th scope="col">Book ID</th>
                     <th scope="col">Quantity</th>
                     <th scope="col">Total Price</th>
+                    <th scope="col">Supplier</th>
                     </thead>
                     <tbody>
                     @foreach($purchases as $purchase)
@@ -53,6 +54,7 @@
                             <td>{{ $purchase->book->id }}</td>
                             <td>{{ $purchase->quantity }}</td>
                             <td>{{ $purchase->price }}</td>
+                            <td>{{ $purchase->supplier }}</td>
                         </tr>
                     @endforeach
                     </tbody>
