@@ -95,13 +95,15 @@ class DatabaseSeeder extends Seeder
             'branch_id' => 1,
             'book_id' => 1,
             'quantity' => 100,
-            'price' => 200.00
+            'price' => 200.00,
+            'supplier' => "WeDoBooks"
         ]);
         Purchase::create([
             'branch_id' => 1,
             'book_id' => 2,
             'quantity' => 300,
-            'price' => 500.00
+            'price' => 500.00,
+            'supplier' => "WeDoBooks"
         ]);
 
 

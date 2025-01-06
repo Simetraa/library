@@ -320,10 +320,21 @@ tbody tr:hover {
     max-height: 300px;
     margin: 5px;
 }
+
+.add-purchase-container {
+    margin-top: 30px;
+}
+
 .sale-container{
     max-width: 70vw;
     margin: auto;
 }
+
+.new-purchase-input {
+    margin-top: 10px;
+    width: 80%;
+}
+
 .sale-container h1{
     color: var(--dark-purple);
     margin: 50px 0;
