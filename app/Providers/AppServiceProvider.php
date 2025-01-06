@@ -42,6 +42,10 @@ class AppServiceProvider extends ServiceProvider
             return $user->role === 'staff' || $user->role === 'admin';
         });
 
+        Gate::define('access-invoice', function(User $user, Sale $sale) {
+            return $user->role === 'staff' || $user->role === 'admin' || $user->is($sale->user);
+        });
+
         Gate::define('access-staff-pages', function(User $user) {
             return $user->role === 'staff';
         });

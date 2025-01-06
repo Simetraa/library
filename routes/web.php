@@ -98,6 +98,8 @@ Route::controller(StaffSalesController::class)->group(function(){
     Route::get('/branches/{branch}/sales/{sale}', 'show')->middleware('can:access-staff-and-admin-pages');
 });
 
+Route::get('/invoices/{sale}', [SaleController::class, 'generateInvoice']); # TODO: Add middleware
+
 Route::controller(PurchaseController::class)->group(function(){
     Route::get('/branches/{branch}/purchases', 'index')->middleware('can:access-staff-and-admin-pages');
     Route::get('/branches/{branch}/purchases/create', 'create')->middleware('can:access-staff-and-admin-pages');

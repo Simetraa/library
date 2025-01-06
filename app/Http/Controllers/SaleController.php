@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Sale;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class SaleController extends Controller
 {
@@ -61,5 +63,13 @@ class SaleController extends Controller
     public function destroy(Sale $sale)
     {
         //
+    }
+
+    public function generateInvoice(Sale $sale): Response
+    {
+        $pdf = PDF::loadView("pdf.sale-invoice", ["sale" => $sale]); // Load a view for the PDF
+
+        //return $pdf->download('document.pdf');
+        return $pdf->stream('invoice.pdf');
     }
 }
