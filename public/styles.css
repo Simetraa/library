@@ -238,8 +238,8 @@ tbody tr:hover {
     height: 30px;
     padding: 5px 20px;
     min-width: 50%;
-    width: 55vw;
-    margin-right: 30px;
+    width: 50vw;
+    margin-right: 10px;
     box-shadow: var(--box-shadow);
     border-radius: 10px;
 }
@@ -477,6 +477,7 @@ tbody tr:hover {
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
+    align-items: baseline;
 }
 
 #login-button, #signup-button {
