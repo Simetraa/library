@@ -20,10 +20,9 @@
         $user = request()->user();
         $sales = $user->sales;
     @endphp
-
-    @foreach($sales as $sale)
-        <div class="sale-container">
-            <h1>Purchases</h1>
+    <div class="sale-container">
+        <h1>Purchases</h1>
+        @foreach($sales as $sale)
             <div class="sale-card">
                 <div class="sale-header">
                     <div class="sale-and-date">
@@ -39,15 +38,14 @@
                         <p>£ {{$book->pivot->price}}</p>
                     </div>
                 @endforeach
-                <hr>
-                <div class="sale-total">
+                <hr width="100%">
+                <div class="sale-book-info-pair">
                     <p>Total:</p>
                     <p><span>£</span>{{$sale->totalPrice()}}</p>
                 </div>
-                @endforeach
             </div>
-        </div>
-
+        @endforeach
+    </div>
 
 </div>
 </body>
