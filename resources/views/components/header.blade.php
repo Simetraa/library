@@ -1,7 +1,7 @@
 <div class="page-header">
     <div class="flex-horizontal gap-16">
-        <h1><a href="/">Atlas Books</a></h1>
-        <nav class="gap-32">
+        <h1 class = "logo"><a href="/">Atlas Books</a></h1>
+        <nav class="gap-32 header-links">
             @can('access-staff-and-admin-pages')
                 <a href="/books">Books</a>
                 <a href="/branches">Branches</a>
@@ -30,7 +30,7 @@
 
                     <form method="POST" action="/logout">
                 @csrf
-                <button class="button-p">Log out</button>
+                <button class="button-p" id="log-out">Log out</button>
             </form>
         @endauth
     </div>
