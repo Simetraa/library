@@ -20,16 +20,16 @@
 <x-header></x-header>
 
 <div class="inventory-book-pane">
-    <div class="sale-container">
+    <div class="bg-white-container add-purchase-container">
         <h1>{{ $branch->name }} - Manually Create Purchase</h1>
         <form method="POST" action="/branches/{{$branch->id}}/purchases">
             @csrf
-            <input type="number" name="book_id" class="form-input" placeholder="Book_Id" required>
-            <input type="number" name="quantity" class="form-input" placeholder="Quantity" required>
-            <input type="number" name="price" class="form-input" placeholder="Total price" required>
-            <input type="text" name="supplier" class="form-input" placeholder="Supplier" required>
-            
-            <button class="form-button">Add purchase</button>
+            <input type="number" name="book_id" class="input new-purchase-input" placeholder="Book_Id" required>
+            <input type="number" name="quantity" class="input new-purchase-input" placeholder="Quantity" required>
+            <input type="number" name="price" class="input new-purchase-input" placeholder="Total price" required>
+            <input type="text" name="supplier" class="input new-purchase-input" placeholder="Supplier" required>
+
+            <button class="button-p form-button" id="profile-button">Add purchase</button>
         </form>
         <div id="book-id-list"></div>
     </div>
