@@ -39,7 +39,7 @@ class PurchaseController extends Controller
 
         Purchase::create([
             'branch_id' => request("branch_id"),
-            'books' => request("books"),
+            'book_id' => request("book_id"),
             'quantity' => request("quantity"),
             'price' => request("price"),
             'supplier' => request("supplier"),

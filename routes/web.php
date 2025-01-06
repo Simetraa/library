@@ -101,4 +101,5 @@ Route::controller(StaffSalesController::class)->group(function(){
 Route::controller(PurchaseController::class)->group(function(){
     Route::get('/branches/{branch}/purchases', 'index')->middleware('can:access-staff-and-admin-pages');
     Route::get('/branches/{branch}/purchases/create', 'create')->middleware('can:access-staff-and-admin-pages');
+    Route::post('/branches/{branch}/purchases', 'store')->middleware('can:access-staff-and-admin-pages');
 });

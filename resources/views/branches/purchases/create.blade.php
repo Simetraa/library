@@ -28,7 +28,7 @@
             <input type="number" name="quantity" class="form-input" placeholder="Quantity" required>
             <input type="number" name="price" class="form-input" placeholder="Total price" required>
             <input type="text" name="supplier" class="form-input" placeholder="Supplier" required>
-            
+
             <button class="form-button">Add purchase</button>
         </form>
         <div id="book-id-list"></div>
