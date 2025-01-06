@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ReservationCancellation;
 use App\Models\Book;
 use App\Models\Branch;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rule;
 
 class InventoryController extends Controller
@@ -129,7 +131,12 @@ class InventoryController extends Controller
 
         // TODO: DO WE HAVE TO USE detatch() instead of delete()?
 
-        $branch->reservations->where('book_id', $book->id)->where('status', 'pending')->each->delete();
+
+        foreach($branch->reservations->where('book_id', $book->id)->where('status', 'pending') as $reservation) {
+            Mail::to($reservation->user)->send(new ReservationCancellation($reservation));
+            $reservation->delete();
+        }
+
 
         $branch->books->find($book)->pivot->delete();
         return back();
