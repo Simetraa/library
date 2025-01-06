@@ -129,6 +129,8 @@ class InventoryController extends Controller
 
         // TODO: DO WE HAVE TO USE detatch() instead of delete()?
 
+        $branch->reservations->where('book_id', $book->id)->where('status', 'pending')->each->delete();
+
         $branch->books->find($book)->pivot->delete();
         return back();
     }
