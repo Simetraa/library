@@ -34,6 +34,7 @@ class PurchaseController extends Controller
             'book_id' => ['required'],
             'quantity' => ['required'],
             'price' => ['required'],
+            'supplier' => ['required'],
         ]);
 
         Purchase::create([
@@ -41,6 +42,7 @@ class PurchaseController extends Controller
             'books' => request("books"),
             'quantity' => request("quantity"),
             'price' => request("price"),
+            'supplier' => request("supplier"),
         ]);
 //        return redirect("");
     }
