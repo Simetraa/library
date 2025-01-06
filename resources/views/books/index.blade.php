@@ -15,8 +15,8 @@
         <div class="space-between">
             <div class="inventory-inputs">
                 <form method="GET" action="/books">
-                    <input type="text" placeholder="Title" name="title" value="{{ old('title') }}">
-                    <input type="text" placeholder="Author" name="author" value="">
+                    <input type="text" placeholder="Title" name="title" value="{{ request('title') }}">
+                    <input type="text" placeholder="Author" name="author" value="{{ request('author') }}">
                     <button type="submit">Search</button>
                 </form>
             </div>
@@ -49,7 +49,7 @@
             @endforeach
             </tbody>
         </table>
-        {{ $books->links('pagination::simple-default') }}
+        {{ $books->appends(request()->all())->links('pagination::simple-default') }}
     </div>
 </div>
 </body>

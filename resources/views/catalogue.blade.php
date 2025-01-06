@@ -56,7 +56,7 @@
                     <p>No books found. Try removing some filters.</p>
                 @endempty
             </div>
-            {{ $books->links('pagination::simple-default') }}
+            {{ $books->appends(request()->all())->links('pagination::simple-default') }}
         </div>
         <x-categories :subjects="$subjects" :filters="$filters"></x-categories>
     </form>

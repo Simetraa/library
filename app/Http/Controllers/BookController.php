@@ -170,15 +170,12 @@ class BookController extends Controller
     public function index(Request $request){
         $title = $request->get('title') ?? '';
         $author = $request->get('author') ?? '';
-        $visible = $request->get('visible') ?? '';
-
-
 
         $books = Book::where('title', 'like', '%' . $title . '%')
             ->where('author', 'like', '%' . $author . '%')->paginate(10);
 
 
-        return view('books.index', ["books" => $books]);
+        return view('books.index', ["books" => $books, "title" => $title, "author" => $author]);
     }
     public function store(Request $request){
 
