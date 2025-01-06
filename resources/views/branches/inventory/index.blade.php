@@ -96,7 +96,7 @@
                     <tbody>
                     @foreach($books as $book)
                         <tr>
-                            <td>{{ $book->id }}</td>
+                            <td id="book_id">{{ $book->id }}</td>
                             <td>{{ $book->title }}</td>
                             <td>{{ $book->author }}</td>
                             <td>{{ $book->pivot->quantity }}</td>
