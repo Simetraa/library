@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Branch;
 use App\Models\Reservation;
+use App\Models\Sale;
 use Illuminate\Http\Request;
 
 class StaffReservationController extends Controller
@@ -11,9 +12,51 @@ class StaffReservationController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Branch $branch)
+    public function index(Request $request, Branch $branch)
     {
-        return view('branches.reservations.index', ['branch' => $branch]);
+        $reservationId = $request->get("reservation-id");
+        $userId = $request->get("user-id");
+        $email = $request->get("email");
+        $sortBy = $request->get("sort-by");
+        $collected = $request->get("collected");
+
+        $reservations = $branch->reservations; // Start with the branch ID
+
+        if (!empty($reservationId)) {
+            $reservations = $reservations->where('id', $reservationId);
+        }
+
+        if (!empty($userId)) {
+            $reservations = $reservations->where('user_id', $userId);
+        }
+
+        if (!empty($email)) {
+            $reservations = $reservations->where('email', $email);
+        }
+
+        if (!empty($collected)) {
+            $reservations = $reservations->where('status', $collected);
+        }
+
+        switch ($sortBy) {
+            case 'time-old-new':
+                $reservations = $reservations->sortBy('created_at');
+                break;
+            case 'time-new-old':
+                $reservations = $reservations->sortByDesc('created_at');
+                break;
+        }
+
+        $reservations = Reservation::whereIn('id', $reservations->pluck('id'))->paginate(15);
+
+        return view('branches.reservations.index', ['branch' => $branch,
+            'reservations' => $reservations,
+            'reservation-id' => $reservationId,
+            'user-id' => $userId,
+            'email' => $email,
+            'sort-by' => $sortBy
+        ]);
+
     }
 
     /**

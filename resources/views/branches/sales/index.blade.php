@@ -11,10 +11,6 @@
 
 <body class="non-gradient-body">
 <x-header></x-header>
-
-@php
-    $sales = $branch->sales;
-@endphp
 <div class="sidebar-body">
     {{-- side bar --}}
     <x-dashboard-sidebar :branch="$branch"></x-dashboard-sidebar>
@@ -22,14 +18,23 @@
         <h1>{{$branch->name}} - Sales</h1>
         <div class="space-between">
             <div class="inventory-inputs">
-                <input type="text" placeholder="Filter Sales...">
+                <form action="/branches/{{$branch->id}}/sales">
+                    <input type="text" placeholder="Sale ID" name="sale-id" value="{{request('sale-id')}}">
+                    <input type="text" placeholder="User ID" name="user-id" value="{{request('user-id')}}">
+                    <input type="text" placeholder="Email" name="email" value="{{request('email')}}">
+                    <x-dropdown id="dropdown"
+                                name="sort-by"
+                                :value="request('sort-by')"
+                                :options="
+[
+    ['Price: Low - High', 'price-low-high'],
+    ['Price: High - Low', 'price-high-low'],
+    ['Time: Old - New', 'time-old-new'],
+    ['Time: New - Old', 'time-new-old']
+]"></x-dropdown>
+                    <button type="submit">Search</button>
+                </form>
             </div>
-            <a href="sales/create" class="add-new-button">
-            <span class="material-symbols-outlined">
-                add
-            </span>
-                <span class="add-new-button-label">New</span>
-            </a>
         </div>
 
         <div class="inventory-panes">
@@ -41,6 +46,7 @@
                         <th scope="col">User ID</th>
                         <th scope="col">Email</th>
                         <th scope="col">Total Price</th>
+                        <th scope="col">Date</th>
                         <th scope="col">Invoice</th>
                     </tr>
                     </thead>
@@ -54,12 +60,15 @@
                             </td>
                             <td>{{ $sale->user->id }}</td>
                             <td>{{ $sale->user->email }}</td>
-                            <td>{{ $sale->totalPrice() }}</td>
+                            <td>£{{ $sale->totalPrice() }}</td>
+                            <td>{{ $sale->created_at }}</td>
                             <td><a href="/invoices/sales/{{$sale->id}}">Generate</a></td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
+                {{ $purchases->appends(request()->all())->links('pagination::simple-default') }}
+
             </div>
         </div>
     </div>

@@ -731,19 +731,25 @@ img {
 .stock-info .book-info {
     width: 100%;
 }
-.paragraph-truncate {
-    display: -webkit-box;
-    overflow: hidden;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-}
+/*.paragraph-truncate {*/
+/*    display: -webkit-box;*/
+/*    overflow: hidden;*/
+/*    -webkit-line-clamp: 4;*/
+/*    -webkit-box-orient: vertical;*/
+/*}*/
 
 .text-right {
     text-align: right;
 }
 
+th {
+    padding: 4px;
+    border: solid 1px;
+}
+
 td {
     padding: 4px;
+    border: solid 1px
 }
 
 .inventory-panes {
