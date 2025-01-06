@@ -40,12 +40,6 @@
                     </x-dropdown>
                 </form>
             </div>
-            <a href="/books/create" class="add-new-button">
-                    <span class="material-symbols-outlined">
-                        add
-                    </span>
-                <span class="add-new-button-label">New</span>
-            </a>
         </div>
         <div class="inventory-panes">
             <div class="inventory-book-pane">
