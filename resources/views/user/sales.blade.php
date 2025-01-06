@@ -21,9 +21,9 @@
         $sales = $user->sales;
     @endphp
 
+    @foreach($sales as $sale)
         <div class="sale-container">
             <h1>Purchases</h1>
-            @foreach($sales as $sale)
             <div class="sale-card">
                 <div class="sale-header">
                     <div class="sale-and-date">
@@ -44,9 +44,10 @@
                     <p>Total:</p>
                     <p><span>£</span>{{$sale->totalPrice()}}</p>
                 </div>
+                @endforeach
             </div>
-            @endforeach
         </div>
+
 
 </div>
 </body>

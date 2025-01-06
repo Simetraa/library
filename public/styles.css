@@ -233,13 +233,21 @@ tbody tr:hover {
     /*margin: 30px 30px 0 30px;*/
 }
 
+.logo {
+    display: block;
+}
+
+#log-out {
+    display: block;
+}
+
 /* searchbar */
 #search-catalogue {
     height: 30px;
     padding: 5px 20px;
     min-width: 50%;
-    width: 55vw;
-    margin-right: 30px;
+    width: 57vw;
+    margin-right: 10px;
     box-shadow: var(--box-shadow);
     border-radius: 10px;
 }
@@ -313,10 +321,21 @@ tbody tr:hover {
     max-height: 300px;
     margin: 5px;
 }
+
+.add-purchase-container {
+    margin-top: 30px;
+}
+
 .sale-container{
     max-width: 70vw;
     margin: auto;
 }
+
+.new-purchase-input {
+    margin-top: 10px;
+    width: 80%;
+}
+
 .sale-container h1{
     color: var(--dark-purple);
     margin: 50px 0;
@@ -477,6 +496,7 @@ tbody tr:hover {
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
+    align-items: baseline;
 }
 
 #login-button, #signup-button {
@@ -540,7 +560,7 @@ tbody tr:hover {
 }
 
 
-#form-input {
+.form-input {
     width: 80%;
 }
 
