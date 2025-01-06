@@ -41,6 +41,7 @@
                     <th scope="col">Quantity</th>
                     <th scope="col">Total Price</th>
                     <th scope="col">Supplier</th>
+                    <th scope="col">Invoice</th>
                     </thead>
                     <tbody>
                     @foreach($purchases as $purchase)
@@ -55,6 +56,7 @@
                             <td>{{ $purchase->quantity }}</td>
                             <td>{{ $purchase->price }}</td>
                             <td>{{ $purchase->supplier }}</td>
+                            <td><a href="/invoices/purchases/{{$purchase->id}}">Generate</a></td>
                         </tr>
                     @endforeach
                     </tbody>

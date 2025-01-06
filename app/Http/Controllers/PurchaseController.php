@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Branch;
 use App\Models\Purchase;
+use App\Models\Sale;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class PurchaseController extends Controller
 {
@@ -52,5 +55,13 @@ class PurchaseController extends Controller
     public function show(Branch $branch, Purchase $purchase)
     {
         return view("branches.purchase.show", ["purchase" => $purchase]);
+    }
+
+    public function generateInvoice(Purchase $purchase): Response
+    {
+        $pdf = PDF::loadView("pdf.purchase-invoice", ["purchase" => $purchase]); // Load a view for the PDF
+
+        //return $pdf->download('document.pdf');
+        return $pdf->stream('invoice.pdf');
     }
 }

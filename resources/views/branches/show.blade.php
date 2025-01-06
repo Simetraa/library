@@ -18,16 +18,16 @@
 
     {{--DASHBOARD--}}
     <div class="dashboard-body">
-        {{-- time selector --}}
-        {{--        <style>--}}
-        {{--            .time-selector {--}}
-        {{--                display: flex;--}}
-        {{--                justify-content: end;--}}
-        {{--            }--}}
-        {{--        </style>--}}
-        {{--        <div class="time-selector">--}}
-        {{--        <x-time-selector label='Time Selector' name="topSellingItemsPeriod" :topSellingItemsPeriod="$topSellingItemsPeriod"></x-time-selector>--}}
-        {{--        </div>--}}
+{{--         time selector--}}
+{{--                <style>--}}
+{{--                    .time-selector {--}}
+{{--                        display: flex;--}}
+{{--                        justify-content: end;--}}
+{{--                    }--}}
+{{--                </style>--}}
+{{--         <div class="time-selector">--}}
+{{--         <x-time-selector label='Time Selector' name="topSellingItemsPeriod" :topSellingItemsPeriod="$topSellingItemsPeriod"></x-time-selector>--}}
+{{--    </div>--}}
 
         <div class="dashboard-containers" id="reservation-activity-container">
             <h2>Reservations activity</h2>

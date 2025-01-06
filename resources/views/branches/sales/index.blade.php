@@ -41,6 +41,7 @@
                         <th scope="col">User ID</th>
                         <th scope="col">Email</th>
                         <th scope="col">Total Price</th>
+                        <th scope="col">Invoice</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -54,6 +55,7 @@
                             <td>{{ $sale->user->id }}</td>
                             <td>{{ $sale->user->email }}</td>
                             <td>{{ $sale->totalPrice() }}</td>
+                            <td><a href="/invoices/sales/{{$sale->id}}">Generate</a></td>
                         </tr>
                     @endforeach
                     </tbody>
