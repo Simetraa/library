@@ -31,8 +31,8 @@
     $cost = $branch->purchases->sum('price');
 @endphp
 <h3>Profit summary</h3>
-<p>Revenue: {{$revenue}}</p>
-<p>Cost: {{$cost}}</p>
-<p>Profit: {{$revenue - $cost}}</p>
+<p>Revenue: £{{$revenue}}</p>
+<p>Cost: £{{$cost}}</p>
+<p>Profit: £{{$revenue - $cost}}</p>
 </body>
 </html>
