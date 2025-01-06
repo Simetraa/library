@@ -67,7 +67,7 @@
                     @endforeach
                     </tbody>
                 </table>
-                {{ $purchases->appends(request()->all())->links('pagination::simple-default') }}
+                {{ $sales->appends(request()->all())->links('pagination::simple-default') }}
 
             </div>
         </div>

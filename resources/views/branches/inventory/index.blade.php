@@ -13,41 +13,6 @@
 <body class="non-gradient-body">
 <x-header></x-header>
 
-@php
-
-    $searchQuery = request('search') ?? '';
-    $sortBy = request('sort-by');
-    $sortOrder = 'asc';
-
-    $books = $branch->books
-        ->filter(function ($book) use ($searchQuery) {
-            return false !== stripos($book->title, $searchQuery) || false !== stripos($book->author, $searchQuery);
-        });
-
-    switch ($sortBy) {
-        case 'title-az':
-            $books = $books->sortBy('title');
-            break;
-        case 'title-za':
-            $books = $books->sortByDesc('title');
-            break;
-        case 'author-az':
-            $books = $books->sortBy('author');
-            break;
-        case 'author-za':
-            $books = $books->sortByDesc('author');
-            break;
-        case 'quantity-low-high':
-            $books = $books->sortBy('pivot.quantity');
-            break;
-        case 'quantity-high-low':
-            $books = $books->sortByDesc('pivot.quantity');
-            break;
-        default:
-            $books = $books->sortBy('id');
-            break;
-    }
-@endphp
 
 
 <div class="sidebar-body">
@@ -118,7 +83,7 @@
                     @endforeach
                     </tbody>
                 </table>
-                {{ $purchases->appends(request()->all())->links('pagination::simple-default') }}
+                {{ $books->appends(request()->all())->links('pagination::simple-default') }}
             </div>
 
         </div>

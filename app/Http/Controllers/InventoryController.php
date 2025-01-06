@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\ReservationCancellation;
 use App\Models\Book;
 use App\Models\Branch;
+use App\Models\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rule;
@@ -16,7 +17,25 @@ class InventoryController extends Controller
      */
     public function index(Branch $branch)
     {
-        return view('branches.inventory.index', ['branch' => $branch]);
+        $searchQuery = request('search');
+
+//        $books = $branch->books;
+//
+//        if ($searchQuery) {
+//            $books = $books->filter(function ($book) use ($searchQuery) {
+//                return strpos(strtolower($book->title), strtolower($searchQuery)) !== false ||
+//                    strpos(strtolower($book->author), strtolower($searchQuery)) !== false;
+//            });
+//        }
+//
+//        // paginate
+//        $books = $books->paginate(10);
+
+        $books = $branch->books()->where('title', 'like', "%$searchQuery%")
+            ->orWhere('author', 'like', "%$searchQuery%")
+            ->paginate(15);
+
+        return view('branches.inventory.index', ['branch' => $branch, "books" => $books]);
     }
 
     /**
