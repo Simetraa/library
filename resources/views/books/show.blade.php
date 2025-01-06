@@ -74,7 +74,7 @@
                                             id="reserve-dropdown">
                                 </x-dropdown>
                             </div>
-                            <button class="button-p">Reserve</button>
+                            <button class="button-p" type="submit">Reserve</button>
                         </div>
                     </form>
                 </div>
