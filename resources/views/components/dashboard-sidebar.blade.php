@@ -36,5 +36,6 @@
                 <span>Edit branch</span>
             </a>
         @endcan
+        <a href="/invoices/report/{{$branch->id}}"><span class="material-symbols-outlined">description</span>Generate Report</a>
     </div>
 </div>
