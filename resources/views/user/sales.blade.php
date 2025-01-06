@@ -30,7 +30,7 @@
                         <h2>Sale #{{ $sale->id }} </h2>
                         <p style="color: gray">{{$sale->created_at->format('d/m/y')}}</p>
                     </div>
-                    <a href="/invoices/{{$sale->id}}">Invoice</a>
+                    <a href="/invoices/sales/{{$sale->id}}">Invoice ></a>
                 </div>
 
                 @foreach($sale->books as $book)

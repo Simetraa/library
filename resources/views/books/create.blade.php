@@ -11,7 +11,7 @@
 <body class="non-gradient-body">
 <x-header></x-header>
 <div class="container-centre">
-    <div class="book-container">
+    <div class="bg-white-container" id="book-container">
         <h1>Create book</h1>
         <form method="POST" action="/books/autofill">
             @csrf

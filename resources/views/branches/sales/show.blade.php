@@ -18,7 +18,7 @@
             <div class="sale-and-date">
                 <p style="color: gray">{{$sale->created_at->format('d/m/y')}}</p>
             </div>
-            <a href="">Invoice ></a>
+            <a href="/invoices/{{$sale->id}}">Invoice ></a>
         </div>
         @foreach($sale->books as $book)
             <div class="sale-book-info-pair">
