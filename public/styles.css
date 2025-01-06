@@ -952,7 +952,7 @@ nav a, .header-buttons a {
     padding: 20px;
     display: grid;
     grid-template-columns: 50% 50%;
-    grid-template-rows: 20% 15.5% 10.5% 45%;
+    grid-template-rows: 25% 15.5% 13.5% 45%;
     gap: 15px;
     height: 100%;
     width: 100%;

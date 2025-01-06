@@ -7,7 +7,9 @@ use App\Models\Book;
 use App\Models\Branch;
 use App\Models\Purchase;
 use App\Models\Sale;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class BranchController extends Controller
 {
@@ -143,6 +145,14 @@ class BranchController extends Controller
         // TODO: We have to ensure there are no books in the branch before deleting it.
 
         return redirect("/branches");
+    }
+
+    public function generateInvoice(Branch $branch): Response
+    {
+        $pdf = PDF::loadView("pdf.report", ["branch" => $branch]); // Load a view for the PDF
+
+        //return $pdf->download('document.pdf');
+        return $pdf->stream('report.pdf');
     }
 
 }
