@@ -101,3 +101,19 @@ By default, there are three test users
     ```console
     php artisan dusk
     ```
+Create a new test
+    ```console
+    php artisan dusk:make TestName
+    ```
+
+[Login as a user during a test  ](https://laravel.com/docs/11.x/dusk#authentication)
+```php
+use App\Models\User;
+use Laravel\Dusk\Browser;
+ 
+$this->browse(function (Browser $browser) {
+    $browser->loginAs(User::find(1))
+          ->visit('/home');
+});
+```
+
