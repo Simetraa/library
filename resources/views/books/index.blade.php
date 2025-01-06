@@ -14,8 +14,11 @@
         <h1>Index</h1>
         <div class="space-between">
             <div class="inventory-inputs">
-                <input type="text" placeholder="Filter inventory...">
-
+                <form method="GET" action="/books">
+                    <input type="text" placeholder="Title" name="title" value="{{ old('title') }}">
+                    <input type="text" placeholder="Author" name="author" value="">
+                    <button type="submit">Search</button>
+                </form>
             </div>
             <a href="/books/create" class="add-new-button">
             <span class="material-symbols-outlined">
@@ -46,6 +49,7 @@
             @endforeach
             </tbody>
         </table>
+        {{ $books->links('pagination::simple-default') }}
     </div>
 </div>
 </body>

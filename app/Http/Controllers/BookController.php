@@ -167,8 +167,18 @@ class BookController extends Controller
             "genreNames" => $genreNames
         ]);
     }
-    public function index(){
-        return view('books.index', ["books" => Book::all()]);
+    public function index(Request $request){
+        $title = $request->get('title') ?? '';
+        $author = $request->get('author') ?? '';
+        $visible = $request->get('visible') ?? '';
+
+
+
+        $books = Book::where('title', 'like', '%' . $title . '%')
+            ->where('author', 'like', '%' . $author . '%')->paginate(10);
+
+
+        return view('books.index', ["books" => $books]);
     }
     public function store(Request $request){
 
