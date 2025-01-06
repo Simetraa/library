@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignIdFor(Book::class);
             $table->integer('quantity');
             $table->integer('price');
+            $table->string('supplier');
             $table->timestamps();
         });
     }

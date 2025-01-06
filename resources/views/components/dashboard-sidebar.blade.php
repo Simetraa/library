@@ -27,13 +27,13 @@
             <span>Purchases</span>
         </a>
         @can('access-admin-pages')
-            <a href="/branches/{{$branch->id}}/edit">
-                <span class="material-symbols-outlined">edit</span>
-                <span>Edit branch</span>
-            </a>
             <a href="/branches/{{$branch->id}}/staff">
                 <span class="material-symbols-outlined">store</span>
                 <span>Staff</span>
+            </a>
+            <a href="/branches/{{$branch->id}}/edit">
+                <span class="material-symbols-outlined">edit</span>
+                <span>Edit branch</span>
             </a>
         @endcan
     </div>
