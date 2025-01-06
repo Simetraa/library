@@ -42,7 +42,6 @@
                 @php
                     // check if branch stock level < reservation quantity
                     // TODO: We have to put a check here.
-
                     // $branch->books->first()->pivot->quantity
                     $branchStock = $branch->books->find($reservation->book->id)->pivot->quantity;
                     $reservationQuantity = $reservation->quantity;
