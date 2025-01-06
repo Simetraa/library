@@ -15,7 +15,7 @@
     <div class="book-cover">
         <img src="{{ $book["cover_url"] }}" alt="book cover">
     </div>
-    <div class="book-container">
+    <div class='bg-white-container' id="book-container">
 
         <h1>Edit book</h1>
             <form method="POST" action="/books/{{$book["id"]}}" autocomplete="off">
