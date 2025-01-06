@@ -49,6 +49,11 @@ class DatabaseSeeder extends Seeder
             'email' => 'staff@example.com',
             'role' => 'staff',
         ]);
+
+        User::factory()->create([
+            'email' => 'testing@example.com',
+            'branch_id' => 1,
+        ]);
 //
         Reservation::create([
             'user_id' => 1,
