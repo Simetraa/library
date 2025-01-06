@@ -21,17 +21,17 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
-        Branch::factory(5)
-            ->hasAttached(
-                Book::factory()->count(5),
-                ['quantity' => fake()->randomNumber(3)]
-            )
-            ->create();
+//        Branch::factory(5)
+//            ->hasAttached(
+//                Book::factory()->count(5),
+//                ['quantity' => fake()->randomNumber(3)]
+//            )
+//            ->create();
 
         Branch::factory()
-            ->count(5)
-            ->hasAttached(Book::factory()->count(3), function() {
-                return ['quantity' => fake()->randomNumber(3)];
+            ->count(3)
+            ->hasAttached(Book::factory()->count(15), function() {
+                return ['quantity' => fake()->randomNumber(2)];
             })
             ->create();
 

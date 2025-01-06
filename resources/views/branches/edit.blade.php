@@ -15,14 +15,11 @@
     {{-- side bar --}}
     <x-dashboard-sidebar :branch="$branch"></x-dashboard-sidebar>
     <div class="bg-white-container" id="edit-branch-container">
-        <div class="space-between">
-            <h1>Edit Branch</h1>
-            <button id="login-button">Submit</button>
-        </div>
 
         <form method="POST" action="/branches/{{$branch->id}}" autocomplete="off">
             @csrf
             @method("PATCH")
+            <h1>Edit Branch</h1>
 
             <div class="space-between">
                 <label for="id">Id</label>
@@ -33,13 +30,14 @@
                 <label for="name">Name</label>
                 <input value="{{ $branch->name }}" type="text" name="name">
             </div>
+            <button type="submit" id="login-button">Submit</button>
 
         </form>
-        <form method="POST" action="/branches/{{$branch->id}}">
-            @csrf
-            @method('DELETE')
-            <button type="submit" class="button-r" id="edit-create-button">Delete</button>
-        </form>
+{{--        <form method="POST" action="/branches/{{$branch->id}}">--}}
+{{--            @csrf--}}
+{{--            @method('DELETE')--}}
+{{--            <button type="submit" class="button-r" id="edit-create-button">Delete</button>--}}
+{{--        </form>--}}
     </div>
 </div>
 </body>
