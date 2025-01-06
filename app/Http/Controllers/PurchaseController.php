@@ -27,24 +27,23 @@ class PurchaseController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Branch $branch)
     {
         request()->validate([
-            'branch_id' => ['required'],
-            'book_id' => ['required'],
+            'book_id' => ['required', 'exists:books,id'],
             'quantity' => ['required'],
             'price' => ['required'],
             'supplier' => ['required'],
         ]);
 
         Purchase::create([
-            'branch_id' => request("branch_id"),
-            'books' => request("books"),
+            'branch_id' => $branch->id,
+            'book_id' => request("book_id"),
             'quantity' => request("quantity"),
             'price' => request("price"),
             'supplier' => request("supplier"),
         ]);
-//        return redirect("");
+        return back();
     }
 
     /**

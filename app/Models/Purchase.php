@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Purchase extends Model
 {
+    protected $guarded = [];
     public function book(): BelongsTo {
         return $this->belongsTo(Book::class);
     }
