@@ -156,8 +156,7 @@ class BookController extends Controller
 
         $books = $books->where('visible', true);
 
-        $books = Book::hydrate($books->toArray());
-
+        $books = Book::whereIn('id', $books->pluck('id'))->paginate(42);
 
         return view('catalogue', [
             "books" => $books,

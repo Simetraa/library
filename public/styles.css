@@ -246,7 +246,6 @@ tbody tr:hover {
     height: 30px;
     padding: 5px 20px;
     min-width: 50%;
-    width: 57vw;
     margin-right: 10px;
     box-shadow: var(--box-shadow);
     border-radius: 10px;
@@ -1063,4 +1062,39 @@ nav a, .header-buttons a {
     background: none;
     border: none;
     cursor: pointer;
+}
+
+/* Pagination */
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.pagination li {
+    list-style: none;
+    background-color: var(--button-purple);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+nav:has{.pagination} {
+    align-self: center;
+}
+
+.pagination a {
+    color: white;
+    text-decoration: none;
+}
+
+/*disabled*/
+
+.pagination li.disabled {
+    background-color: lightgray;
+    color: white;
+    cursor: not-allowed;
 }

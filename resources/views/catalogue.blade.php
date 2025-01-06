@@ -45,7 +45,7 @@
                 </div>
             </div>
 
-            <p class = "search-count">{{$books->count()}} results</p>
+            <p class = "search-count">{{$books->total()}} results</p>
 
             <div class="catalogue-container" id='book-list'>
                 @foreach($books as $book)
@@ -56,6 +56,7 @@
                     <p>No books found. Try removing some filters.</p>
                 @endempty
             </div>
+            {{ $books->links('pagination::simple-default') }}
         </div>
         <x-categories :subjects="$subjects" :filters="$filters"></x-categories>
     </form>
