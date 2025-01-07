@@ -15,6 +15,7 @@
    ```
 3. Seed test data
     ```console
+    php artisan migrate
     php artisan migrate:fresh --seed
     ```
 4. Run the server
