@@ -17,7 +17,7 @@
         @php
             use App\Models\Branch;
 
-            $book = $branch->books->find($book->id);
+//            $book = $branch->books->find($book->id);
         @endphp
         <h1>Edit Inventory Item</h1>
         <div class="account-info">

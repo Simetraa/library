@@ -12,9 +12,9 @@
 <x-header></x-header>
 <div>
 
-    @php
-        $book = $branch->books->find($book->id);
-    @endphp
+{{--    @php--}}
+{{--        $book = $branch->books->find($book->id);--}}
+{{--    @endphp--}}
     <h1>Edit Inventory Item</h1>
     <form method="POST" action="/branches/{{$branch->id}}/inventory/{{$book->id}}">
         @csrf

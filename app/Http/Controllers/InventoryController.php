@@ -67,7 +67,7 @@ class InventoryController extends Controller
      */
     public function edit(Branch $branch, Book $book)
     {
-        return view('branches.inventory.edit', ['book' => $book, 'branch' => $branch]);
+        return view('branches.inventory.edit', ['book' => $branch->books->find($book->id), 'branch' => $branch]);
     }
 
     /**

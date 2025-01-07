@@ -95,7 +95,23 @@ class PurchaseController extends Controller
             'price' => request("price"),
             'supplier' => request("supplier"),
         ]);
-        return back();
+
+        // check if the book is in the pivot table, if not attach it
+
+        if(!$branch->books->contains(request("book_id"))){
+            $branch->books()->attach(request("book_id"), ['quantity' => request("quantity")]);
+        } else {
+            $branch->books->find(
+                request("book_id"))
+                ->pivot->update(
+                    ['quantity' =>
+                        request("quantity") + $branch->books
+                            ->find(request("book_id"))->pivot->quantity]);
+        }
+
+
+
+        return redirect("branches/{$branch->id}/purchases");
     }
 
     /**

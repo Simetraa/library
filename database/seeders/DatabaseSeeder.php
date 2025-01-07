@@ -10,6 +10,8 @@ use App\Models\ReservationBook;
 use App\Models\Sale;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Carbon\Carbon;
+use Exception;
 use Illuminate\Database\Seeder;
 use App\Models\Book;
 
@@ -28,6 +30,18 @@ class DatabaseSeeder extends Seeder
 //            )
 //            ->create();
 
+        $this->call([
+            BookSeeder::class,
+            BranchSeeder::class,
+            PurchaseSeeder::class,
+            UserSeeder::class,
+            SaleSeeder::class,
+            ReservationSeeder::class,
+        ]);
+
+
+    }
+    function x() {
         Branch::factory()
             ->count(3)
             ->hasAttached(Book::factory()->count(15), function() {
@@ -35,25 +49,9 @@ class DatabaseSeeder extends Seeder
             })
             ->create();
 
-        User::factory()->create([
-            'email' => 'test@example.com',
-            'branch_id' => 1,
-        ]);
 
-        User::factory()->create([
-            'email' => 'admin@example.com',
-            'role' => 'admin',
-        ]);
 
-        User::factory()->create([
-            'email' => 'staff@example.com',
-            'role' => 'staff',
-        ]);
 
-        User::factory()->create([
-            'email' => 'testing@example.com',
-            'branch_id' => 1,
-        ]);
 //
         Reservation::create([
             'user_id' => 1,

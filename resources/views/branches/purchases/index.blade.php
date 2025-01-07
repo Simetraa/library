@@ -64,11 +64,6 @@
                     <tbody>
                     @foreach($purchases as $purchase)
                         <tr>
-                            <td>
-                                <a href="/branches/{{$branch->id}}/purchases/{{$purchase->id}}">
-                                    {{ $purchase->id }}
-                                </a>
-                            </td>
                             <td>{{ $purchase->id }}</td>
                             <td>{{ $purchase->book->id }}</td>
                             <td>{{ $purchase->quantity }}</td>
