@@ -1013,6 +1013,9 @@ nav a, .header-buttons a {
     max-width: 20%;
     text-align: center;
 }
+#top-selling-items{
+    justify-content: space-around;
+}
 .top-selling-item a{
     text-decoration: none;
     color: black;

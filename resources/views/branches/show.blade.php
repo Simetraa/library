@@ -46,7 +46,7 @@
         <div class="dashboard-containers" id="top-sellers-container">
             <h2>Top Selling Books</h2>
             <hr>
-            <div class="flex-horizontal">
+            <div class="flex-horizontal" id="top-selling-items">
                 @foreach($topSellingItems as $book)
                     <div class="top-selling-item">
                         <a href="/books/{{$book->id}}">
