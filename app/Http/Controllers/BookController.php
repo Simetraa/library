@@ -126,37 +126,40 @@ class BookController extends Controller
 
         $books = $books->unique(); // MAKE SURE THIS WORKS.
 
+        $books = Book::whereIn('id', $books->pluck('id'));
+
         switch($sortBy) {
             case "relevance":
                 break; // TODO: Implement relevance based on popularity
             case "price-low-high":
-                $books = $books->sortBy("price");
+                $books = $books->orderBy("price");
                 break;
             case "price-high-low":
-                $books = $books->sortByDesc("price");
+                $books = $books->orderByDesc("price");
                 break;
             case "title-az":
-                $books = $books->sortBy("title");
+                $books = $books->orderBy("title");
                 break;
             case "title-za":
-                $books = $books->sortByDesc("title");
+                $books = $books->orderByDesc("title");
                 break;
             case "author-az":
-                $books = $books->sortBy("author");
+                $books = $books->orderBy("author");
                 break;
             case "author-za":
-                $books = $books->sortByDesc("author");
+                $books = $books->orderByDesc("author");
                 break;
             case "date-latest":
-                $books = $books->sortByDesc("publication_date");
+                $books = $books->orderByDesc("publication_date");
                 break;
             case "date-oldest":
-                $books = $books->sortBy("publication_date");
+                $books = $books->orderBy("publication_date");
         }
 
         $books = $books->where('visible', true);
 
-        $books = Book::whereIn('id', $books->pluck('id'))->paginate(42);
+        $books = $books->paginate(42);
+
 
         return view('catalogue', [
             "books" => $books,

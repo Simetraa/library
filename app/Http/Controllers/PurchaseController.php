@@ -37,26 +37,7 @@ class PurchaseController extends Controller
                 return Str::contains(strtolower($purchase->supplier), strtolower($supplier)); // Case-insensitive LIKE
             });
         }
-        switch ($sortBy) {
-            case 'quantity-low-high':
-                $purchases = $purchases->sortBy('quantity');
-                break;
-            case 'quantity-high-low':
-                $purchases = $purchases->sortByDesc('quantity');
-                break;
-            case 'price-low-high':
-                $purchases = $purchases->sortBy('price');
-                break;
-            case 'price-high-low':
-                $purchases = $purchases->sortByDesc('price');
-                break;
-            case 'time-old-new':
-                $purchases = $purchases->sortBy('created_at');
-                break;
-            case 'time-new-old':
-                $purchases = $purchases->sortByDesc('created_at');
-                break;
-        }
+
 
         $purchases = Purchase::whereIn('id', $purchases->pluck('id'))->paginate(15);
 
