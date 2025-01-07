@@ -37,17 +37,6 @@ class PurchaseSeeder extends Seeder
                     'supplier' => fake()->randomElement(['Random House', 'HarperCollins', 'Hachette', 'Simon & Schuster']),
                 ]);
 
-//                if(!$branch->books->contains(request("book_id"))){
-//                    $branch->books()->attach(request("book_id"), ['quantity' => request("quantity")]);
-//                } else {
-//                    $branch->books->find(
-//                        request("book_id"))
-//                        ->pivot->update(
-//                            ['quantity' =>
-//                                request("quantity") + $branch->books
-//                                    ->find(request("book_id"))->pivot->quantity]);
-//                }
-
                 BookBranch::create([
                     'branch_id' => $branch['id'],
                     'book_id' => $book['id'],

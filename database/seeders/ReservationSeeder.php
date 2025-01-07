@@ -37,25 +37,6 @@ class ReservationSeeder extends Seeder
                 'quantity' => 1,
                 'status' => 'collected',
             ]);
-
-
-//            $book = $branch->books->first();
-//
-//            $reservation = $user->reservations()->create([
-//                'branch_id' => $branch->id,
-//                'book_id' => $book->id,
-//                'quantity' => 1,
-//                'status' => 'pending',
-//            ]);
-//
-//            $book = $branch->books->where('id', 2);
-//
-//            $reservation = $user->reservations()->create([
-//                'branch_id' => $branch->id,
-//                'book_id' => $book->id,
-//                'quantity' => 1,
-//                'status' => 'collected',
-//            ]);
         }
 
 

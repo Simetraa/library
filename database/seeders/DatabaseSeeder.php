@@ -22,14 +22,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-
-//        Branch::factory(5)
-//            ->hasAttached(
-//                Book::factory()->count(5),
-//                ['quantity' => fake()->randomNumber(3)]
-//            )
-//            ->create();
-
         $this->call([
             BookSeeder::class,
             BranchSeeder::class,
@@ -38,112 +30,5 @@ class DatabaseSeeder extends Seeder
             SaleSeeder::class,
             ReservationSeeder::class,
         ]);
-
-
-    }
-    function x() {
-        Branch::factory()
-            ->count(3)
-            ->hasAttached(Book::factory()->count(15), function() {
-                return ['quantity' => fake()->randomNumber(2)];
-            })
-            ->create();
-
-
-
-
-//
-        Reservation::create([
-            'user_id' => 1,
-            'branch_id' => 1,
-            'book_id' => 1,
-            'quantity' => 1,
-            'status' => 'pending',
-        ]);
-
-        Sale::create([
-            'user_id' => 1,
-            'branch_id' => 1,
-        ]);
-        Sale::create([
-            'user_id' => 1,
-            'branch_id' => 1,
-        ]);
-
-        BookSale::create([
-            'sale_id' => 1,
-            'book_id' => 1,
-            'quantity' => 4,
-            'price' => 10.00,
-            'returned' => false,
-        ]);
-
-        BookSale::create([
-            'sale_id' => 1,
-            'book_id' => 3,
-            'quantity' => 15,
-            'price' => 6.00,
-            'returned' => false,
-        ]);
-
-        BookSale::create([
-            'sale_id' => 2,
-            'book_id' => 5,
-            'quantity' => 35,
-            'price' => 9.00,
-            'returned' => false,
-        ]);
-
-        Purchase::create([
-            'branch_id' => 1,
-            'book_id' => 1,
-            'quantity' => 100,
-            'price' => 200.00,
-            'supplier' => "WeDoBooks"
-        ]);
-        Purchase::create([
-            'branch_id' => 1,
-            'book_id' => 2,
-            'quantity' => 300,
-            'price' => 500.00,
-            'supplier' => "WeDoBooks"
-        ]);
-
-
-        Book::find(15)->update(['visible' => false]);
-//
-//        Book::create([
-//            "title" => "James & the Giant Peach",
-//            "author" => "Roald Dahl",
-//            "cover_url" => "",
-//            "description" => "description",
-//            "price" => "14",
-//            "subjects" =>["Arts"],
-//            "publication_date" => "2021-01-01"]);
-//
-//        Branch::create([
-//            'name' => 'Sheffield',
-//        ]);
-//
-//        User::factory()->create([
-//            'email' => 'test@example.com',
-//            'branch_id' => 1,
-//        ]);
-//
-//        Sale::create([
-//            'user_id' => 1,
-//            'branch_id' => 1
-//        ]);
-//
-//        BookSale::create([
-//            'sale_id' => 1,
-//            'book_id' => 1,
-//            'quantity' => 1,
-//            'price' => 10.00,
-//            'returned' => false
-//        ]);
-
-
-
     }
 }
