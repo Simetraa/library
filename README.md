@@ -30,9 +30,6 @@
     ```
 2. Install dependencies
     ```console
-    npm install
-    ```
-    ```console
     composer install
     ```
 3. Update the database
