@@ -54,6 +54,8 @@
                     </thead>
                     <tbody>
                     @foreach($books as $book)
+                        @php
+ @endphp
                         <tr>
                             <td id="book_id">{{ $book->id }}</td>
                             <td>{{ $book->title }}</td>

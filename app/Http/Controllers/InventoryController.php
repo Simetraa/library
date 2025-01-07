@@ -18,6 +18,7 @@ class InventoryController extends Controller
     public function index(Branch $branch)
     {
         $searchQuery = request('search');
+        $sortBy = request('sort-by');
 
 //        $books = $branch->books;
 //
@@ -30,10 +31,40 @@ class InventoryController extends Controller
 //
 //        // paginate
 //        $books = $books->paginate(10);
+        $booksQuery = $branch->books()->withPivot('quantity');
+        if ($searchQuery) {
+            $booksQuery->where(function ($query) use ($searchQuery) {
+                $query->where('title', 'like', "%$searchQuery%")
+                    ->orWhere('author', 'like', "%$searchQuery%");
+            });
+        }
 
-        $books = $branch->books()->where('title', 'like', "%$searchQuery%")
-            ->orWhere('author', 'like', "%$searchQuery%")
-            ->paginate(15);
+        switch ($sortBy) {
+            case 'id':
+                $booksQuery = $booksQuery->orderBy('id');
+                break;
+            case 'title-az':
+                $booksQuery = $booksQuery->orderBy('title');
+                break;
+            case 'title-za':
+                $booksQuery = $booksQuery->orderByDesc('title');
+                break;
+            case 'author-az':
+                $booksQuery = $booksQuery->orderBy('author');
+                break;
+            case 'author-za':
+                $booksQuery = $booksQuery->orderByDesc('author');
+                break;
+            case 'quantity-low-high':
+                $booksQuery = $booksQuery->orderBy('quantity');
+                break;
+            case 'quantity-high-low':
+                $booksQuery = $booksQuery->orderByDesc('quantity');
+                break;
+        }
+
+
+        $books = $booksQuery->paginate(15);
 
         return view('branches.inventory.index', ['branch' => $branch, "books" => $books]);
     }
@@ -156,8 +187,12 @@ class InventoryController extends Controller
             $reservation->delete();
         }
 
+        foreach($branch->reservations->where('book_id', $book->id) as $reservation) {
+            $reservation->delete();
+        }
+
 
         $branch->books->find($book)->pivot->delete();
-        return back();
+        return redirect("/branches/{$branch->id}/inventory");
     }
 }

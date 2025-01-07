@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inventory Item</title>
+    <title>Inventory</title>
     <link rel="stylesheet" href="{{ asset('styles.css') }}"/>
 </head>
 
@@ -16,7 +16,6 @@
 
         @php
             use App\Models\Branch;
-
 //            $book = $branch->books->find($book->id);
         @endphp
         <h1>Edit Inventory Item</h1>
